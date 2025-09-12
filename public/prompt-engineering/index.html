@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Engineering for Teens - Evan Parra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe JS -->
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const App = () => {
+      const [loading, setLoading] = useState(false);
+
+      const handlePayment = async () => {
+        setLoading(true);
+        // Replace with your Stripe Payment Link or Checkout session
+        window.open('https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE', '_blank');
+        setLoading(false);
+      };
+
+      return (
+        <div className="min-h-screen bg-gradient-to-r from-green-50 to-emerald-100 font-sans">
+          {/* Header - Fun Hero */}
+          <header className="bg-gradient-to-r from-green-600 to-emerald-700 text-white py-20">
+            <div className="max-w-4xl mx-auto px-4 text-center">
+              <h1 className="text-5xl font-bold mb-4">Unlock AI Superpowers for Your Teen!</h1>
+              <p className="text-2xl mb-6">1-Hour Prompt Engineering Sessions – $75</p>
+              <p className="text-lg mb-8 opacity-90">Teach your kid to craft genius prompts that ace projects, build bots, and future-proof their skills. Virtual or in-person (St. Augustine area).</p>
+              <div className="space-x-4">
+                <button onClick={handlePayment} disabled={loading} className="bg-white text-green-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block">
+                  {loading ? 'Processing...' : 'Pay $75 & Book Now'}
+                </button>
+                <a href="#details" className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-green-600 font-semibold inline-block">Learn More</a>
+              </div>
+              <p className="text-sm mt-6 opacity-75">Ages 13-18 | Parents: eraphaelparra@gmail.com</p>
+            </div>
+          </header>
+
+          {/* What You'll Learn */}
+          <section id="details" className="max-w-4xl mx-auto px-4 py-16">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">What Your Teen Gets in 1 Hour</h2>
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-green-600 mb-2">Craft Killer Prompts</h3>
+                <p className="text-gray-600">From basic chats to advanced chains—get homework done faster with AI magic.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-green-600 mb-2">Build Simple Bots</h3>
+                <p className="text-gray-600">Hands-on: Create a custom AI tool that thinks like a pro.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-green-600 mb-2">Future-Proof Skills</h3>
+                <p className="text-gray-600">Ethics, creativity, and real-world tips to stand out in school & beyond.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Booking Flow */}
+          <section className="max-w-4xl mx-auto px-4 py-16 bg-white">
+            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">How It Works</h2>
+            <ol className="space-y-4 text-gray-700 max-w-2xl mx-auto">
+              <li className="flex items-start"><span className="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center font-bold mr-3">1</span>Pay $75 upfront via secure Stripe.</li>
+              <li className="flex items-start"><span className="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center font-bold mr-3">2</span>Fill out a quick Google Form for your teen's details & preferred time/format.</li>
+              <li className="flex items-start"><span className="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center font-bold mr-3">3</span>Get a Calendar invite & prep materials—session within 48 hours!</li>
+            </ol>
+            <div className="text-center mt-8">
+              <button onClick={handlePayment} disabled={loading} className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 font-semibold">
+                {loading ? 'Processing...' : 'Start Booking'}
+              </button>
+            </div>
+          </section>
+
+          {/* Testimonials Placeholder */}
+          <section className="max-w-4xl mx-auto px-4 py-16 bg-gray-100">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">What Parents Say</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow">
+                <p className="text-gray-600 italic mb-4">"Evan made AI fun and practical—my 15yo is now prompting like a boss!"</p>
+                <p className="text-right font-semibold">- Sarah, Mom of High Schooler</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <p className="text-gray-600 italic mb-4">"Quick session, huge confidence boost. Worth every penny for future skills."</p>
+                <p className="text-right font-semibold">- Mike, Dad of 14yo</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section className="bg-green-600 text-white py-20">
+            <div className="max-w-4xl mx-auto px-4 text-center">
+              <h2 className="text-3xl font-bold mb-6">Ready to Spark Some AI Magic?</h2>
+              <p className="text-xl mb-8 opacity-90">Questions? Hit me up—happy to chat before booking.</p>
+              <div className="space-y-4 max-w-md mx-auto">
+                <a href="mailto:eraphaelparra@gmail.com" className="block bg-white text-green-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold">Email Questions</a>
+                <iframe src="YOUR_GOOGLE_FORM_EMBED_URL_HERE" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading Form...</iframe>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-gray-800 text-white py-6 text-center">
+            <p>&copy; 2025 Evan R. Parra | Back to <a href="/" className="underline">Home</a></p>
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

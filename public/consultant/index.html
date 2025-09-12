@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan Parra - AI & BI Solutions for Growing Businesses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const App = () => {
+      return (
+        <div className="min-h-screen bg-gray-50 font-sans">
+          {/* Header - Hero Section */}
+          <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h1 className="text-5xl font-bold mb-4">Evan R. Parra</h1>
+              <p className="text-2xl mb-6">Applied AI Engineer Delivering BI & Automation Solutions for SMBs</p>
+              <p className="text-lg mb-8 opacity-90">Cut costs, streamline ops, and scale with custom AI integrations—built fast, results guaranteed.</p>
+              <div className="space-x-4">
+                <a href="mailto:eraphaelparra@gmail.com" className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block">Get a Free Consult</a>
+                <a href="#projects" className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold inline-block">See My Work</a>
+              </div>
+              <p className="text-sm mt-6 opacity-75">Saint Augustine, FL • Open to Remote Contracts • eraphaelparra@gmail.com</p>
+            </div>
+          </header>
+
+          {/* Value Proposition */}
+          <section className="max-w-6xl mx-auto px-4 py-16">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">70% Faster Workflows</h3>
+                <p className="text-gray-600">Automated data collection and API integrations to slash manual processing time for teams like yours.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">50% Cost Savings</h3>
+                <p className="text-gray-600">Optimized AI inference and efficient ML pipelines that deliver big impact without breaking the bank.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">30% Efficiency Gains</h3>
+                <p className="text-gray-600">Custom dashboards and forecasting models turning data into actionable insights for small & medium businesses.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Projects - Results-Focused */}
+          <section id="projects" className="max-w-6xl mx-auto px-4 py-16 bg-white">
+            <h2 className="text-3xl font-bold text-center mb-12">Real Results from Real Projects</h2>
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* ProfitScout */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">ProfitScout: AI Platform for Market Insights</h3>
+                <p className="text-gray-600 mb-4">Built and launched an end-to-end AI app analyzing Russell 1000 data—processing 10GB/day with conversational AI recommendations.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Cut LLM costs by 50% through smart token optimization and routing.</li>
+                  <li>Delivered sub-0.4s response times for interactive chats and dashboards.</li>
+                  <li>Event-driven ETL with RAG for scalable, reliable inference.</li>
+                </ul>
+                <p className="text-sm text-gray-500 mb-3"><strong>Tech:</strong> Vertex AI, Cloud Run, BigQuery, React/Next.js</p>
+                <a href="https://profitscout.app" target="_blank" className="text-blue-600 hover:underline font-semibold">Live Demo →</a>
+              </div>
+
+              {/* MaculaCutis */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">MaculaCutis: AI Dermoscopy Tool</h3>
+                <p className="text-gray-600 mb-4">Full-stack AI app for clinical image analysis—providing confidence scores and heatmaps to support medical decisions.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Trained on ISIC HAM10000 dataset with Vertex AI AutoML for real-time inference.</li>
+                  <li>Modern stack with explainability features for trustworthy AI outputs.</li>
+                  <li>Serverless backend for low-maintenance, high-availability deployment.</li>
+                </ul>
+                <p className="text-sm text-gray-500 mb-3"><strong>Tech:</strong> React/TypeScript, Node.js, Vertex AI, PostgreSQL</p>
+                <a href="https://maculacutis.com" target="_blank" className="text-blue-600 hover:underline font-semibold">View Project →</a>
+              </div>
+
+              {/* Coastal Inventory Logger */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">Coastal Inventory Logger: Field Data Automation</h3>
+                <p className="text-gray-600 mb-4">Web app centralizing inventory data for waste management ops—reducing manual entry by 70% and boosting data freshness.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Integrated REST APIs and serverless functions for seamless partner data flow.</li>
+                  <li>Power BI dashboards with SARIMA forecasting (2-5% accuracy) for volume predictions.</li>
+                  <li>30% overall efficiency lift through ETL pipelines and executive insights.</li>
+                </ul>
+                <p className="text-sm text-gray-500 mb-3"><strong>Tech:</strong> Next.js, SQL, Power BI, Azure Functions</p>
+                <a href="/consultant#case-study" className="text-blue-600 hover:underline font-semibold">Case Study →</a>
+              </div>
+            </div>
+            <div className="text-center">
+              <a href="mailto:eraphaelparra@gmail.com?subject=Contract Inquiry" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-semibold">Ready to Automate Your Ops? Let's Talk</a>
+            </div>
+          </section>
+
+          {/* Credibility - Certifications & Expertise */}
+          <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-100">
+            <h2 className="text-3xl font-bold text-center mb-12">Why Partner with Me?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Proven Expertise for Your Business</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>• 10+ years in BI/analytics, now powering production ML on GCP</li>
+                  <li>• M.S. in AI (Florida Atlantic University, GPA 3.82, Dec 2025)</li>
+                  <li>• Google Professional ML Engineer Certified (Feb 2025)</li>
+                  <li>• Scaled e-comm to $1M+/yr with AI-driven ads and ops automation</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Tailored for SMBs Like Yours</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>• Quick-deploy solutions: APIs in weeks, apps in days</li>
+                  <li>• Cost-conscious: Focus on ROI with efficient, scalable tech</li>
+                  <li>• Clear communication: From exec dashboards to dev handoffs</li>
+                  <li>• Flexible contracts: Hourly, project-based, or ongoing support</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Skills Grid - Concise */}
+          <section className="max-w-6xl mx-auto px-4 py-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Tech I Bring to Your Table</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Cloud & MLOps</h3>
+                <p className="text-sm text-gray-600">Vertex AI, BigQuery, Cloud Run, Docker</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">AI/ML</h3>
+                <p className="text-sm text-gray-600">Python, TensorFlow, RAG, Agentic AI</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Data & BI</h3>
+                <p className="text-sm text-gray-600">SQL, Power BI/DAX, ETL Pipelines</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Full-Stack</h3>
+                <p className="text-sm text-gray-600">React/Next.js, REST APIs, Firebase</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact - Strong CTA */}
+          <section className="bg-blue-600 text-white py-20">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h2 className="text-3xl font-bold mb-6">Let's Build Something Impactful</h2>
+              <p className="text-xl mb-8 opacity-90">Whether you're a startup streamlining inventory or a mid-size firm integrating AI—I'm here to deliver.</p>
+              <div className="space-y-4 max-w-md mx-auto">
+                <a href="mailto:eraphaelparra@gmail.com" className="block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold">Email for a Quick Chat</a>
+                <a href="https://calendly.com/eraphaelparra/30min" target="_blank" rel="noopener noreferrer" className="block border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold">Book 30-Min Discovery Call</a>
+                <p className="text-sm opacity-75 mt-4">Or connect on <a href="https://linkedin.com/in/eraphaelparra" className="underline">LinkedIn</a> | Upwork Profile Coming Soon</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-gray-800 text-white py-6 text-center">
+            <p>&copy; 2025 Evan R. Parra. Built for results, not resumes.</p>
+          </footer>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
