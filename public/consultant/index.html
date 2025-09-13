@@ -1,181 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Evan Parra — Consulting | AI • BI • ML • Web</title>
-  <meta name="description" content="Applied AI Engineer & BI Specialist helping SMBs cut costs, streamline operations, and ship reliable automation—fast." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evan Parra - AI & BI Solutions for Growing Businesses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>AI & BI that actually moves the needle</h1>
-    <p>I help small and mid-sized businesses cut costs, streamline operations, and launch reliable automation—fast.</p>
-    <p><strong>Location:</strong> Saint Augustine, FL • <strong>Remote contracts welcome</strong></p>
-    <p>
-      <a href="mailto:eraphaelparra@gmail.com">Start your free consultation (email)</a> |
-      <a href="https://calendly.com/eraphaelparra/30min">Book a 30-min Google Meet</a>
-    </p>
-    <hr />
-  </header>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
 
-  <main>
-    <section aria-labelledby="outcomes">
-      <h2 id="outcomes">What you can expect</h2>
-      <ul>
-        <li><strong>70% faster workflows:</strong> agents, automations, and integrations that remove repetitive work.</li>
-        <li><strong>50% lower compute/LLM costs:</strong> right-sized infrastructure, efficient pipelines, and smart routing.</li>
-        <li><strong>30% efficiency gains:</strong> dashboards and forecasting that drive clear, data-backed decisions.</li>
-      </ul>
-      <hr />
-    </section>
+    const App = () => {
+      return (
+        <div className="min-h-screen bg-gray-50 font-sans">
+          {/* Header - Hero Section */}
+          <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h1 className="text-5xl font-bold mb-4">Evan R. Parra</h1>
+              <p className="text-2xl mb-6">Applied AI Engineer for SMBs: AI • BI • ML • Web</p>
+              <p className="text-lg mb-8 opacity-90">
+                Cut costs, streamline ops, and automate the boring stuff. We’ll scope fast, build pragmatically, and ship what works.
+              </p>
+              <div className="space-x-4">
+                <a href="mailto:eraphaelparra@gmail.com" className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block">
+                  Free Consultation (Email)
+                </a>
+                <a href="https://calendly.com/eraphaelparra/30min" target="_blank" rel="noopener noreferrer" className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold inline-block">
+                  Book a 30-min Google Meet
+                </a>
+              </div>
+              <p className="text-sm mt-6 opacity-75">Saint Augustine, FL • Remote Contracts Welcome • eraphaelparra@gmail.com</p>
+            </div>
+          </header>
 
-    <section aria-labelledby="offerings">
-      <h2 id="offerings">Core offerings</h2>
+          {/* Value Proposition */}
+          <section className="max-w-6xl mx-auto px-4 py-16">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">70% Faster Workflows</h3>
+                <p className="text-gray-600">Agents, automations, and integrations that remove repetitive work from your team’s day.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">50% Cost Savings</h3>
+                <p className="text-gray-600">Right-sized infrastructure and efficient pipelines to avoid runaway compute and LLM costs.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-blue-600 mb-2">30% Efficiency Gains</h3>
+                <p className="text-gray-600">Dashboards and forecasting that drive clear, data-backed decisions for SMB leaders.</p>
+              </div>
+            </div>
+          </section>
 
-      <article aria-labelledby="ai">
-        <h3 id="ai">AI</h3>
-        <p>Practical AI that plugs into your workflows and data.</p>
-        <ul>
-          <li>AI agents & chatbots for support, ops, and internal tools</li>
-          <li>RAG on your documents and knowledge bases</li>
-          <li>Document AI (extraction, classification, summarization)</li>
-          <li>Computer vision & object detection for image workflows</li>
-          <li>Meeting/action-item summarizers; task automation via APIs/webhooks</li>
-        </ul>
-        <p><a href="/work?category=ai">See AI-related case studies →</a></p>
-      </article>
+          {/* Core Offerings (replaces project showcases) */}
+          <section id="projects" className="max-w-6xl mx-auto px-4 py-16 bg-white">
+            <h2 className="text-3xl font-bold text-center mb-12">Core Offerings</h2>
 
-      <article aria-labelledby="bi">
-        <h3 id="bi">Business Intelligence (BI)</h3>
-        <p>Turn raw data into clear, executive-ready decisions.</p>
-        <ul>
-          <li>Dimensional modeling and SQL optimization</li>
-          <li>Power BI dashboards and DAX measures</li>
-          <li>ETL/ELT pipelines and data quality checks</li>
-          <li>KPI design, forecasting, and reporting cadences</li>
-          <li>Source-of-truth documentation your team can trust</li>
-        </ul>
-        <p><a href="/work?category=bi">See BI-related case studies →</a></p>
-      </article>
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* AI */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">AI</h3>
+                <p className="text-gray-600 mb-4">Practical AI that plugs into your workflows and data.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>AI agents & chatbots for support, ops, and internal tools</li>
+                  <li>RAG on your documents and knowledge bases</li>
+                  <li>Document AI (extraction, classification, summarization)</li>
+                  <li>Computer vision & object detection for image workflows</li>
+                  <li>Meeting/action-item summarizers; API/webhook automations</li>
+                </ul>
+                <a href="/work?category=ai" className="text-blue-600 hover:underline font-semibold">See AI case studies →</a>
+              </div>
 
-      <article aria-labelledby="ml">
-        <h3 id="ml">Machine Learning</h3>
-        <p>Models that make a measurable impact—and keep working in production.</p>
-        <ul>
-          <li>Model development (classification/regression) and fine-tuning</li>
-          <li>Evaluation, calibration, and explainability (e.g., SHAP)</li>
-          <li>Deployment on Vertex AI / Docker, with monitoring & drift alerts</li>
-          <li>MLOps: scheduled training/inference jobs, CI/CD, artifacts</li>
-          <li>Cost-aware inference and performance SLAs</li>
-        </ul>
-        <p><a href="/work?category=ml">See ML-related case studies →</a></p>
-      </article>
+              {/* BI */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">Business Intelligence (BI)</h3>
+                <p className="text-gray-600 mb-4">Turn raw data into clear, executive-ready decisions.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Dimensional modeling and SQL optimization</li>
+                  <li>Power BI dashboards and DAX measures</li>
+                  <li>ETL/ELT pipelines and data quality checks</li>
+                  <li>KPI design, forecasting, and reporting cadences</li>
+                  <li>Source-of-truth documentation your team can trust</li>
+                </ul>
+                <a href="/work?category=bi" className="text-blue-600 hover:underline font-semibold">See BI case studies →</a>
+              </div>
 
-      <article aria-labelledby="web">
-        <h3 id="web">Web Development</h3>
-        <p>Internal tools and customer-facing apps that automate work and capture data.</p>
-        <ul>
-          <li>Lead-gen and intake forms, role-based portals, and admin back-office</li>
-          <li>Automation with APIs, webhooks, and 3rd-party integrations</li>
-          <li>Payments/subscriptions and authenticated user flows</li>
-          <li>Data capture, simple dashboards, and operational reporting</li>
-          <li>Secure, scalable cloud deployment and maintenance</li>
-        </ul>
-        <p><a href="/work?category=web">See Web-related case studies →</a></p>
-      </article>
-      <hr />
-    </section>
+              {/* ML */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">Machine Learning</h3>
+                <p className="text-gray-600 mb-4">Models that make a measurable impact—and keep working in production.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Model development (classification/regression) and fine-tuning</li>
+                  <li>Evaluation, calibration, and explainability (e.g., SHAP)</li>
+                  <li>Deployment on Vertex AI / Docker, with monitoring & drift alerts</li>
+                  <li>MLOps: scheduled training/inference jobs, CI/CD, artifacts</li>
+                  <li>Cost-aware inference and performance SLAs</li>
+                </ul>
+                <a href="/work?category=ml" className="text-blue-600 hover:underline font-semibold">See ML case studies →</a>
+              </div>
 
-    <section aria-labelledby="industries">
-      <h2 id="industries">Industries I know</h2>
-      <ul>
-        <li><strong>Healthcare:</strong> clinical image analysis (dermoscopy), explainable AI, HIPAA-aware design.</li>
-        <li><strong>Logistics (Waste & Recycling):</strong> inventory, routing, partner API integrations, forecasting.</li>
-        <li><strong>E-commerce:</strong> analytics, attribution, SKU forecasting, ops and ads automation.</li>
-      </ul>
-      <hr />
-    </section>
+              {/* Web Dev */}
+              <div className="bg-gray-50 p-8 rounded-lg shadow">
+                <h3 className="text-xl font-bold mb-3">Web Development</h3>
+                <p className="text-gray-600 mb-4">Internal tools and customer-facing apps that automate work and capture data.</p>
+                <ul className="text-gray-700 mb-4 space-y-2 list-disc pl-5">
+                  <li>Lead-gen and intake forms; role-based portals and admin back-office</li>
+                  <li>Automations with APIs, webhooks, and 3rd-party integrations</li>
+                  <li>Payments/subscriptions and authenticated user flows</li>
+                  <li>Data capture, simple dashboards, and operational reporting</li>
+                  <li>Secure, scalable cloud deployment and maintenance</li>
+                </ul>
+                <a href="/work?category=web" className="text-blue-600 hover:underline font-semibold">See Web case studies →</a>
+              </div>
+            </div>
 
-    <section aria-labelledby="process">
-      <h2 id="process">How we’ll work together</h2>
-      <ol>
-        <li><strong>Discover:</strong> free consult to clarify goals and constraints.</li>
-        <li><strong>Scope & plan:</strong> one-week plan with milestones and measurable outcomes.</li>
-        <li><strong>Build & iterate:</strong> weekly demos; we keep what works and cut what doesn’t.</li>
-        <li><strong>Launch & support:</strong> docs, monitoring, and options for ongoing improvements.</li>
-      </ol>
-      <hr />
-    </section>
+            <div className="text-center">
+              <a href="mailto:eraphaelparra@gmail.com?subject=Consulting%20Inquiry" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-semibold">
+                Start Your Free Consultation
+              </a>
+            </div>
+          </section>
 
-    <section aria-labelledby="cta">
-      <h2 id="cta">Whatever you need, we’ll build it together</h2>
-      <p>Pick what’s easiest for you—email me a quick note, or grab time on my calendar.</p>
-      <p>
-        <a href="mailto:eraphaelparra@gmail.com">Email for a quick chat</a> |
-        <a href="https://calendly.com/eraphaelparra/30min">Book a Google Meet</a>
-      </p>
+          {/* Credibility & Industries */}
+          <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-100">
+            <h2 className="text-3xl font-bold text-center mb-12">Why Partner with Me?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Pragmatic expertise for SMBs</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>Production-minded: ship reliable systems, not prototypes</li>
+                  <li>Cost-conscious: optimize infra, pipelines, and inference spend</li>
+                  <li>Clear communication: from exec dashboards to dev handoffs</li>
+                  <li>Flexible engagement: hourly, project-based, or ongoing support</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Industries I serve</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li><strong>Healthcare:</strong> image analysis (dermoscopy), explainable AI</li>
+                  <li><strong>Logistics (Waste & Recycling):</strong> inventory, routing, partner APIs, forecasting</li>
+                  <li><strong>E-commerce:</strong> analytics, attribution, SKU forecasting, ops automation</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-      <h3>Or send details now (lead form)</h3>
-      <!-- Non-functional placeholder form; we'll wire it later -->
-      <form method="post" action="#">
-        <div>
-          <label for="name">Name</label><br />
-          <input id="name" name="name" type="text" required />
+          {/* Skills Grid - Concise */}
+          <section className="max-w-6xl mx-auto px-4 py-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Tech I Bring to Your Table</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Cloud & MLOps</h3>
+                <p className="text-sm text-gray-600">Vertex AI, BigQuery, Cloud Run, Docker</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">AI/ML</h3>
+                <p className="text-sm text-gray-600">Python, RAG, Agentic AI, CV</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Data & BI</h3>
+                <p className="text-sm text-gray-600">SQL, Power BI/DAX, ETL Pipelines</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg text-center">
+                <h3 className="font-semibold text-blue-800">Full-Stack</h3>
+                <p className="text-sm text-gray-600">React/Next.js, REST APIs, Firebase</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact - Strong CTA + Simple Lead Form */}
+          <section className="bg-blue-600 text-white py-20">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+              <h2 className="text-3xl font-bold mb-6">Whatever you need, we’ll build it together</h2>
+              <p className="text-xl mb-8 opacity-90">Free consultation by email or book a Google Meet—your choice.</p>
+              <div className="space-y-4 max-w-md mx-auto">
+                <a href="mailto:eraphaelparra@gmail.com" className="block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold">
+                  Email for a Free Consult
+                </a>
+                <a href="https://calendly.com/eraphaelparra/30min" target="_blank" rel="noopener noreferrer" className="block border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold">
+                  Book a 30-min Google Meet
+                </a>
+                <p className="text-sm opacity-75 mt-4">Or connect on <a href="https://linkedin.com/in/eraphaelparra" className="underline">LinkedIn</a></p>
+              </div>
+
+              {/* Simple, non-functional lead form (content-first) */}
+              <div className="max-w-xl mx-auto mt-10 text-left bg-white/10 p-6 rounded-lg">
+                <h3 className="text-2xl font-semibold mb-4">Tell me what you need</h3>
+                <form action="#" method="post" className="space-y-4">
+                  <div>
+                    <label className="block mb-1">Name</label>
+                    <input type="text" className="w-full px-3 py-2 rounded text-black" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label className="block mb-1">Work email</label>
+                    <input type="email" className="w-full px-3 py-2 rounded text-black" placeholder="you@company.com" />
+                  </div>
+                  <div>
+                    <label className="block mb-1">Company</label>
+                    <input type="text" className="w-full px-3 py-2 rounded text-black" placeholder="Company name" />
+                  </div>
+                  <div>
+                    <label className="block mb-1">Industry</label>
+                    <select className="w-full px-3 py-2 rounded text-black">
+                      <option>Select one</option>
+                      <option>Healthcare</option>
+                      <option>Logistics (Waste & Recycling)</option>
+                      <option>E-commerce</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block mb-1">What are you trying to achieve?</label>
+                    <textarea rows="4" className="w-full px-3 py-2 rounded text-black" placeholder="Briefly describe the outcome you need."></textarea>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <input type="checkbox" id="consent" />
+                    <label htmlFor="consent">I agree to be contacted about this inquiry.</label>
+                  </div>
+                  <button type="submit" className="bg-white text-blue-700 px-6 py-2 rounded font-semibold">
+                    Send inquiry
+                  </button>
+                </form>
+                <p className="text-sm opacity-75 mt-3">If the form isn’t wired up yet, just email me at <a className="underline" href="mailto:eraphaelparra@gmail.com">eraphaelparra@gmail.com</a>.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-gray-800 text-white py-6 text-center">
+            <p>&copy; 2025 Evan R. Parra. Built for results, not resumes.</p>
+          </footer>
         </div>
+      );
+    };
 
-        <div>
-          <label for="email">Work email</label><br />
-          <input id="email" name="email" type="email" required />
-        </div>
-
-        <div>
-          <label for="company">Company</label><br />
-          <input id="company" name="company" type="text" />
-        </div>
-
-        <div>
-          <label for="industry">Industry</label><br />
-          <select id="industry" name="industry">
-            <option value="">Select one</option>
-            <option>Healthcare</option>
-            <option>Logistics (Waste & Recycling)</option>
-            <option>E-commerce</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="budget">Budget range</label><br />
-          <select id="budget" name="budget">
-            <option value="">Select one</option>
-            <option>$2k–$5k</option>
-            <option>$5k–$15k</option>
-            <option>$15k–$50k</option>
-            <option>$50k+</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="goal">What are you trying to achieve?</label><br />
-          <textarea id="goal" name="goal" rows="5" placeholder="Briefly describe the outcome you need."></textarea>
-        </div>
-
-        <div>
-          <label><input type="checkbox" name="consent" required /> I agree to be contacted about this inquiry.</label>
-        </div>
-
-        <div>
-          <button type="submit">Send inquiry</button>
-        </div>
-      </form>
-      <p>If the form doesn’t work yet, email me at <a href="mailto:eraphaelparra@gmail.com">eraphaelparra@gmail.com</a>.</p>
-      <hr />
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 Evan R. Parra — Built for results, not resumes.</p>
-    <p><a href="https://linkedin.com/in/eraphaelparra">LinkedIn</a></p>
-  </footer>
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
 </body>
 </html>
