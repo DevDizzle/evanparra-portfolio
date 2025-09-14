@@ -32,7 +32,7 @@
             <div className="max-w-4xl mx-auto px-4 text-center">
               <h1 className="text-5xl font-bold mb-4">Unlock Your Teen's AI Superpowers!</h1>
               <p className="text-2xl mb-6">Live, 1-on-1 Prompt Engineering Sessions for Teens – $75</p>
-              <p className="text-lg mb-8 opacity-90">In just one hour, I'll teach your teen how to craft genius prompts that ace school projects, build their first AI bot, and develop skills for the future. Available online or in-person (Vilano Beach/St. Augustine area).</p>
+              <p className="text-lg mb-8 opacity-90">In a one-hour session, I'll teach your teen to craft genius prompts that ace school projects and develop skills for the future. Available online or in-person for families in St. Johns County, including St. Augustine, Ponte Vedra Beach, and Nocatee.</p>
               <div className="space-x-4">
                 <button onClick={handleBooking} disabled={loading} className="bg-white text-green-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block">
                   {loading ? 'Opening Calendar...' : 'Book a Session'}
@@ -42,6 +42,21 @@
               <p className="text-sm mt-6 opacity-75">Ages 13-18 | Questions? Email me: eraphaelparra@gmail.com</p>
             </div>
           </header>
+
+          {/* What is Prompt Engineering? */}
+          <section className="max-w-4xl mx-auto px-4 py-16 bg-white">
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">What is Prompt Engineering (and Why is it a Must-Have Skill)?</h2>
+            <div className="grid md:grid-cols-2 gap-10 text-gray-700">
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-3">What It Is</h3>
+                <p>Think of AI like a brilliant but very literal movie actor. Prompt engineering is the art of being a great <strong>director</strong>. It's the skill of crafting clear, specific instructions (the "prompt") to guide the AI to give you exactly what you need—whether it's a draft for a history essay, a creative story, or a step-by-step solution to a tricky math problem.</p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-green-600 mb-3">Why It Matters</h3>
+                <p>In a world full of AI, knowing how to "talk" to it effectively is a superpower. This skill teaches your teen more than just how to get answers faster. It develops <strong>critical thinking</strong>, improves their <strong>research abilities</strong>, and prepares them for a future where interacting with AI will be as common as using a computer today. It's about turning them from passive consumers of technology into <strong>creative, confident directors of it.</strong></p>
+              </div>
+            </div>
+          </section>
 
           {/* What You'll Learn */}
           <section id="what-youll-learn" className="max-w-4xl mx-auto px-4 py-16">
