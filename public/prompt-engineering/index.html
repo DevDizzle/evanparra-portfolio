@@ -19,9 +19,8 @@
 
       const handleBooking = async () => {
         setLoading(true);
-        // This should now link to a scheduling tool like Calendly that handles payment.
-        // For example: 'https://calendly.com/your-link/teen-prompt-engineering'
-        window.open('https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE', '_blank');
+        // This link now goes to your Google Calendar booking page
+        window.open('https://calendar.app.google/p4uajN8SAYPngfyw5', '_blank');
         setLoading(false);
       };
 
@@ -33,11 +32,12 @@
               <h1 className="text-5xl font-bold mb-4">Unlock Your Teen's AI Superpowers!</h1>
               <p className="text-2xl mb-6">Live, 1-on-1 Prompt Engineering Sessions for Teens – $75</p>
               <p className="text-lg mb-8 opacity-90">In a one-hour session, I'll teach your teen to craft genius prompts that ace school projects and develop skills for the future. Available online or in-person for families in <strong>St. Johns County</strong>, including <strong>St. Augustine</strong>, <strong>Ponte Vedra Beach</strong>, and <strong>Nocatee</strong>.</p>
-              <div className="space-x-4">
-                <button onClick={handleBooking} disabled={loading} className="bg-white text-green-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block">
+              {/* --- MODIFIED BUTTON CONTAINER --- */}
+              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center items-center">
+                <button onClick={handleBooking} disabled={loading} className="bg-white text-green-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block w-full sm:w-auto">
                   {loading ? 'Opening Calendar...' : 'Book a Session'}
                 </button>
-                <a href="#what-youll-learn" className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-green-600 font-semibold inline-block">Learn More</a>
+                <a href="#what-youll-learn" className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-green-600 font-semibold inline-block w-full sm:w-auto">Learn More</a>
               </div>
               <p className="text-sm mt-6 opacity-75">Ages 13-18 | Questions? Email me: eraphaelparra@gmail.com</p>
             </div>
