@@ -1,0 +1,12 @@
+node_modules/
+functions/node_modules/
+.env
+firebase-debug.log
+npm-debug.log*
+yarn-error.log*
+
+# Build artifacts managed by Firebase CLI
+.firebase/
+
+# Generated TypeScript build output (kept in lib/, adjust if using other build directories)
+functions/lib/**/*.map
