@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Evan Parra - Applied AI Engineer | Business Intelligence & Prompt Engineering Coach</title>
   <meta name="description" content="Evan Parra is an Applied AI Engineer specializing in Business Intelligence and a Prompt Engineering Coach. He offers AI consulting for SMBs and prompt engineering courses for teens.">
 
@@ -17,37 +17,51 @@
   <meta property="twitter:title" content="Evan Parra - Applied AI Engineer | Business Intelligence & Prompt Engineering Coach">
   <meta property="twitter:description" content="Evan Parra is an Applied AI Engineer specializing in Business Intelligence and a Prompt Engineering Coach. He offers AI consulting for SMBs and prompt engineering courses for teens.">
   <meta property="twitter:image" content="https://www.evanparra.ai/assets/evan-parra-headshot.jpg">
-  
+
+  <!-- Tailwind + React + Babel -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Font Awesome (updated so fa-x-twitter works) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/solid.min.css" />
 </head>
 <body>
   <div id="root"></div>
-  <script type="text/babel">
-    const { useState } = React;
 
+  <script type="text/babel">
     const App = () => {
       return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center py-12 px-4">
           {/* Hero */}
           <header className="text-center mb-12 max-w-md">
-            <img src="/assets/evan-parra-headshot.jpg" alt="Headshot of Evan Parra, an Applied AI Engineer and Prompt Engineering Coach." className="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg" />
+            <img
+              src="/assets/evan-parra-headshot.jpg"
+              alt="Headshot of Evan Parra, an Applied AI Engineer and Prompt Engineering Coach."
+              className="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg"
+            />
             <h1 className="text-4xl font-bold text-gray-800 mb-2">Evan Parra</h1>
-            <p className="text-xl text-gray-600 mb-8">Applied AI Engineer | Business Intelligence | Prompt Engineering Coach</p>
-            <p className="text-md text-gray-500 italic">"Empowering businesses and people to learn, adapt, and thrive in the age of AI."</p>
+            <p className="text-xl text-gray-600 mb-8">
+              Applied AI Engineer | Business Intelligence | Prompt Engineering Coach
+            </p>
+            <p className="text-md text-gray-500 italic">
+              "Empowering businesses and people to learn, adapt, and thrive in the age of AI."
+            </p>
           </header>
 
           {/* Services Section */}
           <section className="w-full max-w-md">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Services</h2>
             <div className="space-y-4">
-                <a href="/consultant" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">SMB Consulting</a>
-                <a href="/prompt-engineering" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Prompt Engineering for Teens</a>
-                <a href="/resume" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">For Recruiters</a>
-                <a href="https://www.upwork.com/fre freelancers/~014ebe04bc0bacf94f" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Upwork</a>
+              <a href="/consultant" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">SMB Consulting</a>
+              <a href="/prompt-engineering" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Prompt Engineering for Teens</a>
+              <a href="/resume" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">For Recruiters</a>
+              <a href="https://www.upwork.com/freelancers/~014ebe04bc0bacf94f" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Upwork</a>
             </div>
           </section>
 
@@ -55,10 +69,10 @@
           <section className="w-full max-w-md mt-12">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Products</h2>
             <div className="space-y-4">
-                <a href="https://profitscout.app" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">ProfitScout: AI-Powered Options Trading</a>
-                <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">InsightChat: Business Intelligence, Powered by AI</a>
-                <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">MoneyScout: Your Personal Finance AI Assistant</a>
-                <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">SightCue: Real-Time AI Camera Vision</a>
+              <a href="https://profitscout.app" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">ProfitScout: AI-Powered Options Trading</a>
+              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">InsightChat: Business Intelligence, Powered by AI</a>
+              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">MoneyScout: Your Personal Finance AI Assistant</a>
+              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">SightCue: Real-Time AI Camera Vision</a>
             </div>
           </section>
 
@@ -66,25 +80,24 @@
           <section className="w-full max-w-md mt-12">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Contact</h2>
             <div className="flex justify-center space-x-4">
-                <a href="https://github.com/devdizzle" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-black transition">
-                    <i className="fab fa-github"></i>
-                </a>
-                <a href="https://x.com/ParraEvan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition">
-                    <i className="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/eraphaelparra/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-                    <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a href="mailto:eraphaelparra@gmail.com" className="w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center hover:bg-gray-600 transition">
-                    <i className="fas fa-envelope"></i>
-                </a>
+              <a href="https://github.com/devdizzle" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-black transition" aria-label="GitHub">
+                <i className="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://x.com/ParraEvan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition" aria-label="X (formerly Twitter)">
+                <i className="fa-brands fa-x-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/evanparra/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition" aria-label="LinkedIn">
+                <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              <a href="mailto:eraphaelparra@gmail.com" className="w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center hover:bg-gray-600 transition" aria-label="Email">
+                <i className="fa-solid fa-envelope" aria-hidden="true"></i>
+              </a>
             </div>
           </section>
 
-
           {/* Footer */}
           <footer className="mt-12 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Evan R. Parra. Built with AI & Curiosity.</p>
+            <p>&copy; 2025 Evan R. Parra. Built with AI &amp; Curiosity.</p>
           </footer>
         </div>
       );
@@ -92,5 +105,8 @@
 
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
+
+  <!-- If you have a chat widget, keep this as-is -->
+  <script type="text/babel" data-presets="react" src="/chat-widget.jsx"></script>
 </body>
 </html>
