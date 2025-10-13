@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evan Parra - Applied AI Engineer | Business Intelligence & Prompt Engineering Coach</title>
-  <meta name="description" content="Evan Parra is an Applied AI Engineer specializing in Business Intelligence and a Prompt Engineering Coach. He offers AI consulting for SMBs and prompt engineering courses for teens.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accelerate Time to Insight | AI + BI Consulting by Evan Parra</title>
+  <meta name="description" content="Evan Parra helps leadership teams accelerate time to insight with AI + BI systems. Explore the ProfitScout case study and book a 15-minute Insight Audit." />
 
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.evanparra.ai/">
-  <meta property="og:title" content="Evan Parra - Applied AI Engineer | Business Intelligence & Prompt Engineering Coach">
-  <meta property="og:description" content="Evan Parra is an Applied AI Engineer specializing in Business Intelligence and a Prompt Engineering Coach. He offers AI consulting for SMBs and prompt engineering courses for teens.">
-  <meta property="og:image" content="https://www.evanparra.ai/assets/evan-parra-headshot.jpg">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.evanparra.ai/" />
+  <meta property="og:title" content="Accelerate Time to Insight | AI + BI Consulting" />
+  <meta property="og:description" content="See how ProfitScout reduced insight latency from hours to seconds and schedule your own Insight Audit." />
+  <meta property="og:image" content="https://www.evanparra.ai/assets/og-image-placeholder.jpg" />
 
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://www.evanparra.ai/">
-  <meta property="twitter:title" content="Evan Parra - Applied AI Engineer | Business Intelligence & Prompt Engineering Coach">
-  <meta property="twitter:description" content="Evan Parra is an Applied AI Engineer specializing in Business Intelligence and a Prompt Engineering Coach. He offers AI consulting for SMBs and prompt engineering courses for teens.">
-  <meta property="twitter:image" content="https://www.evanparra.ai/assets/evan-parra-headshot.jpg">
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.evanparra.ai/" />
+  <meta property="twitter:title" content="Accelerate Time to Insight | AI + BI Consulting" />
+  <meta property="twitter:description" content="See how ProfitScout reduced insight latency from hours to seconds and schedule your own Insight Audit." />
+  <meta property="twitter:image" content="https://www.evanparra.ai/assets/og-image-placeholder.jpg" />
 
   <!-- Tailwind + React + Babel -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,81 +24,320 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- Font Awesome (updated so fa-x-twitter works) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/brands.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/solid.min.css" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-5NJaCC0t1Ik5+pUvNbK/CtYQg1EuUpzzBmR6UdYZPtaU3z1YQji2lAt+evUfZ79rfFcAxLzu6HwI+fVHy+AiMw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100">
   <div id="root"></div>
 
   <script type="text/babel">
-    const App = () => {
+    const bookingLink = "https://calendar.google.com/calendar/u/0/appointments/schedules/EXAMPLE"; // Replace with your Google Appointment Schedule link
+
+    const SectionHeading = ({ eyebrow, title, body }) => (
+      <header className="text-center max-w-3xl mx-auto mb-12">
+        {eyebrow && <p className="text-sm uppercase tracking-[0.3em] text-indigo-300 mb-4">{eyebrow}</p>}
+        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
+        {body && <p className="text-lg text-slate-300">{body}</p>}
+      </header>
+    );
+
+    const Hero = ({ onCtaClick }) => (
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-black pt-24 pb-32">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+          <div className="absolute top-20 right-0 w-96 h-96 bg-cyan-400/10 blur-3xl rounded-full"></div>
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:flex-row lg:items-center">
+          <div className="flex-1">
+            <p className="text-sm uppercase tracking-[0.3em] text-indigo-300 mb-6">AI + BI Advisory</p>
+            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6">
+              Accelerate Your Time to Insight
+            </h1>
+            <p className="text-xl text-slate-300 mb-8">
+              I help leadership teams turn messy data into confident decisions by combining automation-ready business intelligence with domain-tuned AI copilots.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+              <button
+                onClick={onCtaClick}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition"
+              >
+                Book a 15-min Insight Audit
+              </button>
+              <button
+                onClick={onCtaClick}
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-700 text-slate-100 hover:bg-slate-900/60 transition"
+              >
+                View ProfitScout Results
+              </button>
+            </div>
+            <p className="mt-6 text-sm text-slate-400 max-w-xl">
+              Trusted by leaders who need answers in minutes, not days. ProfitScout.app is our flagship insight system, cutting option-trading analysis from 6 hours to under 5 minutes.
+            </p>
+          </div>
+          <div className="flex-1">
+            <div className="relative mx-auto max-w-md">
+              <img
+                src="/assets/evan-parra-headshot.jpg"
+                alt="Evan Parra smiling in front of a gradient background"
+                loading="lazy"
+                className="w-full rounded-3xl border border-slate-800 shadow-[0_40px_120px_-50px_rgba(79,70,229,0.8)]"
+              />
+              <div className="absolute -bottom-6 -right-4 bg-slate-900/80 backdrop-blur rounded-2xl border border-slate-800 px-6 py-5 text-left max-w-[220px]">
+                <p className="text-xs uppercase tracking-widest text-indigo-300 mb-2">Core Outcomes</p>
+                <ul className="space-y-1 text-sm text-slate-200">
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Insights in <strong className="font-semibold">minutes</strong></li>
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Guided AI analysis</li>
+                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Automated BI pipelines</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const CaseStudy = ({ onCtaClick }) => (
+      <section id="case-study" className="bg-slate-900/40 py-24 px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Case Study"
+          title="ProfitScout.app: Trading Intelligence at the Speed of Thought"
+          body="How an options-trading desk collapsed hours of spreadsheet wrangling into a guided 5-minute review using AI copilots and BI automation."
+        />
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
+          <div className="space-y-10">
+            <div className="grid md:grid-cols-2 gap-6">
+              <article className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 shadow-lg">
+                <h3 className="text-lg font-semibold text-white mb-4">Before ProfitScout</h3>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-rose-400">✖</span>
+                    <p>Analysts spent 6+ hours assembling disparate market feeds and risk metrics by hand each trading day.</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-rose-400">✖</span>
+                    <p>Insights arrived too late to act, leaving profitable trades unexecuted and risk exposure unbalanced.</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-rose-400">✖</span>
+                    <p>No shared narrative or audit trail for leadership sign-off.</p>
+                  </li>
+                </ul>
+              </article>
+              <article className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 shadow-lg">
+                <h3 className="text-lg font-semibold text-white mb-4">After ProfitScout</h3>
+                <ul className="space-y-3 text-slate-300">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-emerald-400">✔</span>
+                    <p>Unified AI + BI workspace updates automatically with broker, macro, and risk feeds in under 5 minutes.</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-emerald-400">✔</span>
+                    <p>Natural-language copilots summarize volatility shifts, flag anomalies, and suggest hedges instantly.</p>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-emerald-400">✔</span>
+                    <p>Leadership dashboards highlight trade readiness, ROI projections, and automated compliance notes.</p>
+                  </li>
+                </ul>
+              </article>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-4 text-center">
+              {[{
+                label: "Insight Latency",
+                before: "6 hrs",
+                after: "<5 min"
+              }, {
+                label: "Decision Confidence",
+                before: "Fragmented",
+                after: "Single Source"
+              }, {
+                label: "ROI on Trades",
+                before: "Missed opportunities",
+                after: "+18% realized"
+              }].map((item) => (
+                <div key={item.label} className="bg-slate-900/60 border border-slate-800 rounded-3xl px-6 py-8">
+                  <p className="text-sm uppercase tracking-widest text-indigo-300 mb-4">{item.label}</p>
+                  <div className="flex justify-between text-left text-sm text-slate-300">
+                    <div>
+                      <p className="text-slate-400">Before</p>
+                      <p className="text-lg font-medium text-rose-300">{item.before}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-slate-400">After</p>
+                      <p className="text-lg font-medium text-emerald-300">{item.after}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+              {/* Replace the placeholder div below with a ProfitScout dashboard screenshot */}
+              <div className="aspect-[4/3] bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-slate-500 text-sm">
+                ProfitScout dashboard preview
+              </div>
+              <div className="p-8">
+                <p className="text-slate-300 mb-6">
+                  Our AI summarization layer sits on top of a trusted BI pipeline, so analysts get narrative-ready insights, not just dashboards.
+                </p>
+                <button
+                  onClick={onCtaClick}
+                  className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition"
+                >
+                  See ProfitScout in Action
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Services = () => {
+      const offerings = [
+        {
+          icon: "fa-robot",
+          title: "AI Insight Copilots",
+          description: "Custom GPT-style copilots tuned to your domain, connected to governed data and audit logs."
+        },
+        {
+          icon: "fa-chart-line",
+          title: "Predictive BI Pipelines",
+          description: "Automated data engineering that surfaces leading indicators before your competitors react."
+        },
+        {
+          icon: "fa-gauge-high",
+          title: "Executive Dashboards",
+          description: "Narrative dashboards with scenario modeling, alerts, and role-based access controls."
+        },
+        {
+          icon: "fa-arrows-rotate",
+          title: "Workflow Automation",
+          description: "Close the loop with automated follow-ups, CRM updates, and compliance-ready reporting."
+        }
+      ];
+
       return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center py-12 px-4">
-          {/* Hero */}
-          <header className="text-center mb-12 max-w-md">
-            <img
-              src="/assets/evan-parra-headshot.jpg"
-              alt="Headshot of Evan Parra, an Applied AI Engineer and Prompt Engineering Coach."
-              className="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg"
-            />
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">Evan Parra</h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Applied AI Engineer | Business Intelligence | Prompt Engineering Coach
+        <section id="services" className="py-24 px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Services"
+            title="Insight Acceleration Systems"
+            body="Build once, iterate fast. Each engagement blends rapid discovery, design sprints, and production-ready delivery."
+          />
+          <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+            {offerings.map((service) => (
+              <article key={service.title} className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 flex flex-col gap-4">
+                <div className="w-12 h-12 rounded-full bg-indigo-500/10 text-indigo-300 flex items-center justify-center text-xl">
+                  <i className={`fa-solid ${service.icon}`} aria-hidden="true"></i>
+                </div>
+                <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                <p className="text-slate-300 leading-relaxed">{service.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    };
+
+    const About = () => (
+      <section id="about" className="bg-slate-900/40 py-24 px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="About"
+          title="Evan Parra — Applied AI Engineer & BI Strategist"
+          body="I build decision systems for operators who can't wait on weekly reports. The focus: high-impact automations that compress learning cycles."
+        />
+        <div className="max-w-4xl mx-auto grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <div className="space-y-6 text-slate-300">
+            <p>
+              Over the past decade I've led data initiatives across fintech, energy, and public sector teams. My approach blends human-centered discovery with fast technical iteration so we uncover where automation drives leverage.
             </p>
-            <p className="text-md text-gray-500 italic">
-              "Empowering businesses and people to learn, adapt, and thrive in the age of AI."
+            <p>
+              Recent work includes launching ProfitScout.app, guiding analysts with contextual AI prompts, and deploying predictive maintenance models for distributed field teams.
             </p>
-          </header>
+            <p>
+              I collaborate best with leaders who crave clarity, value partnership, and want analytics that ship in weeks — not quarters.
+            </p>
+          </div>
+          <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 space-y-4">
+            <h3 className="text-lg font-semibold text-white">Certifications & Signals</h3>
+            <ul className="space-y-3 text-slate-300 text-sm">
+              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Former BI lead serving 40+ stakeholders across revenue, risk, and operations.</li>
+              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Graduate work in data science with specialization in reinforcement learning systems.</li>
+              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Ship fast: typical MVP insight system delivered in 30-45 days.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    );
 
-          {/* Services Section */}
-          <section className="w-full max-w-md">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Services</h2>
-            <div className="space-y-4">
-              <a href="/consultant" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">SMB Consulting</a>
-              <a href="/prompt-engineering" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Prompt Engineering for Teens</a>
-              <a href="/resume" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">For Recruiters</a>
-              <a href="https://www.upwork.com/freelancers/~014ebe04bc0bacf94f" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">Upwork</a>
-            </div>
-          </section>
+    const Booking = React.forwardRef(({ bookingLink }, ref) => (
+      <section ref={ref} id="booking" className="py-24 px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Book a Call"
+          title="Ready for Insights on Demand?"
+          body="Grab a 15-minute Insight Audit. We'll review your current reporting cadence, surface bottlenecks, and map the AI + BI moves that unlock faster decisions."
+        />
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-8">
+          <div className="w-full">
+            <button
+              onClick={() => window.open(bookingLink, '_blank', 'noopener,noreferrer')}
+              className="w-full inline-flex items-center justify-center px-6 py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-lg transition shadow-lg shadow-emerald-500/30"
+            >
+              Book a 15-min Insight Audit
+            </button>
+            <p className="text-center text-sm text-slate-400 mt-3">
+              Opens Google Calendar appointment scheduling in a new tab.
+            </p>
+          </div>
+          <div className="w-full bg-slate-900/60 border border-dashed border-slate-700 rounded-3xl p-8 text-center text-slate-400">
+            {/* Insert Google booking embed or inline script snippet here. Replace the placeholder below with the iframe/script from Google Calendar. */}
+            <p className="text-sm leading-relaxed">
+              Embed placeholder: paste your Google Appointment Schedule iframe or popup script here to allow on-page booking.
+            </p>
+          </div>
+        </div>
+      </section>
+    ));
 
-          {/* Product Section */}
-          <section className="w-full max-w-md mt-12">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Products</h2>
-            <div className="space-y-4">
-              <a href="https://profitscout.app" target="_blank" rel="noopener noreferrer" className="block bg-blue-800 text-white py-4 px-6 rounded-lg text-center font-semibold hover:bg-blue-900 shadow-md transition">ProfitScout: AI-Powered Options Trading</a>
-              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">InsightChat: Business Intelligence, Powered by AI</a>
-              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">MoneyScout: Your Personal Finance AI Assistant</a>
-              <a href="#" className="block bg-gray-400 text-white py-4 px-6 rounded-lg text-center font-semibold cursor-not-allowed shadow-md transition">SightCue: Real-Time AI Camera Vision</a>
-            </div>
-          </section>
+    const Footer = () => (
+      <footer className="bg-slate-950 border-t border-slate-900 py-10">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm text-slate-500">
+          <p>&copy; {new Date().getFullYear()} Evan R. Parra. Built for insight velocity.</p>
+          <div className="flex items-center gap-4">
+            <a href="mailto:eraphaelparra@gmail.com" className="hover:text-slate-200 transition" aria-label="Email Evan">eraphaelparra@gmail.com</a>
+            <span className="hidden md:inline" aria-hidden="true">•</span>
+            <a href="https://www.linkedin.com/in/evanparra/" className="hover:text-slate-200 transition" aria-label="LinkedIn profile">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    );
 
-          {/* Contact Section */}
-          <section className="w-full max-w-md mt-12">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Contact</h2>
-            <div className="flex justify-center space-x-4">
-              <a href="https://github.com/devdizzle" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center hover:bg-black transition" aria-label="GitHub">
-                <i className="fa-brands fa-github" aria-hidden="true"></i>
-              </a>
-              <a href="https://x.com/ParraEvan" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition" aria-label="X (formerly Twitter)">
-                <i className="fa-brands fa-x-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/evanparra/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition" aria-label="LinkedIn">
-                <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-              </a>
-              <a href="mailto:eraphaelparra@gmail.com" className="w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center hover:bg-gray-600 transition" aria-label="Email">
-                <i className="fa-solid fa-envelope" aria-hidden="true"></i>
-              </a>
-            </div>
-          </section>
+    const App = () => {
+      const bookingRef = React.useRef(null);
 
-          {/* Footer */}
-          <footer className="mt-12 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Evan R. Parra. Built with AI &amp; Curiosity.</p>
-          </footer>
+      const handleScrollToBooking = React.useCallback(() => {
+        if (bookingRef.current) {
+          bookingRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, []);
+
+      return (
+        <div className="min-h-screen flex flex-col bg-slate-950">
+          <Hero onCtaClick={handleScrollToBooking} />
+          <main>
+            <CaseStudy onCtaClick={handleScrollToBooking} />
+            <Services />
+            <About />
+            <Booking ref={bookingRef} bookingLink={bookingLink} />
+          </main>
+          <Footer />
         </div>
       );
     };
@@ -106,7 +345,7 @@
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 
-  <!-- If you have a chat widget, keep this as-is -->
+  <!-- Chat widget remains optional -->
   <script type="text/babel" data-presets="react" src="/chat-widget.jsx"></script>
 </body>
 </html>
