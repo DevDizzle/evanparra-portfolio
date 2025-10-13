@@ -18,84 +18,66 @@
   <meta property="twitter:description" content="See how ProfitScout reduced insight latency from hours to seconds and schedule your own Insight Audit." />
   <meta property="twitter:image" content="https://www.evanparra.ai/assets/og-image-placeholder.jpg" />
 
-  <!-- Tailwind + React + Babel -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-5NJaCC0t1Ik5+pUvNbK/CtYQg1EuUpzzBmR6UdYZPtaU3z1YQji2lAt+evUfZ79rfFcAxLzu6HwI+fVHy+AiMw=="
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 </head>
-<body class="bg-slate-950 text-slate-100">
+<body class="bg-gray-50 text-slate-800 font-sans">
   <div id="root"></div>
 
   <script type="text/babel">
-    const bookingLink = "https://calendar.google.com/calendar/u/0/appointments/schedules/EXAMPLE"; // Replace with your Google Appointment Schedule link
+    const bookingLink = "https://calendar.google.com/calendar/u/0/appointments/schedules/EXAMPLE"; // Replace with your live Google Appointment Schedule link
 
     const SectionHeading = ({ eyebrow, title, body }) => (
       <header className="text-center max-w-3xl mx-auto mb-12">
-        {eyebrow && <p className="text-sm uppercase tracking-[0.3em] text-indigo-300 mb-4">{eyebrow}</p>}
-        <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">{title}</h2>
-        {body && <p className="text-lg text-slate-300">{body}</p>}
+        {eyebrow && <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-3">{eyebrow}</p>}
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{title}</h2>
+        {body && <p className="text-lg text-slate-600 leading-relaxed">{body}</p>}
       </header>
     );
 
     const Hero = ({ onCtaClick }) => (
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-950 to-black pt-24 pb-32">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute -top-24 -left-24 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
-          <div className="absolute top-20 right-0 w-96 h-96 bg-cyan-400/10 blur-3xl rounded-full"></div>
-        </div>
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:flex-row lg:items-center">
+      <section className="bg-white pt-24 pb-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col gap-12 lg:flex-row lg:items-center">
           <div className="flex-1">
-            <p className="text-sm uppercase tracking-[0.3em] text-indigo-300 mb-6">AI + BI Advisory</p>
-            <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
               Accelerate Your Time to Insight
             </h1>
-            <p className="text-xl text-slate-300 mb-8">
-              I help leadership teams turn messy data into confident decisions by combining automation-ready business intelligence with domain-tuned AI copilots.
+            <p className="text-xl text-slate-600 mb-8">
+              I build systems that turn your raw data into clear, actionable insights. No buzzwords, just results. See how I did it for financial analysts with ProfitScout.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
               <button
                 onClick={onCtaClick}
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold transition shadow-lg"
               >
-                Book a 15-min Insight Audit
+                See ProfitScout in Action
               </button>
-              <button
-                onClick={onCtaClick}
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-700 text-slate-100 hover:bg-slate-900/60 transition"
+              <a
+                href="#booking"
+                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold transition"
               >
-                View ProfitScout Results
-              </button>
+                Book a Free Consultation
+              </a>
             </div>
-            <p className="mt-6 text-sm text-slate-400 max-w-xl">
-              Trusted by leaders who need answers in minutes, not days. ProfitScout.app is our flagship insight system, cutting option-trading analysis from 6 hours to under 5 minutes.
-            </p>
           </div>
           <div className="flex-1">
             <div className="relative mx-auto max-w-md">
               <img
                 src="/assets/evanparra-ai-hero-image.png"
-                alt="AI-powered business intelligence and data visualization hero image"
+                alt="AI-powered business intelligence and data visualization"
                 loading="lazy"
-                className="w-full rounded-3xl border border-slate-800 shadow-[0_40px_120px_-50px_rgba(79,70,229,0.8)]"
+                className="w-full rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-6 -right-4 bg-slate-900/80 backdrop-blur rounded-2xl border border-slate-800 px-6 py-5 text-left max-w-[220px]">
-                <p className="text-xs uppercase tracking-widest text-indigo-300 mb-2">Core Outcomes</p>
-                <ul className="space-y-1 text-sm text-slate-200">
-                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Insights in <strong className="font-semibold">minutes</strong></li>
-                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Guided AI analysis</li>
-                  <li className="flex items-center gap-2"><span className="text-indigo-400">•</span> Automated BI pipelines</li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
@@ -103,142 +85,70 @@
     );
 
     const CaseStudy = ({ onCtaClick }) => (
-      <section id="case-study" className="bg-slate-900/40 py-24 px-6 lg:px-8">
+      <section id="case-study" className="bg-gray-100 py-24 px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Case Study"
-          title="ProfitScout.app: Trading Intelligence at the Speed of Thought"
-          body="How an options-trading desk collapsed hours of spreadsheet wrangling into a guided 5-minute review using AI copilots and BI automation."
+          eyebrow="Case Study: ProfitScout"
+          title="From Data Overload to Decisive Action"
+          body="For financial analysts, the market is a flood of data—SEC filings, earnings calls, news, and technicals. They were spending hours manually piecing it all together, often too late to act. I built ProfitScout to solve this."
         />
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
-          <div className="space-y-10">
-            <div className="grid md:grid-cols-2 gap-6">
-              <article className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 shadow-lg">
-                <h3 className="text-lg font-semibold text-white mb-4">Before ProfitScout</h3>
-                <ul className="space-y-3 text-slate-300">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-rose-400">✖</span>
-                    <p>Analysts spent 6+ hours assembling disparate market feeds and risk metrics by hand each trading day.</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-rose-400">✖</span>
-                    <p>Insights arrived too late to act, leaving profitable trades unexecuted and risk exposure unbalanced.</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-rose-400">✖</span>
-                    <p>No shared narrative or audit trail for leadership sign-off.</p>
-                  </li>
-                </ul>
-              </article>
-              <article className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 shadow-lg">
-                <h3 className="text-lg font-semibold text-white mb-4">After ProfitScout</h3>
-                <ul className="space-y-3 text-slate-300">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-emerald-400">✔</span>
-                    <p>Unified AI + BI workspace updates automatically with broker, macro, and risk feeds in under 5 minutes.</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-emerald-400">✔</span>
-                    <p>Natural-language copilots summarize volatility shifts, flag anomalies, and suggest hedges instantly.</p>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1 text-emerald-400">✔</span>
-                    <p>Leadership dashboards highlight trade readiness, ROI projections, and automated compliance notes.</p>
-                  </li>
-                </ul>
-              </article>
-            </div>
-            <div className="grid sm:grid-cols-3 gap-4 text-center">
-              {[{
-                label: "Insight Latency",
-                before: "6 hrs",
-                after: "<5 min"
-              }, {
-                label: "Decision Confidence",
-                before: "Fragmented",
-                after: "Single Source"
-              }, {
-                label: "ROI on Trades",
-                before: "Missed opportunities",
-                after: "+18% realized"
-              }].map((item) => (
-                <div key={item.label} className="bg-slate-900/60 border border-slate-800 rounded-3xl px-6 py-8">
-                  <p className="text-sm uppercase tracking-widest text-indigo-300 mb-4">{item.label}</p>
-                  <div className="flex justify-between text-left text-sm text-slate-300">
+        <div className="max-w-6xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 grid lg:grid-cols-2 gap-12 items-center">
+                <div className="space-y-6">
                     <div>
-                      <p className="text-slate-400">Before</p>
-                      <p className="text-lg font-medium text-rose-300">{item.before}</p>
+                        <h3 className="text-xl font-bold text-rose-600 mb-3">Before</h3>
+                        <ul className="space-y-2 text-slate-600">
+                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>6+ hours of manual data gathering daily.</li>
+                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>Missed opportunities due to slow analysis.</li>
+                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>Decisions based on incomplete information.</li>
+                        </ul>
                     </div>
-                    <div className="text-right">
-                      <p className="text-slate-400">After</p>
-                      <p className="text-lg font-medium text-emerald-300">{item.after}</p>
+                    <div>
+                        <h3 className="text-xl font-bold text-emerald-600 mb-3">After</h3>
+                        <ul className="space-y-2 text-slate-600">
+                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Under 5 minutes for a complete, AI-driven analysis.</li>
+                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Clear signals on the highest-scoring market setups.</li>
+                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Confident decisions backed by data.</li>
+                        </ul>
                     </div>
-                  </div>
                 </div>
-              ))}
+                <div className="space-y-6 text-slate-700">
+                    <h3 className="text-2xl font-bold text-slate-900">How ProfitScout Delivers Real Insight</h3>
+                    <p>It’s an AI-powered tool that automatically analyzes thousands of data points to provide a clear, forward-looking view of stocks and options.</p>
+                    <ul className="space-y-3 list-disc pl-5">
+                      <li><strong>Analyzes the Full Picture:</strong> It processes everything from 10-K filings and earnings calls to options chain data and market sentiment.</li>
+                      <li><strong>Provides a Nuanced View:</strong> Instead of a simple "buy" or "sell" rating, it gives a five-tier analysis (from "Strongly Bullish" to "Strongly Bearish") with a summary of *why*.</li>
+                      <li><strong>Highlights Top Opportunities:</strong> The Confluence Dashboard shows where stock and options data align, pointing to the most promising setups.</li>
+                    </ul>
+                     <p>The core engine is open-source because I believe in transparency. <a href="https://github.com/your-repo-link" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">See how it works on GitHub</a>.</p>
+                </div>
             </div>
-          </div>
-          <div className="space-y-6">
-            <div className="relative bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-              {/* Replace the placeholder div below with a ProfitScout dashboard screenshot */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-slate-500 text-sm">
-                ProfitScout dashboard preview
-              </div>
-              <div className="p-8">
-                <p className="text-slate-300 mb-6">
-                  Our AI summarization layer sits on top of a trusted BI pipeline, so analysts get narrative-ready insights, not just dashboards.
-                </p>
-                <button
-                  onClick={onCtaClick}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition"
-                >
-                  See ProfitScout in Action
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     );
 
     const Services = () => {
       const offerings = [
-        {
-          icon: "fa-robot",
-          title: "AI Insight Copilots",
-          description: "Custom GPT-style copilots tuned to your domain, connected to governed data and audit logs."
-        },
-        {
-          icon: "fa-chart-line",
-          title: "Predictive BI Pipelines",
-          description: "Automated data engineering that surfaces leading indicators before your competitors react."
-        },
-        {
-          icon: "fa-gauge-high",
-          title: "Executive Dashboards",
-          description: "Narrative dashboards with scenario modeling, alerts, and role-based access controls."
-        },
-        {
-          icon: "fa-arrows-rotate",
-          title: "Workflow Automation",
-          description: "Close the loop with automated follow-ups, CRM updates, and compliance-ready reporting."
-        }
+        { icon: "fa-brain", title: "AI-Powered Analysis", description: "I build tools that analyze your specific data—sales reports, customer feedback, operational metrics—to give you clear, actionable insights." },
+        { icon: "fa-database", title: "Automated Data Pipelines", description: "I'll create systems that automatically gather, clean, and process your data, so your team can stop wrangling spreadsheets and start deciding." },
+        { icon: "fa-chart-pie", title: "Interactive Dashboards", description: "I design user-friendly dashboards that present your key metrics in a way that is easy to understand and act upon." },
+        { icon: "fa-cogs", title: "Workflow Automation", description: "I connect your systems (like your CRM and internal databases) to automate repetitive tasks and free up your team for more important work." }
       ];
 
       return (
-        <section id="services" className="py-24 px-6 lg:px-8">
+        <section id="services" className="bg-white py-24 px-6 lg:px-8">
           <SectionHeading
             eyebrow="Services"
-            title="Insight Acceleration Systems"
-            body="Build once, iterate fast. Each engagement blends rapid discovery, design sprints, and production-ready delivery."
+            title="What I Can Build For You"
+            body="I use the same approach from ProfitScout to create custom solutions for your business."
           />
-          <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+          <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
             {offerings.map((service) => (
-              <article key={service.title} className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 flex flex-col gap-4">
-                <div className="w-12 h-12 rounded-full bg-indigo-500/10 text-indigo-300 flex items-center justify-center text-xl">
+              <article key={service.title} className="bg-gray-50 border border-slate-200 rounded-2xl p-8">
+                <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
                   <i className={`fa-solid ${service.icon}`} aria-hidden="true"></i>
                 </div>
-                <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                <p className="text-slate-300 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{service.description}</p>
               </article>
             ))}
           </div>
@@ -247,72 +157,49 @@
     };
 
     const About = () => (
-      <section id="about" className="bg-slate-900/40 py-24 px-6 lg:px-8">
+      <section id="about" className="bg-gray-100 py-24 px-6 lg:px-8">
         <SectionHeading
-          eyebrow="About"
-          title="Evan Parra — Applied AI Engineer & BI Strategist"
-          body="I build decision systems for operators who can't wait on weekly reports. The focus: high-impact automations that compress learning cycles."
+          eyebrow="About Me"
+          title="I'm Evan. I build tools that make data useful."
         />
-        <div className="max-w-4xl mx-auto grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
-          <div className="space-y-6 text-slate-300">
+        <div className="max-w-4xl mx-auto text-center text-lg text-slate-700 leading-relaxed space-y-6">
             <p>
-              Over the past decade I've led data initiatives across fintech, energy, and public sector teams. My approach blends human-centered discovery with fast technical iteration so we uncover where automation drives leverage.
+              For the last ten years, I've worked with businesses in finance, logistics, and e-commerce. I've seen firsthand how much time is wasted trying to make sense of messy data.
             </p>
             <p>
-              Recent work includes launching ProfitScout.app, guiding analysts with contextual AI prompts, and deploying predictive maintenance models for distributed field teams.
+              My goal is simple: to build systems that give you the clarity you need to move forward. I focus on practical, efficient solutions that can be implemented in weeks, not quarters. If you're tired of being buried in data and want to start making more informed decisions, I can help.
             </p>
-            <p>
-              I collaborate best with leaders who crave clarity, value partnership, and want analytics that ship in weeks — not quarters.
-            </p>
-          </div>
-          <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 space-y-4">
-            <h3 className="text-lg font-semibold text-white">Certifications & Signals</h3>
-            <ul className="space-y-3 text-slate-300 text-sm">
-              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Former BI lead serving 40+ stakeholders across revenue, risk, and operations.</li>
-              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Graduate work in data science with specialization in reinforcement learning systems.</li>
-              <li className="flex items-start gap-3"><span className="mt-1 text-indigo-400">◆</span>Ship fast: typical MVP insight system delivered in 30-45 days.</li>
-            </ul>
-          </div>
         </div>
       </section>
     );
 
-    const Booking = React.forwardRef(({ bookingLink }, ref) => (
-      <section ref={ref} id="booking" className="py-24 px-6 lg:px-8">
+    const Booking = React.forwardRef((props, ref) => (
+      <section ref={ref} id="booking" className="py-24 px-6 lg:px-8 bg-white">
         <SectionHeading
           eyebrow="Book a Call"
           title="Ready for Insights on Demand?"
-          body="Grab a 15-minute Insight Audit. We'll review your current reporting cadence, surface bottlenecks, and map the AI + BI moves that unlock faster decisions."
+          body="Grab a free 15-minute Insight Audit. We'll review your current data challenges, identify bottlenecks, and map out the steps to unlock faster, smarter decisions."
         />
-        <div className="max-w-4xl mx-auto flex flex-col items-center gap-8">
-          <div className="w-full">
-            <button
-              onClick={() => window.open(bookingLink, '_blank', 'noopener,noreferrer')}
-              className="w-full inline-flex items-center justify-center px-6 py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-lg transition shadow-lg shadow-emerald-500/30"
-            >
-              Book a 15-min Insight Audit
-            </button>
-            <p className="text-center text-sm text-slate-400 mt-3">
-              Opens Google Calendar appointment scheduling in a new tab.
-            </p>
-          </div>
-          <div className="w-full bg-slate-900/60 border border-dashed border-slate-700 rounded-3xl p-8 text-center text-slate-400">
-            <!-- Google Calendar Appointment Scheduling begin -->
-            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0dM9XXXQcbQCwM2EgTT1TMv_OMFjBJ8Tbr68tmcc1Ir8j7zhp41OvbWF0P3TBkzYnihv0iC1f6?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-            <!-- end Google Calendar Appointment Scheduling -->
-          </div>
+        <div className="max-w-4xl mx-auto bg-gray-50 border border-slate-200 rounded-2xl p-4 lg:p-8">
+            <iframe 
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0dM9XXXQcbQCwM2EgTT1TMv_OMFjBJ8Tbr68tmcc1Ir8j7zhp41OvbWF0P3TBkzYnihv0iC1f6?gv=true" 
+                style={{ border: 0 }} 
+                width="100%" 
+                height="700" 
+                frameBorder="0">
+            </iframe>
         </div>
       </section>
     ));
 
     const Footer = () => (
-      <footer className="bg-slate-950 border-t border-slate-900 py-10">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm text-slate-500">
+      <footer className="bg-slate-900 text-slate-400 py-10">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm">
           <p>&copy; {new Date().getFullYear()} Evan R. Parra. Built for insight velocity.</p>
           <div className="flex items-center gap-4">
-            <a href="mailto:eraphaelparra@gmail.com" className="hover:text-slate-200 transition" aria-label="Email Evan">eraphaelparra@gmail.com</a>
-            <span className="hidden md:inline" aria-hidden="true">•</span>
-            <a href="https://www.linkedin.com/in/evanparra/" className="hover:text-slate-200 transition" aria-label="LinkedIn profile">LinkedIn</a>
+            <a href="mailto:eraphaelparra@gmail.com" className="hover:text-white transition" aria-label="Email Evan">eraphaelparra@gmail.com</a>
+            <span className="text-slate-600 hidden md:inline" aria-hidden="true">•</span>
+            <a href="https://www.linkedin.com/in/evanparra/" className="hover:text-white transition" aria-label="LinkedIn profile">LinkedIn</a>
           </div>
         </div>
       </footer>
@@ -328,13 +215,13 @@
       }, []);
 
       return (
-        <div className="min-h-screen flex flex-col bg-slate-950">
+        <div className="min-h-screen flex flex-col bg-gray-50">
           <Hero onCtaClick={handleScrollToBooking} />
           <main>
             <CaseStudy onCtaClick={handleScrollToBooking} />
             <Services />
             <About />
-            <Booking ref={bookingRef} bookingLink={bookingLink} />
+            <Booking ref={bookingRef} />
           </main>
           <Footer />
         </div>
@@ -344,7 +231,5 @@
     ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 
-  <!-- Chat widget remains optional -->
-  <script type="text/babel" data-presets="react" src="/chat-widget.jsx"></script>
 </body>
 </html>
