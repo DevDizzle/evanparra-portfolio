@@ -1,31 +1,30 @@
-# Insight Acceleration Landing Page
+# Local AI Expert Landing Page
 
 ## Overview
-This repository powers a single-page landing site for Evan Parra's AI + BI consulting practice. The page focuses on one clear conversion path: demonstrate the value of accelerating time to insight and invite visitors to schedule a 15-minute Insight Audit. ProfitScout.app is highlighted as the flagship case study.
+This repository powers a single-page landing site for **Evan Parra’s AI & BI consulting** practice, specifically targeting local businesses in **St. Johns County, FL**. The page is designed to establish Evan as a local expert, build trust through case studies, and convert visitors into scheduling a **free 30-minute Insight Audit**.
 
-## What's Included
-- **Hero** section with the core value proposition and book-a-call CTA.
-- **ProfitScout Case Study** detailing the problem, solution, and outcomes using AI + BI.
-- **Services** grid tailored to insight acceleration offerings.
-- **About** section sharing credentials and approach.
-- **Booking** section with a Google Calendar appointment placeholder.
-- Updated SEO metadata, OG tags, and Tailwind-powered design.
+## What’s Included
+- **Local SEO Focus:** Content is tailored to attract clients in **St. Augustine, Nocatee, and Ponte Vedra**, supported by **Local Business schema**.
+- **Hero Section:** A clear **“Your Local AI Expert”** headline with a direct call-to-action.
+- **Case Study Carousel:** A dynamic component showcasing multiple real-world projects, demonstrating expertise in solving common business problems.
+- **Expanded Services:** Includes AI/BI consulting services as well as **Corporate AI & Prompt Engineering training**.
+- **Personalized Booking Section:** Features a **headshot** to build personal connection and an **embedded Google Calendar** for seamless scheduling of a 30-minute audit.
+- **Clean, Professional Design:** A **light-themed, mobile-friendly** design built with **Tailwind CSS**.
 
 ## Customization
-1. **Update Copy & Metrics**: Open `public/index.html` and edit the strings within the React components (Hero, CaseStudy, Services, About, Booking).
-2. **Swap Visuals**:
-   - Replace `/assets/evan-parra-headshot.jpg` if you have a new headshot.
-   - Update the ProfitScout screenshot placeholder inside the `CaseStudy` component with an actual image or embed.
-3. **Connect Google Booking**:
-   - Generate a Google Calendar Appointment Schedule.
-   - Replace the `bookingLink` constant with your live scheduling URL.
-   - Paste the iframe or script provided by Google inside the commented placeholder within the `Booking` section to embed the scheduler inline.
-4. **OG Image**: Point the `og:image` and `twitter:image` tags to your preferred sharing graphic.
+- **Content Updates:** Open `public/index.html` and edit the strings within the React components (**Hero**, **CaseStudyCarousel**, **Services**, **Booking**).
+- **Visuals:**
+  - Headshot: `/assets/evan-parra-headshot.png`
+  - Social sharing (OG) image: `/assets/evan-parra-og-image.png`
+- **Booking Link:** The **Google Calendar appointment schedule** is embedded as an iframe in the **Booking** component inside `public/index.html`.
 
 ## Deployment
-The site is a static React-on-CDN build optimized for Firebase Hosting. To deploy:
-1. `firebase login`
-2. `firebase deploy --only hosting`
+This is a static site optimized for **Firebase Hosting**. To deploy changes:
+
+```bash
+firebase login
+firebase deploy --only hosting
+```
 
 ## License
-MIT — feel free to adapt for your own AI + BI landing page.
+MIT — feel free to adapt for your own local consulting landing page.
