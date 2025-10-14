@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Accelerate Time to Insight | AI + BI Consulting by Evan Parra</title>
-  <meta name="description" content="Evan Parra helps leadership teams accelerate time to insight with AI + BI systems. Explore the ProfitScout case study and book a 15-minute Insight Audit." />
+  <title>Local AI & BI Consulting | St. Augustine, FL | Evan Parra</title>
+  <meta name="description" content="Local AI and Business Intelligence expert Evan Parra helps businesses in St. Johns County, Nocatee, St. Augustine, and Ponte Vedra turn data into actionable insights and offers corporate AI training." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.evanparra.ai/" />
-  <meta property="og:title" content="Accelerate Time to Insight | AI + BI Consulting" />
-  <meta property="og:description" content="See how ProfitScout reduced insight latency from hours to seconds and schedule your own Insight Audit." />
+  <meta property="og:title" content="Local AI & BI Consulting | St. Augustine, FL" />
+  <meta property="og:description" content="Helping businesses in St. Johns County turn data into insights with AI consulting and prompt engineering training." />
   <meta property="og:image" content="https://www.evanparra.ai/assets/og-image-placeholder.jpg" />
 
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://www.evanparra.ai/" />
-  <meta property="twitter:title" content="Accelerate Time to Insight | AI + BI Consulting" />
-  <meta property="twitter:description" content="See how ProfitScout reduced insight latency from hours to seconds and schedule your own Insight Audit." />
+  <meta property="twitter:title" content="Local AI & BI Consulting | St. Augustine, FL" />
+  <meta property="twitter:description" content="Helping businesses in St. Johns County turn data into insights with AI consulting and prompt engineering training." />
   <meta property="twitter:image" content="https://www.evanparra.ai/assets/og-image-placeholder.jpg" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
+  
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -30,12 +30,13 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans">
   <div id="root"></div>
 
   <script type="text/babel">
-    const bookingLink = "https://calendar.google.com/calendar/u/0/appointments/schedules/EXAMPLE"; // Replace with your live Google Appointment Schedule link
+    const { useState, useCallback, useRef } = React;
 
     const SectionHeading = ({ eyebrow, title, body }) => (
       <header className="text-center max-w-3xl mx-auto mb-12">
@@ -46,97 +47,146 @@
     );
 
     const Hero = ({ onCtaClick }) => (
-      <section className="bg-white pt-24 pb-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col gap-12 lg:flex-row lg:items-center">
-          <div className="flex-1">
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-              Accelerate Your Time to Insight
-            </h1>
-            <p className="text-xl text-slate-600 mb-8">
-              I build systems that turn your raw data into clear, actionable insights. No buzzwords, just results. See how I did it for financial analysts with ProfitScout.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-              <button
-                onClick={onCtaClick}
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold transition shadow-lg"
-              >
-                See ProfitScout in Action
-              </button>
-              <a
-                href="#booking"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold transition"
-              >
-                Book a Free Consultation
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    );
-
-    const CaseStudy = ({ onCtaClick }) => (
-      <section id="case-study" className="bg-gray-100 py-24 px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Case Study: ProfitScout"
-          title="From Data Overload to Decisive Action"
-          body="For financial analysts, the market is a flood of data—SEC filings, earnings calls, news, and technicals. They were spending hours manually piecing it all together, often too late to act. I built ProfitScout to solve this."
-        />
-        <div className="max-w-6xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                    <div>
-                        <h3 className="text-xl font-bold text-rose-600 mb-3">Before</h3>
-                        <ul className="space-y-2 text-slate-600">
-                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>6+ hours of manual data gathering daily.</li>
-                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>Missed opportunities due to slow analysis.</li>
-                            <li className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>Decisions based on incomplete information.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-xl font-bold text-emerald-600 mb-3">After</h3>
-                        <ul className="space-y-2 text-slate-600">
-                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Under 5 minutes for a complete, AI-driven analysis.</li>
-                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Clear signals on the highest-scoring market setups.</li>
-                            <li className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>Confident decisions backed by data.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="space-y-6 text-slate-700">
-                    <h3 className="text-2xl font-bold text-slate-900">How ProfitScout Delivers Real Insight</h3>
-                    <p>It’s an AI-powered tool that automatically analyzes thousands of data points to provide a clear, forward-looking view of stocks and options.</p>
-                    <ul className="space-y-3 list-disc pl-5">
-                      <li><strong>Analyzes the Full Picture:</strong> It processes everything from 10-K filings and earnings calls to options chain data and market sentiment.</li>
-                      <li><strong>Provides a Nuanced View:</strong> Instead of a simple "buy" or "sell" rating, it gives a five-tier analysis (from "Strongly Bullish" to "Strongly Bearish") with a summary of *why*.</li>
-                      <li><strong>Highlights Top Opportunities:</strong> The Confluence Dashboard shows where stock and options data align, pointing to the most promising setups.</li>
-                    </ul>
-                     <p>The core engine is open-source because I believe in transparency. <a href="https://github.com/your-repo-link" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">See how it works on GitHub</a>.</p>
+        <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div className="max-w-6xl mx-auto px-4 text-center">
+                <h1 className="text-5xl font-bold mb-4">Your Local AI Expert</h1>
+                <p className="text-lg mb-8 opacity-90 max-w-3xl mx-auto">
+                    I help businesses in <strong>St. Johns County</strong>, including <strong>Nocatee, St. Augustine, and Ponte Vedra</strong>, turn raw data into clear, actionable insights. No buzzwords, just results.
+                </p>
+                <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center items-center">
+                    <button
+                        onClick={onCtaClick}
+                        className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 font-semibold inline-block w-full sm:w-auto shadow-lg"
+                    >
+                        See My Work
+                    </button>
+                    <a
+                        href="#booking"
+                        className="border border-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 font-semibold inline-block w-full sm:w-auto"
+                    >
+                        Book a Free Consultation
+                    </a>
                 </div>
             </div>
-        </div>
-      </section>
+        </section>
     );
+
+    const CaseStudyCarousel = () => {
+        const [current, setCurrent] = useState(0);
+
+        const caseStudies = [
+            {
+                eyebrow: "ProfitScout for Options Traders",
+                body: "For options traders, the market is a flood of data. They were spending days manually piecing it all together, often too late to act. I built ProfitScout to solve this.",
+                before: ["Days of manual data gathering.", "Missed opportunities due to slow analysis.", "Decisions based on incomplete information."],
+                after: ["Under 5 minutes for a complete, AI-driven analysis.", "Clear signals on the highest-scoring market setups.", "Confident, data-driven decisions."],
+                insightTitle: "How ProfitScout Delivers Real Insight",
+                insightBody: "It’s an AI-powered tool that automatically analyzes thousands of data points to provide a clear, forward-looking view of stocks and options, allowing traders to make confident, data-driven decisions.",
+                insightPoints: [
+                    "**Analyzes the Full Picture:** It processes everything from 10-K filings and earnings calls to options chain data and market sentiment.",
+                    "**Provides a Nuanced View:** Instead of a simple 'buy' or 'sell' rating, it gives a five-tier analysis (from 'Strongly Bullish' to 'Strongly Bearish') with a summary of *why*.",
+                    "**Highlights Top Opportunities:** The Confluence Dashboard shows where stock and options data align, pointing to the most promising setups."
+                ]
+            },
+            {
+                eyebrow: "Coastal Waste & Recycling Automation",
+                body: "A local logistics company was struggling with manual, paper-based inventory tracking for their field assets, leading to errors and delays. I built a custom web app to fix it.",
+                before: ["Hours lost to manual data entry.", "Inaccurate inventory counts.", "Delayed reporting for management."],
+                after: ["~70% reduction in processing time.", "Centralized, real-time inventory data.", "Improved data quality and operational efficiency."],
+                insightTitle: "How the Web App Solved the Problem",
+                insightBody: "I developed the 'Coastal Inventory Logger,' an internal web app that allows field teams to log data from their phones, automating the entire workflow.",
+                insightPoints: [
+                   "**Simple Mobile Interface:** Designed for quick, easy data entry on the go, reducing errors and saving time.",
+                   "**Centralized Database:** All data is fed into a single source of truth, providing managers with instant, accurate reports.",
+                   "**Automated Alerts:** The system flags low-inventory items automatically, preventing shortages and improving planning."
+                ]
+            },
+             {
+                eyebrow: "AI for Skin Lesion Analysis",
+                body: "Early detection of skin cancer is critical, but analysis of dermoscopic images can be subjective. I developed a tool to provide an AI-powered second opinion for medical professionals.",
+                before: ["Time-consuming manual review of images.", "Reliance on subjective visual assessment.", "Lack of immediate, data-driven feedback."],
+                after: ["Instant AI analysis of uploaded skin lesion images.", "Objective classification with confidence scores.", "Heatmap overlays to pinpoint areas of concern."],
+                insightTitle: "How AI Supports Clinical Judgment",
+                insightBody: "This secure, HIPAA-compliant web app uses a custom-trained AI model to analyze dermoscopic images, providing clinicians with data-driven insights to support their diagnosis.",
+                insightPoints: [
+                   "**Custom-Trained AI Model:** Deployed on Google Cloud's Vertex AI for high accuracy in lesion classification.",
+                   "**Secure & Compliant:** Built with HIPAA compliance in mind, featuring secure authentication and encrypted data transmission.",
+                   "**Actionable Visual Feedback:** Provides not just a classification, but also heatmaps that visually guide professionals to the most diagnostically relevant regions."
+                ]
+            }
+        ];
+        
+        const nextSlide = () => setCurrent(current === caseStudies.length - 1 ? 0 : current + 1);
+        const prevSlide = () => setCurrent(current === 0 ? caseStudies.length - 1 : current - 1);
+
+        const study = caseStudies[current];
+
+        return (
+            <section id="case-studies" className="bg-white py-24 px-6 lg:px-8">
+                <SectionHeading eyebrow="My Work" title="Common Problems, Pratical Solutions" />
+                <div className="max-w-6xl mx-auto relative">
+                    <div className="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-8 lg:p-12">
+                        <div className="grid lg:grid-cols-2 gap-12 items-center">
+                            <div className="space-y-6">
+                                <h3 className="text-2xl font-bold text-blue-600">{study.eyebrow}</h3>
+                                <p className="text-slate-600">{study.body}</p>
+                                <div>
+                                    <h4 className="text-xl font-bold text-rose-600 mb-3">Before</h4>
+                                    <ul className="space-y-2 text-slate-600">
+                                        {study.before.map(item => <li key={item} className="flex items-start gap-3"><span className="mt-1 text-rose-500">✖</span>{item}</li>)}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-emerald-600 mb-3">After</h4>
+                                    <ul className="space-y-2 text-slate-600">
+                                         {study.after.map(item => <li key={item} className="flex items-start gap-3"><span className="mt-1 text-emerald-500">✔</span>{item}</li>)}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="space-y-6 text-slate-700 bg-white p-8 rounded-lg border">
+                                <h3 className="text-2xl font-bold text-slate-900">{study.insightTitle}</h3>
+                                <p>{study.insightBody}</p>
+                                <ul className="space-y-3">
+                                    {study.insightPoints.map(point => {
+                                        const parts = point.split(':**');
+                                        return (
+                                            <li key={point} className="flex items-start gap-3">
+                                                <span className="text-blue-500 mt-1">✔</span>
+                                                <div><strong>{parts[0].replace(/\*/g, '')}:</strong> {parts[1]}</div>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <button onClick={prevSlide} className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white border rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100">❮</button>
+                     <button onClick={nextSlide} className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white border rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-gray-100">❯</button>
+                </div>
+            </section>
+        );
+    };
 
     const Services = () => {
       const offerings = [
-        { icon: "fa-brain", title: "AI-Powered Analysis", description: "I build tools that analyze your specific data—sales reports, customer feedback, operational metrics—to give you clear, actionable insights." },
-        { icon: "fa-database", title: "Automated Data Pipelines", description: "I'll create systems that automatically gather, clean, and process your data, so your team can stop wrangling spreadsheets and start deciding." },
-        { icon: "fa-chart-pie", title: "Interactive Dashboards", description: "I design user-friendly dashboards that present your key metrics in a way that is easy to understand and act upon." },
-        { icon: "fa-cogs", title: "Workflow Automation", description: "I connect your systems (like your CRM and internal databases) to automate repetitive tasks and free up your team for more important work." }
+        { icon: "fa-solid fa-brain", title: "AI-Powered Analysis", description: "I build tools that analyze your specific data—sales reports, customer feedback, operational metrics—to give you clear, actionable insights." },
+        { icon: "fa-solid fa-database", title: "Automated Data Pipelines", description: "I'll create systems that automatically gather, clean, and process your data, so your team can stop wrangling spreadsheets and start deciding." },
+        { icon: "fa-solid fa-chart-pie", title: "Interactive Dashboards", description: "I design user-friendly dashboards that present your key metrics in a way that is easy to understand and act upon." },
+        { icon: "fa-solid fa-chalkboard-teacher", title: "Corporate AI Training & Prompt Engineering", description: "I offer hands-on workshops to get your team up to speed on AI best practices, making them more efficient and productive with tools like ChatGPT." }
       ];
 
       return (
-        <section id="services" className="bg-white py-24 px-6 lg:px-8">
+        <section id="services" className="bg-gray-50 py-24 px-6 lg:px-8">
           <SectionHeading
             eyebrow="Services"
-            title="What I Can Build For You"
-            body="I use the same approach from ProfitScout to create custom solutions for your business."
+            title="What I Can Do For You"
+            body="I use the same approach from my case studies to create custom solutions and training for your business."
           />
           <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
             {offerings.map((service) => (
-              <article key={service.title} className="bg-gray-50 border border-slate-200 rounded-2xl p-8">
+              <article key={service.title} className="bg-white border border-slate-200 rounded-2xl p-8 shadow hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
-                  <i className={`fa-solid ${service.icon}`} aria-hidden="true"></i>
+                  <i className={service.icon} aria-hidden="true"></i>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{service.description}</p>
@@ -147,47 +197,37 @@
       );
     };
 
-    const About = () => (
-      <section id="about" className="bg-gray-100 py-24 px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="About Me"
-          title="I'm Evan. I build tools that make data useful."
-        />
-        <div className="max-w-4xl mx-auto text-center text-lg text-slate-700 leading-relaxed space-y-6">
-            <p>
-              For the last ten years, I've worked with businesses in finance, logistics, and e-commerce. I've seen firsthand how much time is wasted trying to make sense of messy data.
-            </p>
-            <p>
-              My goal is simple: to build systems that give you the clarity you need to move forward. I focus on practical, efficient solutions that can be implemented in weeks, not quarters. If you're tired of being buried in data and want to start making more informed decisions, I can help.
-            </p>
-        </div>
-      </section>
-    );
-
     const Booking = React.forwardRef((props, ref) => (
       <section ref={ref} id="booking" className="py-24 px-6 lg:px-8 bg-white">
         <SectionHeading
           eyebrow="Book a Call"
           title="Ready for Insights on Demand?"
-          body="Grab a free 15-minute Insight Audit. We'll review your current data challenges, identify bottlenecks, and map out the steps to unlock faster, smarter decisions."
+          body="Grab a free 30-minute Insight Audit. We'll review your current data challenges, identify bottlenecks, and map out the steps to unlock faster, smarter decisions."
         />
-        <div className="max-w-4xl mx-auto bg-gray-50 border border-slate-200 rounded-2xl p-4 lg:p-8">
-            <iframe 
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0dM9XXXQcbQCwM2EgTT1TMv_OMFjBJ8Tbr68tmcc1Ir8j7zhp41OvbWF0P3TBkzYnihv0iC1f6?gv=true" 
-                style={{ border: 0 }} 
-                width="100%" 
-                height="700" 
-                frameBorder="0">
-            </iframe>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+             <div className="text-center lg:text-left">
+                <img src="/assets/evan-parra-headshot.png" alt="Evan Parra" className="w-48 h-48 rounded-full mx-auto lg:mx-0 mb-6 shadow-lg"/>
+                <h3 className="text-3xl font-bold text-slate-900 mb-4">Schedule a Call with Evan</h3>
+                <p className="text-lg text-slate-600">I'm a real person, right here in St. Augustine. I'm passionate about helping local businesses succeed. Let's chat about your goals and see how I can help you leverage your data to its full potential.</p>
+            </div>
+            <div className="bg-gray-50 border border-slate-200 rounded-2xl p-4 lg:p-8 shadow-lg">
+                <iframe 
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0dM9XXXQcbQCwM2EgTT1TMv_OMFjBJ8Tbr68tmcc1Ir8j7zhp41OvbWF0P3TBkzYnihv0iC1f6?gv=true" 
+                    style={{ border: 0 }} 
+                    width="100%" 
+                    height="700" 
+                    frameBorder="0">
+                </iframe>
+            </div>
         </div>
       </section>
     ));
 
     const Footer = () => (
-      <footer className="bg-slate-900 text-slate-400 py-10">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm">
-          <p>&copy; {new Date().getFullYear()} Evan R. Parra. Built for insight velocity.</p>
-          <div className="flex items-center gap-4">
+      <footer className="bg-gray-800 text-white py-6 text-center">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm text-slate-400">
+          <p>&copy; {new Date().getFullYear()} Evan R. Parra. Serving St. Johns County, FL.</p>
+          <div className="flex items-center gap-4 justify-center">
             <a href="mailto:eraphaelparra@gmail.com" className="hover:text-white transition" aria-label="Email Evan">eraphaelparra@gmail.com</a>
             <span className="text-slate-600 hidden md:inline" aria-hidden="true">•</span>
             <a href="https://www.linkedin.com/in/evanparra/" className="hover:text-white transition" aria-label="LinkedIn profile">LinkedIn</a>
@@ -197,22 +237,22 @@
     );
 
     const App = () => {
-      const bookingRef = React.useRef(null);
-
-      const handleScrollToBooking = React.useCallback(() => {
-        if (bookingRef.current) {
-          bookingRef.current.scrollIntoView({ behavior: 'smooth' });
+      const caseStudyRef = useRef(null);
+      const handleScrollToCases = useCallback(() => {
+        if (caseStudyRef.current) {
+          caseStudyRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, []);
 
       return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-          <Hero onCtaClick={handleScrollToBooking} />
+          <Hero onCtaClick={handleScrollToCases} />
           <main>
-            <CaseStudy onCtaClick={handleScrollToBooking} />
+            <div ref={caseStudyRef}>
+              <CaseStudyCarousel />
+            </div>
             <Services />
-            <About />
-            <Booking ref={bookingRef} />
+            <Booking />
           </main>
           <Footer />
         </div>
