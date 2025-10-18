@@ -6,27 +6,32 @@
   <title>Business Technology Consultant | St. Augustine, FL | Evan Parra</title>
   <meta name="description" content="Evan Parra is a Business Technologist helping local businesses in St. Johns County with web development, process automation, and data insights. Practical tech solutions for SMBs in St. Augustine, Nocatee, and Ponte Vedra." />
 
-  <!-- Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4DDT4JFSM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} 
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-E4DDT4JFSM');
-    gtag('config', 'AW-17649812451');
+    gtag('config', 'G-E4DDT4JFSM'); // GA4
+    gtag('config', 'AW-17649812451'); // Google Ads
+
+    // Google Ads click conversion helper – redirect happens in callback
     function gtag_report_conversion(url) {
-      var callback = function () { if (typeof url !== 'undefined') window.location = url; };
+      const callback = function () {
+        if (typeof url !== 'undefined') {
+          window.location = url;
+        }
+      };
       gtag('event', 'conversion', {
-        'send_to': 'AW-17649812451/6QsECOjn0awbEOOHi-BB',
-        'value': 1.0,
-        'currency': 'USD',
-        'event_callback': callback
+        send_to: 'AW-17649812451/6QsECOjn0awbEOOHi-BB',
+        value: 1.0,
+        currency: 'USD',
+        event_callback: callback
       });
-      return false;
     }
   </script>
 
-  <!-- Local Business Schema -->
+  <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,43 +56,45 @@
   }
   </script>
 
-  <!-- Social -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.evanparra.ai/" />
   <meta property="og:title" content="Business Technology Consultant | St. Augustine, FL | Evan Parra" />
   <meta property="og:description" content="Practical tech solutions for local businesses, including web development, automation, and data insights." />
   <meta property="og:image" content="https://www.evanparra.ai/assets/evan-parra-og-image.png" />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://www.evanparra.ai/" />
-  <meta property="twitter:title" content="Business Technology Consultant | St. Augustine, FL | Evan Parra" />
-  <meta property="twitter:description" content="Practical tech solutions for local businesses, including web development, automation, and data insights." />
-  <meta property="twitter:image" content="https://www.evanparra.ai/assets/evan-parra-og-image.png" />
 
-  <!-- Fonts / Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.evanparra.ai/" />
+  <meta name="twitter:title" content="Business Technology Consultant | St. Augustine, FL | Evan Parra" />
+  <meta name="twitter:description" content="Practical tech solutions for local businesses, including web development, automation, and data insights." />
+  <meta name="twitter:image" content="https://www.evanparra.ai/assets/evan-parra-og-image.png" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Tailwind + React (Play CDN + UMD for single-file simplicity) -->
+  <!-- Tailwind (Play CDN; best for dev) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Tailwind container config for nicer max-widths
     tailwind.config = {
       theme: {
+        container: { center: true, padding: '1rem' },
         extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] }
-        },
-        container: { center: true, padding: '1rem' }
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] }
+        }
       }
     }
   </script>
+
+  <!-- React 18 UMD + Babel -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
-    /* Smooth rendering & layout helpers */
     html, body { height: 100%; }
     body { font-feature-settings: "rlig" 1, "calt" 1; }
   </style>
@@ -98,13 +105,16 @@
   <script type="text/babel">
     const { useState, useCallback, useRef, forwardRef } = React;
 
-    const SectionHeading = ({ eyebrow, title, body, align = 'center' }) => (
-      <header className={`text-${align} max-w-3xl mx-auto mb-12 px-2`}>
-        {eyebrow && <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-3">{eyebrow}</p>}
-        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">{title}</h2>
-        {body && <p className="mt-4 text-lg text-slate-600 leading-relaxed">{body}</p>}
-      </header>
-    );
+    const SectionHeading = ({ eyebrow, title, body, align = 'center' }) => {
+      const alignClass = align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center';
+      return (
+        <header className={alignClass + " max-w-3xl mx-auto mb-12 px-2"}>
+          {eyebrow && <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-3">{eyebrow}</p>}
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">{title}</h2>
+          {body && <p className="mt-4 text-lg text-slate-600 leading-relaxed">{body}</p>}
+        </header>
+      );
+    };
 
     const Hero = ({ onCtaClick }) => (
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -142,7 +152,7 @@
           insightBody: 'It’s an AI-powered tool that automatically analyzes thousands of data points to provide a clear, forward-looking view of stocks and options, allowing traders to make confident, data-driven decisions.',
           insightPoints: [
             '**Analyzes the Full Picture:** It processes everything from 10-K filings and earnings calls to options chain data and market sentiment.',
-            '**Provides a Nuanced View:** Instead of a simple \"buy\" or \"sell\" rating, it gives a five-tier analysis (from \"Strongly Bullish\" to \"Strongly Bearish\") with a summary of why.',
+            '**Provides a Nuanced View:** Instead of a simple "buy" or "sell" rating, it gives a five-tier analysis (from "Strongly Bullish" to "Strongly Bearish") with a summary of why.',
             '**Highlights Top Opportunities:** The Confluence Dashboard shows where stock and options data align, pointing to the most promising setups.'
           ]
         },
@@ -196,7 +206,9 @@
                         <h4 className="text-lg font-bold text-rose-600 mb-2">Before</h4>
                         <ul className="space-y-2 text-slate-700">
                           {study.before.map((item) => (
-                            <li key={item} className="flex items-start gap-2"><span className="mt-1 text-rose-500">✖</span><span>{item}</span></li>
+                            <li key={item} className="flex items-start gap-2">
+                              <span className="mt-1 text-rose-500">✖</span><span>{item}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -204,7 +216,9 @@
                         <h4 className="text-lg font-bold text-emerald-600 mb-2">After</h4>
                         <ul className="space-y-2 text-slate-700">
                           {study.after.map((item) => (
-                            <li key={item} className="flex items-start gap-2"><span className="mt-1 text-emerald-500">✔</span><span>{item}</span></li>
+                            <li key={item} className="flex items-start gap-2">
+                              <span className="mt-1 text-emerald-500">✔</span><span>{item}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -217,7 +231,6 @@
                     <ul className="space-y-3 text-slate-800">
                       {study.insightPoints.map((point) => {
                         const bold = point.split('**');
-                        // Expect format: ['', 'Title', ':', ' rest'] or ['**Title:** text'] style
                         return (
                           <li key={point} className="flex items-start gap-3">
                             <span className="text-blue-500 mt-1">✔</span>
@@ -239,7 +252,7 @@
                 </div>
               </div>
 
-              {/* Carousel Controls – pinned neatly within card bounds on all screens */}
+              <!-- Carousel controls -->
               <div className="absolute inset-x-0 -bottom-6 flex items-center justify-center gap-3">
                 <button onClick={prevSlide} aria-label="Previous" className="bg-white border rounded-full w-10 h-10 flex items-center justify-center shadow hover:bg-gray-100">❮</button>
                 <button onClick={nextSlide} aria-label="Next" className="bg-white border rounded-full w-10 h-10 flex items-center justify-center shadow hover:bg-gray-100">❯</button>
@@ -303,10 +316,14 @@
             </p>
             <a
               href="https://calendar.app.google/Uuj9MEkJezLX9n8KA"
-              onClick={() => gtag_report_conversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-blue-700 text-white px-8 py-4 rounded-xl hover:bg-blue-800 font-semibold shadow-lg text-lg"
+              onClick={(e) => {
+                // Prevent default so the conversion event fires; callback will redirect
+                e.preventDefault();
+                gtag_report_conversion('https://calendar.app.google/Uuj9MEkJezLX9n8KA');
+              }}
             >
               Book My Free Consultation
             </a>
@@ -359,7 +376,9 @@
       );
     };
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    // React 18 root API
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
   </script>
 </body>
 </html>
