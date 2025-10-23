@@ -92,6 +92,7 @@
   <!-- React 18 UMD + Babel -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <style>
@@ -103,7 +104,221 @@
   <div id="root"></div>
 
   <script type="text/babel" data-presets="env,react">
-    const { useState, useCallback, useRef, forwardRef } = React;
+    const { useState, useCallback, useRef, forwardRef, useEffect } = React;
+    const { HashRouter, Routes, Route, Link, useParams, useLocation } = ReactRouterDOM;
+
+    const servicesData = [
+      {
+        slug: 'modern-web-development',
+        title: 'Modern Web Development',
+        icon: 'fa-solid fa-window-maximize',
+        summary:
+          'Your website should be your hardest-working employee. I build professional, mobile-friendly sites that capture leads, tell your story, and make it easy for customers to do business with you.',
+        detail: {
+          lead:
+            'Your website is the first impression for people searching for St. Augustine, Nocatee, or Ponte Vedra services. I build fast, accessible, and brand-aligned sites that convert casual visitors into booked jobs.',
+          benefits: [
+            'Conversion-focused layouts with clear storytelling, on-page SEO, and LocalBusiness schema so you show up for nearby searches.',
+            'Mobile-first builds using modern frameworks, optimized for accessibility and lightning-fast load times.',
+            'Integrated lead capture, chat, and analytics so you know exactly which campaigns create revenue.'
+          ],
+          outcomes: [
+            'Launch-ready pages that load in under two seconds on modern mobile devices.',
+            'More quote requests and consultations thanks to persuasive messaging and CTAs on every key page.',
+            'Editable content sections so your team can update specials and announcements without calling a developer.'
+          ],
+          process: [
+            {
+              title: 'Discovery & audit',
+              description:
+                'We review your current website, analytics, and brand goals to map the structure and content needed to hit your growth targets.'
+            },
+            {
+              title: 'Design & content alignment',
+              description:
+                'I translate your story into wireframes and polished mockups, collaborate on copy, and validate the experience on desktop and mobile.'
+            },
+            {
+              title: 'Build, launch & training',
+              description:
+                'I develop the site, connect essential tools, handle QA, and deliver training so you feel confident maintaining your new presence.'
+            }
+          ],
+          localFocus:
+            'Whether you are attracting tourists in downtown St. Augustine or serving growing neighborhoods in Nocatee, every page is tailored to your audience with messaging, photography, and calls-to-action that feel local and trustworthy.',
+          closing:
+            'Ready to refresh your digital storefront? Let’s map out the pages, copy, and integrations that will bring in more of the right customers.'
+        }
+      },
+      {
+        slug: 'payment-and-booking-integration',
+        title: 'Payment & Booking Integration',
+        icon: 'fa-solid fa-credit-card',
+        summary:
+          'Stop chasing payments and manually scheduling appointments. I\'ll integrate secure, reliable payment and booking systems that save you time and get you paid faster.',
+        detail: {
+          lead:
+            'Stop chasing invoices and phone tags. I streamline how customers schedule, sign, and pay so your day runs smoothly.',
+          benefits: [
+            'Secure online checkout experiences using Stripe, Square, or GoCardless tailored to your business model.',
+            'Booking flows that sync with Google Calendar, Calendly, Acuity, or your practice management tool—including automated reminders.',
+            'Back-office automations that push transactions into QuickBooks, your CRM, or email marketing list without manual entry.'
+          ],
+          outcomes: [
+            'Clients can reserve their spot or pay deposits in under two minutes from any device.',
+            'Automatic reminders and confirmations reduce no-shows and follow-up calls.',
+            'Accurate financial records that make reconciliation and reporting painless.'
+          ],
+          process: [
+            {
+              title: 'Map your customer journey',
+              description:
+                'We document how people currently request services, confirm appointments, and pay so we can eliminate bottlenecks.'
+            },
+            {
+              title: 'Configure & test integrations',
+              description:
+                'I set up payment links, booking widgets, and automations, then run through real-world scenarios to ensure everything works.'
+            },
+            {
+              title: 'Launch with team training',
+              description:
+                'You receive clear instructions and support materials so staff can confidently manage the new systems.'
+            }
+          ],
+          localFocus:
+            'Perfect for busy service pros across St. Johns County—from home services in Ponte Vedra to wellness studios in St. Augustine—who need reliable cash flow and predictable schedules.',
+          closing:
+            'Let’s make it effortless for customers to book and pay you while you focus on delivering great service.'
+        }
+      },
+      {
+        slug: 'process-automation',
+        title: 'Process Automation',
+        icon: 'fa-solid fa-gears',
+        summary:
+          'Tired of repetitive, manual tasks? I\'ll connect your essential business tools to automate workflows, eliminate data entry, and free up your team for more important work.',
+        detail: {
+          lead:
+            'Manual admin work steals time from serving customers. I automate the repetitive tasks that slow your team down.',
+          benefits: [
+            'Connect tools like your CRM, forms, spreadsheets, and messaging apps so information flows automatically.',
+            'Trigger-based notifications, approvals, and task assignments that keep everyone aligned without constant check-ins.',
+            'Operational dashboards that reveal bottlenecks and status in real time.'
+          ],
+          outcomes: [
+            'Hours back each week as duplicate data entry and copy/paste work disappears.',
+            'Fewer mistakes because data is captured once and synced everywhere it needs to go.',
+            'A team that always knows the next step thanks to clear, automated workflows.'
+          ],
+          process: [
+            {
+              title: 'Identify high-impact opportunities',
+              description:
+                'We audit your current processes to pinpoint where automation can save the most time or reduce risk.'
+            },
+            {
+              title: 'Build and test workflows',
+              description:
+                'I implement automations using platforms like Make, Zapier, or custom scripts, then stress-test them with your team.'
+            },
+            {
+              title: 'Launch with monitoring',
+              description:
+                'I provide documentation, dashboards, and refinement support to ensure the automations keep delivering value.'
+            }
+          ],
+          localFocus:
+            'From field services and logistics to boutique retailers, I craft solutions that fit the unique ways St. Johns County businesses operate.',
+          closing:
+            'Tell me where manual work is stacking up, and we’ll design automations that give your staff breathing room.'
+        }
+      },
+      {
+        slug: 'data-insights-and-dashboards',
+        title: 'Data Insights & Dashboards',
+        icon: 'fa-solid fa-chart-pie',
+        summary:
+          'Your business data holds the answers to growth. I\'ll build simple, interactive dashboards that track your key metrics and turn raw numbers into clear, actionable insights.',
+        detail: {
+          lead:
+            'You have data scattered across POS systems, accounting tools, and spreadsheets. I centralize it into dashboards that drive confident decisions.',
+          benefits: [
+            'Unified data pipelines pulling from QuickBooks, Square, Google Analytics, HubSpot, and other sources you rely on.',
+            'Interactive dashboards built in Looker Studio, Power BI, or custom web apps with filters your leaders actually use.',
+            'Automated scorecards and alerts that surface trends and issues before they become problems.'
+          ],
+          outcomes: [
+            'Weekly or daily snapshots that highlight revenue, pipeline, and operational KPIs in one place.',
+            'The ability to double-click into product lines, locations, or team performance without waiting on a report.',
+            'Less time wrangling spreadsheets and more time acting on insights.'
+          ],
+          process: [
+            {
+              title: 'Data audit & goal setting',
+              description:
+                'We define the questions you need to answer and inventory every system that holds relevant data.'
+            },
+            {
+              title: 'Integrate & model',
+              description:
+                'I clean and connect the datasets, design the metrics, and ensure everything stays in sync automatically.'
+            },
+            {
+              title: 'Dashboard rollout & coaching',
+              description:
+                'I build the dashboards, walk your team through them, and establish a rhythm for reviewing insights.'
+            }
+          ],
+          localFocus:
+            'Ideal for multi-location restaurants, professional services firms, and nonprofits around St. Augustine that need to understand performance quickly.',
+          closing:
+            'Let’s turn disconnected reports into a living dashboard that gives you clarity every Monday morning.'
+        }
+      },
+      {
+        slug: 'ai-for-business-efficiency',
+        title: 'AI for Business Efficiency',
+        icon: 'fa-solid fa-brain',
+        summary:
+          'AI is more than just hype. I can build custom AI-powered tools to solve specific challenges, giving you a competitive edge.',
+        detail: {
+          lead:
+            'AI can augment your team when it’s tailored to the way you work. I build practical AI tools that deliver measurable time savings.',
+          benefits: [
+            'Custom AI assistants that handle intake questions, summarize calls, or draft responses using your brand voice.',
+            'Secure document and knowledge base search so staff find answers instantly.',
+            'Predictive insights that flag trends in customer feedback, inventory, or service delivery.'
+          ],
+          outcomes: [
+            'Faster response times and happier customers because routine questions are handled automatically.',
+            'Teams who spend less time on paperwork and more time on strategic work.',
+            'Early warnings about changes in demand, sentiment, or risk so you can adapt.'
+          ],
+          process: [
+            {
+              title: 'Use-case discovery',
+              description:
+                'We identify the repetitive conversations or decisions that AI can enhance without compromising quality.'
+            },
+            {
+              title: 'Prototype & validation',
+              description:
+                'I configure or build a proof-of-concept, test it with real data, and gather feedback from your staff.'
+            },
+            {
+              title: 'Deploy with guardrails',
+              description:
+                'We integrate the solution into your tools, set permissions, and create policies so the AI remains secure and effective.'
+            }
+          ],
+          localFocus:
+            'From tourism-driven hospitality groups to healthcare practices in Ponte Vedra, I deliver AI that respects compliance needs while delivering a competitive edge.',
+          closing:
+            'Bring me the process you wish you could hand to a digital assistant and we’ll design an AI workflow that truly helps.'
+        }
+      }
+    ];
 
     const SectionHeading = ({ eyebrow, title, body, align = 'center' }) => {
       const alignClass = align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center';
@@ -264,16 +479,7 @@
       );
     };
 
-    const Services = () => {
-      const offerings = [
-        { icon: 'fa-solid fa-window-maximize', title: 'Modern Web Development', description: 'Your website should be your hardest-working employee. I build professional, mobile-friendly sites that not only look great but also capture leads, tell your story, and make it easy for customers to do business with you.' },
-        { icon: 'fa-solid fa-credit-card', title: 'Payment & Booking Integration', description: 'Stop chasing payments and manually scheduling appointments. I\'ll integrate secure, reliable payment and booking systems directly into your website, saving you administrative headaches and getting you paid faster.' },
-        { icon: 'fa-solid fa-gears', title: 'Process Automation', description: 'Tired of repetitive, manual tasks? I\'ll connect your essential business tools (like your CRM, email, and accounting software) to automate workflows, eliminate data entry, and free up your team for more important work.' },
-        { icon: 'fa-solid fa-chart-pie', title: 'Data Insights & Dashboards', description: 'Your business data holds the answers to growth. I\'ll help you make sense of it all by building simple, interactive dashboards that track your key metrics and turn raw numbers into clear, actionable insights.' },
-        { icon: 'fa-solid fa-brain', title: 'AI for Business Efficiency', description: 'AI is more than just hype. I can build custom AI-powered tools to solve specific challenges, from analyzing customer feedback to optimizing inventory, giving you a competitive edge.' },
-        { icon: 'fa-solid fa-chalkboard-teacher', title: 'Team Productivity Training', description: 'Empower your employees with the skills to work smarter. I offer hands-on workshops in modern tools and AI best practices (like Prompt Engineering) to make your team more efficient and productive.' }
-      ];
-
+    const Services = ({ items }) => {
       return (
         <section id="services" className="bg-gray-50">
           <div className="container py-20 md:py-24">
@@ -283,19 +489,72 @@
               body="Whether you need to modernize your online presence, streamline operations, or empower your team, I offer practical solutions tailored to your specific goals."
             />
             <div className="grid gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
-              {offerings.map((service) => (
-                <article key={service.title} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow hover:shadow-lg transition-shadow">
+              {items.map((service) => (
+                <article key={service.slug} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow hover:shadow-lg transition-shadow flex flex-col">
                   <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
                     <i className={service.icon} aria-hidden="true"></i>
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
-                  <p className="text-slate-700 leading-relaxed">{service.description}</p>
+                  <p className="text-slate-700 leading-relaxed flex-1">{service.summary}</p>
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-900 transition"
+                    aria-label={`Learn more about ${service.title}`}
+                  >
+                    Learn More
+                    <span aria-hidden="true">→</span>
+                  </Link>
                 </article>
               ))}
             </div>
           </div>
         </section>
       );
+    };
+
+    const SiteHeader = ({ children }) => (
+      <header className="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
+        <div className="container py-4 flex items-center justify-between gap-4">
+          <Link to="/" className="text-lg font-extrabold text-slate-900 tracking-tight">Evan Parra</Link>
+          {children ? (
+            <nav className="flex items-center gap-5">
+              {React.Children.map(children, (child, index) =>
+                React.isValidElement(child) ? React.cloneElement(child, { key: index }) : child
+              )}
+            </nav>
+          ) : null}
+        </div>
+      </header>
+    );
+
+    const ScrollManager = () => {
+      const location = useLocation();
+
+      useEffect(() => {
+        if (location.hash) {
+          const rawHash = location.hash.replace('#', '');
+          let targetId = rawHash;
+          try {
+            targetId = decodeURIComponent(rawHash);
+          } catch (error) {
+            console.warn('Unable to decode hash segment', error);
+          }
+
+          if (targetId) {
+            const element = document.getElementById(targetId);
+            if (element) {
+              setTimeout(() => {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 0);
+              return;
+            }
+          }
+        }
+
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }, [location.pathname, location.hash]);
+
+      return null;
     };
 
     const createCaptcha = () => {
@@ -556,34 +815,208 @@
       </footer>
     );
 
-    const App = () => {
-      const caseStudyRef = useRef(null);
-      const servicesRef = useRef(null);
-
-      const handleScrollToCases = useCallback(() => {
-        if (caseStudyRef.current) caseStudyRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, []);
-
-      const handleScrollToServices = useCallback(() => {
-        if (servicesRef.current) servicesRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, []);
+    const NotFoundPage = () => {
+      const navLinkClasses =
+        'inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-900 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded';
 
       return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <SiteHeader>
+            <Link to="/" className={navLinkClasses}>
+              Back to Homepage
+            </Link>
+            <Link to="/#services" className={navLinkClasses}>
+              View Services
+            </Link>
+          </SiteHeader>
+          <main className="flex-1 flex items-center">
+            <div className="container py-24 text-center max-w-3xl">
+              <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold">404</p>
+              <h1 className="mt-4 text-3xl md:text-4xl font-extrabold text-slate-900">We couldn’t find that page.</h1>
+              <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+                The page you requested doesn’t exist. Try heading back to the homepage or explore the services I offer.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/"
+                  className="inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  Return Home
+                </Link>
+                <Link
+                  to="/#services"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold border border-slate-300 text-slate-800 hover:border-blue-600 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  View Services
+                </Link>
+              </div>
+            </div>
+          </main>
+          <Footer />
+        </div>
+      );
+    };
+
+    const ServiceDetailPage = () => {
+      const { slug } = useParams();
+      const service = servicesData.find((item) => item.slug === slug);
+
+      if (!service) {
+        return <NotFoundPage />;
+      }
+
+      const navLinkClasses =
+        'inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-900 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded';
+
+      return (
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <SiteHeader>
+            <Link to="/" className={navLinkClasses}>
+              <span aria-hidden="true">←</span>
+              Back to Homepage
+            </Link>
+            <Link to="/#services" className={navLinkClasses}>
+              View All Services
+            </Link>
+            <Link to="/#booking" className={navLinkClasses}>
+              Book a Call
+            </Link>
+          </SiteHeader>
+          <main className="flex-1">
+            <section className="bg-white border-b border-slate-200">
+              <div className="container py-16 md:py-20">
+                <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-4">Service Detail</p>
+                <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">{service.title}</h1>
+                <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-3xl">{service.detail.lead}</p>
+              </div>
+            </section>
+            <section className="bg-gray-50">
+              <div className="container py-16 md:py-20 space-y-16">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900">What You’ll Gain</h2>
+                  <ul className="mt-6 space-y-4">
+                    {service.detail.benefits.map((benefit) => (
+                      <li key={benefit} className="flex items-start gap-3">
+                        <span className="mt-2 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-blue-600"></span>
+                        <span className="text-lg text-slate-700 leading-relaxed">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Outcomes You Can Expect</h2>
+                  <ul className="mt-6 grid gap-4 md:grid-cols-2">
+                    {service.detail.outcomes.map((outcome) => (
+                      <li
+                        key={outcome}
+                        className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex items-start gap-3"
+                      >
+                        <span className="mt-1 text-blue-600" aria-hidden="true">
+                          ✓
+                        </span>
+                        <span className="text-base text-slate-700 leading-relaxed">{outcome}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="grid gap-10 lg:grid-cols-3 lg:items-start">
+                  <div className="lg:col-span-2 space-y-6">
+                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900">How We Work Together</h2>
+                    <ol className="mt-6 space-y-4">
+                      {service.detail.process.map((step, index) => (
+                        <li
+                          key={step.title}
+                          className="flex items-start gap-4 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm"
+                        >
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white font-semibold text-lg">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                          <div>
+                            <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
+                            <p className="mt-2 text-slate-700 leading-relaxed">{step.description}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  <aside className="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm space-y-4">
+                    <h3 className="text-lg font-semibold text-blue-900">Built for St. Johns County</h3>
+                    <p className="text-slate-700 leading-relaxed">{service.detail.localFocus}</p>
+                  </aside>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-lg text-center">
+                  <p className="text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">{service.detail.closing}</p>
+                  <Link
+                    to="/#booking"
+                    className="mt-6 inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                  >
+                    Book a Free Insight Audit
+                  </Link>
+                </div>
+              </div>
+            </section>
+          </main>
+          <Footer />
+        </div>
+      );
+    };
+
+    const HomePage = () => {
+      const caseStudyRef = useRef(null);
+      const servicesRef = useRef(null);
+      const bookingRef = useRef(null);
+
+      const scrollToSection = useCallback((ref) => {
+        if (ref && ref.current) {
+          ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, []);
+
+      const handleScrollToCases = useCallback(() => scrollToSection(caseStudyRef), [scrollToSection]);
+      const handleScrollToServices = useCallback(() => scrollToSection(servicesRef), [scrollToSection]);
+      const handleScrollToBooking = useCallback(() => scrollToSection(bookingRef), [scrollToSection]);
+
+      const navButtonClasses =
+        'inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-900 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded';
+
+      return (
+        <div className="min-h-screen flex flex-col bg-gray-50">
+          <SiteHeader>
+            <button type="button" onClick={handleScrollToCases} className={navButtonClasses}>
+              Case Studies
+            </button>
+            <button type="button" onClick={handleScrollToServices} className={navButtonClasses}>
+              Services
+            </button>
+            <button type="button" onClick={handleScrollToBooking} className={navButtonClasses}>
+              Book a Call
+            </button>
+          </SiteHeader>
           <Hero onCtaClick={handleScrollToServices} />
           <main>
             <div ref={caseStudyRef}>
               <CaseStudyCarousel />
             </div>
             <div ref={servicesRef}>
-              <Services />
+              <Services items={servicesData} />
             </div>
-            <Booking />
+            <Booking ref={bookingRef} />
           </main>
           <Footer />
         </div>
       );
     };
+
+    const App = () => (
+      <HashRouter>
+        <ScrollManager />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </HashRouter>
+    );
 
     // React 18 root API
     const root = ReactDOM.createRoot(document.getElementById('root'));
