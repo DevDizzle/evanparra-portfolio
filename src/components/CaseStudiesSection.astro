@@ -1,0 +1,13 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import CaseStudyCarousel from './CaseStudyCarousel';
+import type { CaseStudy } from '../data/caseStudies';
+
+const { items } = Astro.props as { items: CaseStudy[] };
+---
+<section id="case-studies" class="bg-white">
+  <div class="container py-20 md:py-24">
+    <SectionHeading eyebrow="My Work" title="Common Problems, Practical Solutions" />
+    <CaseStudyCarousel items={items} client:visible />
+  </div>
+</section>

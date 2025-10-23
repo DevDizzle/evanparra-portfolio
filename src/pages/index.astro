@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import CaseStudiesSection from '../components/CaseStudiesSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import BookingSection from '../components/BookingSection.astro';
+import Footer from '../components/Footer.astro';
+import { caseStudies } from '../data/caseStudies';
+import { services } from '../data/services';
+
+const navItems = [
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Services', href: '#services' },
+  { label: 'Book a Call', href: '#booking' }
+];
+---
+<BaseLayout>
+  <SiteHeader navItems={navItems} />
+  <Hero />
+  <main>
+    <CaseStudiesSection items={caseStudies} />
+    <ServicesSection services={services} />
+    <BookingSection />
+  </main>
+  <Footer />
+</BaseLayout>

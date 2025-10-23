@@ -1,0 +1,35 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import type { Service } from '../data/services';
+
+const { services } = Astro.props as { services: Service[] };
+---
+<section id="services" class="bg-gray-50">
+  <div class="container py-20 md:py-24">
+    <SectionHeading
+      eyebrow="Services"
+      title="Practical Solutions for Local Businesses"
+      body="Strategy, implementation, and automation tailored to St. Augustine and St. Johns County organizations that need a trusted partner to modernize operations."
+    />
+    <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      {services.map((service) => (
+        <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 flex flex-col" key={service.slug}>
+          <div class="flex items-center gap-4">
+            <div class="h-12 w-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl">
+              <i class={service.icon} aria-hidden="true"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">{service.title}</h3>
+          </div>
+          {service.summary && <p class="mt-4 text-slate-700 leading-relaxed flex-1">{service.summary}</p>}
+          <a
+            href={`/services/${service.slug}/`}
+            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800"
+          >
+            Learn More
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

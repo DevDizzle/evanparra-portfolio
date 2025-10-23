@@ -1,0 +1,34 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import BookingForm from './BookingForm';
+---
+<section id="booking" class="bg-white">
+  <div class="container py-20 md:py-24">
+    <SectionHeading
+      eyebrow="Get Started"
+      title="Get Your Free Business Assessment & Quote"
+      body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
+    />
+    <div class="max-w-4xl mx-auto">
+      <div class="flex justify-center mb-10">
+        <img
+          src="/assets/evan-parra-headshot.png"
+          alt="Evan Parra, a business technology consultant in St. Augustine, FL"
+          class="w-36 h-36 md:w-44 md:h-44 rounded-full shadow-lg object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+        <div class="max-w-2xl mx-auto text-center mb-8">
+          <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
+            Get Your Free Business Assessment & Quote
+          </h3>
+          <p class="text-lg text-slate-600">
+            I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Share a few details below and I'll follow up with your personalized plan and next steps.
+          </p>
+        </div>
+        <BookingForm client:load />
+      </div>
+    </div>
+  </div>
+</section>
