@@ -266,12 +266,11 @@
 
     const Services = () => {
       const offerings = [
-        { icon: 'fa-solid fa-window-maximize', title: 'Modern Web Development', description: 'Your website should be your hardest-working employee. I build professional, mobile-friendly sites that not only look great but also capture leads, tell your story, and make it easy for customers to do business with you.' },
-        { icon: 'fa-solid fa-credit-card', title: 'Payment & Booking Integration', description: 'Stop chasing payments and manually scheduling appointments. I\'ll integrate secure, reliable payment and booking systems directly into your website, saving you administrative headaches and getting you paid faster.' },
-        { icon: 'fa-solid fa-gears', title: 'Process Automation', description: 'Tired of repetitive, manual tasks? I\'ll connect your essential business tools (like your CRM, email, and accounting software) to automate workflows, eliminate data entry, and free up your team for more important work.' },
-        { icon: 'fa-solid fa-chart-pie', title: 'Data Insights & Dashboards', description: 'Your business data holds the answers to growth. I\'ll help you make sense of it all by building simple, interactive dashboards that track your key metrics and turn raw numbers into clear, actionable insights.' },
-        { icon: 'fa-solid fa-brain', title: 'AI for Business Efficiency', description: 'AI is more than just hype. I can build custom AI-powered tools to solve specific challenges, from analyzing customer feedback to optimizing inventory, giving you a competitive edge.' },
-        { icon: 'fa-solid fa-chalkboard-teacher', title: 'Team Productivity Training', description: 'Empower your employees with the skills to work smarter. I offer hands-on workshops in modern tools and AI best practices (like Prompt Engineering) to make your team more efficient and productive.' }
+        { icon: 'fa-solid fa-globe', title: 'Local Website Refresh & Hosting', description: 'Launch a mobile-friendly site that tells your St. Johns County story, loads fast, and guides visitors straight to booking or calling your team.' },
+        { icon: 'fa-solid fa-calendar-check', title: 'Online Booking & Contactless Payments', description: 'Connect Stripe, Square, or your POS so clients can schedule and pay without phone tag, keeping your calendar full and cash flow predictable.' },
+        { icon: 'fa-solid fa-diagram-project', title: 'Workflow Automation & Integrations', description: 'Link the tools you already rely on—CRM, email marketing, QuickBooks—to eliminate duplicate data entry and keep every handoff on autopilot.' },
+        { icon: 'fa-solid fa-chart-line', title: 'Executive KPI Dashboards', description: 'Surface the numbers that matter in one place with live dashboards that highlight leads, revenue, and fulfillment so you can make confident decisions.' },
+        { icon: 'fa-solid fa-robot', title: 'AI Playbooks & Team Training', description: 'Teach your staff how to plug AI into daily tasks with step-by-step playbooks and workshops that boost productivity without overwhelming your team.' }
       ];
 
       return (
@@ -282,7 +281,7 @@
               title="Solutions to Help Your Business Thrive"
               body="Whether you need to modernize your online presence, streamline operations, or empower your team, I offer practical solutions tailored to your specific goals."
             />
-            <div className="grid gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {offerings.map((service) => (
                 <article key={service.title} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow hover:shadow-lg transition-shadow">
                   <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
