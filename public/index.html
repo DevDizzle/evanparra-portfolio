@@ -298,39 +298,248 @@
       );
     };
 
-    const Booking = forwardRef((props, ref) => (
-      <section ref={ref} id="booking" className="bg-white">
-        <div className="container py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Book a Call"
-            title="Ready to Grow Your Business?"
-            body="Grab a free 30-minute Insight Audit. We'll review your current challenges, identify opportunities for automation, and map out the steps to unlock faster, smarter growth."
-          />
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="flex justify-center mb-8">
-              <img src="/assets/evan-parra-headshot.png" alt="Evan Parra, a business technology consultant in St. Augustine, FL" className="w-36 h-36 md:w-44 md:h-44 rounded-full shadow-lg object-cover"/>
+    const createCaptcha = () => {
+      const first = Math.floor(Math.random() * 8) + 1;
+      const second = Math.floor(Math.random() * 8) + 1;
+      return { first, second, answer: first + second };
+    };
+
+    const Booking = forwardRef((props, ref) => {
+      const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        description: '',
+        captcha: ''
+      });
+      const [captcha, setCaptcha] = useState(createCaptcha);
+      const [errors, setErrors] = useState({});
+      const [status, setStatus] = useState(null);
+      const [isSubmitting, setIsSubmitting] = useState(false);
+
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: undefined }));
+      };
+
+      const resetForm = () => {
+        setFormData({ name: '', phone: '', email: '', description: '', captcha: '' });
+        setCaptcha(createCaptcha());
+        setErrors({});
+      };
+
+      const validate = () => {
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = 'Please enter your name.';
+        if (!formData.phone.trim()) newErrors.phone = 'Please provide a phone number.';
+        if (!formData.email.trim()) {
+          newErrors.email = 'An email address is required.';
+        } else if (!/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
+          newErrors.email = 'Enter a valid email address.';
+        }
+        if (!formData.description.trim()) newErrors.description = 'Let me know a bit about your project or challenges.';
+        if (!formData.captcha.trim()) {
+          newErrors.captcha = 'Solve the captcha to verify you are human.';
+        } else if (Number.parseInt(formData.captcha, 10) !== captcha.answer) {
+          newErrors.captcha = 'Captcha answer is incorrect. Please try again.';
+          setCaptcha(createCaptcha());
+          setFormData((prev) => ({ ...prev, captcha: '' }));
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+      };
+
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+        setStatus(null);
+
+        if (!validate()) return;
+
+        setIsSubmitting(true);
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/admin@evanparra.ai', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify({
+              Name: formData.name,
+              Phone: formData.phone,
+              Email: formData.email,
+              Description: formData.description
+            })
+          });
+
+          if (!response.ok) throw new Error('Form submission failed');
+
+          setStatus({ type: 'success', message: 'Thanks for reaching out! I will be in touch within one business day.' });
+          resetForm();
+        } catch (error) {
+          console.error(error);
+          setStatus({ type: 'error', message: 'Something went wrong while sending your message. Please try again in a moment or email me directly at admin@evanparra.ai.' });
+        } finally {
+          setIsSubmitting(false);
+        }
+      };
+
+      return (
+        <section ref={ref} id="booking" className="bg-white">
+          <div className="container py-20 md:py-24">
+            <SectionHeading
+              eyebrow="Book a Call"
+              title="Ready to Grow Your Business?"
+              body="Grab a free 30-minute Insight Audit. We'll review your current challenges, identify opportunities for automation, and map out the steps to unlock faster, smarter growth."
+            />
+            <div className="max-w-4xl mx-auto">
+              <div className="flex justify-center mb-10">
+                <img
+                  src="/assets/evan-parra-headshot.png"
+                  alt="Evan Parra, a business technology consultant in St. Augustine, FL"
+                  className="w-36 h-36 md:w-44 md:h-44 rounded-full shadow-lg object-cover"
+                />
+              </div>
+              <div className="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+                <div className="max-w-2xl mx-auto text-center mb-8">
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Tell Me About Your Project</h3>
+                  <p className="text-lg text-slate-600">
+                    I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Share a few details below and I'll follow up to schedule your free consultation.
+                  </p>
+                </div>
+                <form className="grid gap-6" onSubmit={handleSubmit} noValidate>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="name" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Name</label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.name ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="Jane Smith"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                    />
+                    {errors.name && (
+                      <p id="name-error" className="text-sm text-red-600">{errors.name}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="phone" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.phone ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="(904) 555-1234"
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
+                    />
+                    {errors.phone && (
+                      <p id="phone-error" className="text-sm text-red-600">{errors.phone}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="email" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.email ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="you@yourcompany.com"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                    {errors.email && (
+                      <p id="email-error" className="text-sm text-red-600">{errors.email}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="description" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Project Details</label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows="4"
+                      value={formData.description}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.description ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="Tell me about your current challenges or what you'd like to accomplish."
+                      aria-invalid={Boolean(errors.description)}
+                      aria-describedby={errors.description ? 'description-error' : undefined}
+                    ></textarea>
+                    {errors.description && (
+                      <p id="description-error" className="text-sm text-red-600">{errors.description}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="captcha" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Spam Check</label>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <div className="flex-1">
+                        <input
+                          id="captcha"
+                          name="captcha"
+                          type="text"
+                          inputMode="numeric"
+                          value={formData.captcha}
+                          onChange={handleChange}
+                          className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.captcha ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                          placeholder={`${captcha.first} + ${captcha.second} = ?`}
+                          aria-invalid={Boolean(errors.captcha)}
+                          aria-describedby={errors.captcha ? 'captcha-error' : undefined}
+                        />
+                      </div>
+                      <div className="text-sm font-semibold text-slate-700 whitespace-nowrap">
+                        {captcha.first} + {captcha.second} = ?
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCaptcha(createCaptcha());
+                          setFormData((prev) => ({ ...prev, captcha: '' }));
+                        }}
+                        className="text-sm font-semibold text-blue-700 hover:text-blue-900"
+                      >
+                        Refresh
+                      </button>
+                    </div>
+                    {errors.captcha && (
+                      <p id="captcha-error" className="text-sm text-red-600">{errors.captcha}</p>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-lg shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 disabled:opacity-70 disabled:cursor-not-allowed"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Sending...' : 'Submit My Request'}
+                    </button>
+                    <p className="text-sm text-slate-500 text-center">
+                      I respect your privacy. Your details will only be used to respond to your inquiry.
+                    </p>
+                    {status && (
+                      <p
+                        className={`text-sm text-center font-medium ${status.type === 'success' ? 'text-green-600' : 'text-red-600'}`}
+                        role="status"
+                        aria-live="polite"
+                      >
+                        {status.message}
+                      </p>
+                    )}
+                  </div>
+                </form>
+              </div>
             </div>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3">Schedule Your Free Consultation</h3>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-              I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Let's find a time to chat about your goals and see how I can help.
-            </p>
-            <a
-              href="https://calendar.app.google/Uuj9MEkJezLX9n8KA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-blue-700 text-white px-8 py-4 rounded-xl hover:bg-blue-800 font-semibold shadow-lg text-lg"
-              onClick={(e) => {
-                // Prevent default so the conversion event fires; callback will redirect
-                e.preventDefault();
-                gtag_report_conversion('https://calendar.app.google/Uuj9MEkJezLX9n8KA');
-              }}
-            >
-              Book My Free Consultation
-            </a>
           </div>
-        </div>
-      </section>
-    ));
+        </section>
+      );
+    });
 
     const Footer = () => (
       <footer className="bg-gray-900 text-white">
