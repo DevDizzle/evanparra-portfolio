@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./public/index.html', './src/**/*.{js,jsx,ts,tsx}'],
+import { type Config } from 'tailwindcss';
+
+const config = {
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
   theme: {
     container: {
       center: true,
@@ -13,4 +14,6 @@ module.exports = {
     }
   },
   plugins: []
-};
+} satisfies Config;
+
+export default config;
