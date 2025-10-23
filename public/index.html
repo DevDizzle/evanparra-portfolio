@@ -306,9 +306,11 @@
     const Booking = forwardRef((props, ref) => {
       const [formData, setFormData] = useState({
         name: '',
+        businessName: '',
         phone: '',
         email: '',
-        description: '',
+        website: '',
+        businessChallenge: '',
         captcha: ''
       });
       const [captcha, setCaptcha] = useState(createCaptcha);
@@ -323,7 +325,15 @@
       };
 
       const resetForm = () => {
-        setFormData({ name: '', phone: '', email: '', description: '', captcha: '' });
+        setFormData({
+          name: '',
+          businessName: '',
+          phone: '',
+          email: '',
+          website: '',
+          businessChallenge: '',
+          captcha: ''
+        });
         setCaptcha(createCaptcha());
         setErrors({});
       };
@@ -331,13 +341,25 @@
       const validate = () => {
         const newErrors = {};
         if (!formData.name.trim()) newErrors.name = 'Please enter your name.';
+        if (!formData.businessName.trim()) newErrors.businessName = 'Please enter your business name.';
         if (!formData.phone.trim()) newErrors.phone = 'Please provide a phone number.';
         if (!formData.email.trim()) {
           newErrors.email = 'An email address is required.';
         } else if (!/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
           newErrors.email = 'Enter a valid email address.';
         }
-        if (!formData.description.trim()) newErrors.description = 'Let me know a bit about your project or challenges.';
+        if (!formData.website.trim()) {
+          newErrors.website = 'Please share your current website URL or let me know if you do not have one yet.';
+        } else {
+          const websiteValue = formData.website.trim();
+          const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/.*)?$/i;
+          if (!urlPattern.test(websiteValue)) {
+            newErrors.website = 'Enter a valid website URL (include https:// if available).';
+          }
+        }
+        if (!formData.businessChallenge.trim()) {
+          newErrors.businessChallenge = 'Tell me about the main challenge you want help with.';
+        }
         if (!formData.captcha.trim()) {
           newErrors.captcha = 'Solve the captcha to verify you are human.';
         } else if (Number.parseInt(formData.captcha, 10) !== captcha.answer) {
@@ -366,9 +388,11 @@
             },
             body: JSON.stringify({
               Name: formData.name,
+              'Business Name': formData.businessName,
               Phone: formData.phone,
               Email: formData.email,
-              Description: formData.description
+              'Current Website': formData.website,
+              'Business Challenge': formData.businessChallenge
             })
           });
 
@@ -388,9 +412,9 @@
         <section ref={ref} id="booking" className="bg-white">
           <div className="container py-20 md:py-24">
             <SectionHeading
-              eyebrow="Book a Call"
-              title="Ready to Grow Your Business?"
-              body="Grab a free 30-minute Insight Audit. We'll review your current challenges, identify opportunities for automation, and map out the steps to unlock faster, smarter growth."
+              eyebrow="Get Started"
+              title="Get Your Free Business Assessment & Quote"
+              body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
             />
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-center mb-10">
@@ -402,9 +426,9 @@
               </div>
               <div className="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
                 <div className="max-w-2xl mx-auto text-center mb-8">
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Tell Me About Your Project</h3>
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Get Your Free Business Assessment & Quote</h3>
                   <p className="text-lg text-slate-600">
-                    I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Share a few details below and I'll follow up to schedule your free consultation.
+                    I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Share a few details below and I'll follow up with your personalized plan and next steps.
                   </p>
                 </div>
                 <form className="grid gap-6" onSubmit={handleSubmit} noValidate>
@@ -423,6 +447,23 @@
                     />
                     {errors.name && (
                       <p id="name-error" className="text-sm text-red-600">{errors.name}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="businessName" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Business Name</label>
+                    <input
+                      id="businessName"
+                      name="businessName"
+                      type="text"
+                      value={formData.businessName}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.businessName ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="St. Augustine Creative Co."
+                      aria-invalid={Boolean(errors.businessName)}
+                      aria-describedby={errors.businessName ? 'business-name-error' : undefined}
+                    />
+                    {errors.businessName && (
+                      <p id="business-name-error" className="text-sm text-red-600">{errors.businessName}</p>
                     )}
                   </div>
                   <div className="grid gap-2 text-left">
@@ -460,20 +501,37 @@
                     )}
                   </div>
                   <div className="grid gap-2 text-left">
-                    <label htmlFor="description" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Project Details</label>
-                    <textarea
-                      id="description"
-                      name="description"
-                      rows="4"
-                      value={formData.description}
+                    <label htmlFor="website" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Current Website</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="url"
+                      value={formData.website}
                       onChange={handleChange}
-                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.description ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
-                      placeholder="Tell me about your current challenges or what you'd like to accomplish."
-                      aria-invalid={Boolean(errors.description)}
-                      aria-describedby={errors.description ? 'description-error' : undefined}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.website ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="https://yourbusiness.com (or type \"No website yet\")"
+                      aria-invalid={Boolean(errors.website)}
+                      aria-describedby={errors.website ? 'website-error' : undefined}
+                    />
+                    {errors.website && (
+                      <p id="website-error" className="text-sm text-red-600">{errors.website}</p>
+                    )}
+                  </div>
+                  <div className="grid gap-2 text-left">
+                    <label htmlFor="businessChallenge" className="text-sm font-semibold text-slate-700 uppercase tracking-wider">Your Business Challenge</label>
+                    <textarea
+                      id="businessChallenge"
+                      name="businessChallenge"
+                      rows="4"
+                      value={formData.businessChallenge}
+                      onChange={handleChange}
+                      className={`block w-full rounded-xl border px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 ${errors.businessChallenge ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-slate-200'}`}
+                      placeholder="What's the biggest challenge holding your business back right now?"
+                      aria-invalid={Boolean(errors.businessChallenge)}
+                      aria-describedby={errors.businessChallenge ? 'business-challenge-error' : undefined}
                     ></textarea>
-                    {errors.description && (
-                      <p id="description-error" className="text-sm text-red-600">{errors.description}</p>
+                    {errors.businessChallenge && (
+                      <p id="business-challenge-error" className="text-sm text-red-600">{errors.businessChallenge}</p>
                     )}
                   </div>
                   <div className="grid gap-2 text-left">
@@ -517,10 +575,10 @@
                       className="inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold text-lg shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-50 disabled:opacity-70 disabled:cursor-not-allowed"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Sending...' : 'Submit My Request'}
+                      {isSubmitting ? 'Sending...' : 'Submit for My Free Plan'}
                     </button>
                     <p className="text-sm text-slate-500 text-center">
-                      I respect your privacy. Your details will only be used to respond to your inquiry.
+                      I'll only use this information to build your tailored plan and follow up about your free assessment.
                     </p>
                     {status && (
                       <p
