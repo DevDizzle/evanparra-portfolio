@@ -479,15 +479,7 @@
       );
     };
 
-    const Services = () => {
-      const offerings = [
-        { icon: 'fa-solid fa-globe', title: 'Local Website Refresh & Hosting', description: 'Launch a mobile-friendly site that tells your St. Johns County story, loads fast, and guides visitors straight to booking or calling your team.' },
-        { icon: 'fa-solid fa-calendar-check', title: 'Online Booking & Contactless Payments', description: 'Connect Stripe, Square, or your POS so clients can schedule and pay without phone tag, keeping your calendar full and cash flow predictable.' },
-        { icon: 'fa-solid fa-diagram-project', title: 'Workflow Automation & Integrations', description: 'Link the tools you already rely on—CRM, email marketing, QuickBooks—to eliminate duplicate data entry and keep every handoff on autopilot.' },
-        { icon: 'fa-solid fa-chart-line', title: 'Executive KPI Dashboards', description: 'Surface the numbers that matter in one place with live dashboards that highlight leads, revenue, and fulfillment so you can make confident decisions.' },
-        { icon: 'fa-solid fa-robot', title: 'AI Playbooks & Team Training', description: 'Teach your staff how to plug AI into daily tasks with step-by-step playbooks and workshops that boost productivity without overwhelming your team.' }
-      ];
-
+    const Services = ({ items = servicesData }) => {
       return (
         <section id="services" className="bg-gray-50">
           <div className="container py-20 md:py-24">
@@ -497,23 +489,28 @@
               body="Whether you need to modernize your online presence, streamline operations, or empower your team, I offer practical solutions tailored to your specific goals."
             />
             <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-              {offerings.map((service) => (
-                <article key={service.title} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow hover:shadow-lg transition-shadow">
-                  <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
-                    <i className={service.icon} aria-hidden="true"></i>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
-                  <p className="text-slate-700 leading-relaxed flex-1">{service.summary}</p>
-                  <Link
-                    to={`/services/${service.slug}`}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-900 transition"
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    Learn More
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                </article>
-              ))}
+              {items.map((service) => {
+                const summary = service.summary || service.description || service.detail?.lead || '';
+                return (
+                  <article key={service.slug || service.title} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow hover:shadow-lg transition-shadow">
+                    <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-4">
+                      {service.icon ? <i className={service.icon} aria-hidden="true"></i> : <span aria-hidden="true">•</span>}
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
+                    {summary && <p className="text-slate-700 leading-relaxed flex-1">{summary}</p>}
+                    {service.slug && (
+                      <Link
+                        to={`/services/${service.slug}`}
+                        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-900 transition"
+                        aria-label={`Learn more about ${service.title}`}
+                      >
+                        Learn More
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    )}
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
