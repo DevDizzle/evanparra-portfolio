@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Business Technology Consultant | St. Augustine, FL | Evan Parra</title>
-  <meta name="description" content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth." />
+  <meta
+    name="description"
+    content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth."
+  />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4DDT4JFSM"></script>
@@ -19,7 +22,7 @@
     function gtag_report_conversion(url) {
       const callback = function () {
         if (typeof url !== 'undefined') {
-          window.open(url, '_blank');
+          window.location = url;
         }
       };
       gtag('event', 'conversion', {
@@ -60,45 +63,37 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.evanparra.ai/" />
   <meta property="og:title" content="Business Technology Consultant | St. Augustine, FL | Evan Parra" />
-  <meta property="og:description" content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth." />
+  <meta
+    property="og:description"
+    content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth."
+  />
   <meta property="og:image" content="https://www.evanparra.ai/assets/evan-parra-og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://www.evanparra.ai/" />
   <meta name="twitter:title" content="Business Technology Consultant | St. Augustine, FL | Evan Parra" />
-  <meta name="twitter:description" content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth." />
+  <meta
+    name="twitter:description"
+    content="Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth."
+  />
   <meta name="twitter:image" content="https://www.evanparra.ai/assets/evan-parra-og-image.png" />
 
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Tailwind (Play CDN; best for dev) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        container: { center: true, padding: '1rem' },
-        extend: {
-          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] }
-        }
-      }
-    }
-  </script>
-
-  <!-- React 18 UMD + Babel -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <style>
-    html, body { height: 100%; }
-    body { font-feature-settings: "rlig" 1, "calt" 1; }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="/assets/tailwind.css" />
 </head>
 <body class="bg-gray-50 text-slate-800 font-sans antialiased">
   <div id="root"></div>
