@@ -137,6 +137,12 @@ export default function BookingForm() {
         type: 'success',
         message: 'Thanks for reaching out! I will be in touch within one business day.'
       });
+      window.gtag?.('event', 'generate_lead', {
+        value: 1,
+        currency: 'USD',
+        event_label: 'booking_form'
+      });
+      window.gtag_report_conversion?.();
       resetForm();
     } catch (error) {
       console.error(error);
