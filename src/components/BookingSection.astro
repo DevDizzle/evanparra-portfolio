@@ -1,14 +1,24 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import BookingForm from './BookingForm';
+
+const phoneNumber = '(904) 615-6418';
+const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
 ---
+
 <section id="booking" class="bg-white">
   <div class="container py-20 md:py-24">
-    <SectionHeading
-      eyebrow="Get Started"
-      title="Get Your Free Business Assessment & Quote"
-      body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
-    />
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+      <SectionHeading
+        eyebrow="Get Started"
+        title="Get Your Free Business Assessment & Quote"
+        body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
+      />
+      <a href={telLink} class="bg-blue-600 text-white rounded-lg px-6 py-4 hover:bg-blue-700 transition-colors text-center whitespace-nowrap flex-shrink-0">
+        <div class="font-bold text-lg leading-tight">{phoneNumber}</div>
+        <div class="text-sm font-semibold leading-tight">Call or Text Now</div>
+      </a>
+    </div>
     <div class="max-w-4xl mx-auto">
       <div class="flex justify-center mb-10">
         <img
@@ -21,7 +31,7 @@ import BookingForm from './BookingForm';
       <div class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
         <div class="max-w-2xl mx-auto text-center mb-8">
           <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
-            Get Your Free Business Assessment & Quote
+            Or, Fill Out The Form Below
           </h3>
           <p class="text-lg text-slate-600">
             I'm a real person, right here in St. Augustine, passionate about helping local businesses succeed. Share a few details below and I'll follow up with your personalized plan and next steps.
