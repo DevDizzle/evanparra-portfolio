@@ -121,6 +121,14 @@ export default function BookingForm() {
       formPayload.append('Current Website', formData.website);
       formPayload.append('Business Challenge', formData.businessChallenge);
       formPayload.append('_captcha', 'false');
+      formPayload.append(
+        '_subject',
+        'New booking request from evanparra.ai'
+      );
+      formPayload.append(
+        '_origin',
+        typeof window !== 'undefined' ? window.location.origin : 'https://evanparra.ai'
+      );
 
       const response = await fetch('https://formsubmit.co/ajax/admin@evanparra.ai', {
         method: 'POST',
@@ -137,13 +145,15 @@ export default function BookingForm() {
       let submissionMessage = 'Thanks for reaching out! I will be in touch within one business day.';
 
       try {
-        const data: { success?: boolean | string; message?: string } = await response.json();
-        if (data.message) {
-          submissionMessage = data.message;
-        }
-        const wasSuccessful = data.success === true || data.success === 'true';
-        if (!wasSuccessful) {
-          throw new Error(data.message ?? 'Form submission failed');
+        if (response.headers.get('content-type')?.includes('application/json')) {
+          const data: { success?: boolean | string; message?: string } = await response.json();
+          if (data.message) {
+            submissionMessage = data.message;
+          }
+          const wasSuccessful = data.success === true || data.success === 'true';
+          if (!wasSuccessful) {
+            throw new Error(data.message ?? 'Form submission failed');
+          }
         }
       } catch (parseError) {
         // If the response is not JSON or cannot be parsed, assume success because the request completed without errors.
