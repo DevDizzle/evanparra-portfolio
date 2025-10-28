@@ -25,6 +25,9 @@ const otherServices = [
     { url: '/services/process-automation-st-johns-county', title: 'Process Automation in St. Johns County' },
     { url: '/services/ai-assistant-automation-st-augustine', title: 'AI Assistant Automation in St. Augustine' },
 ];
+
+const phoneNumber = '(904) 615-6418';
+const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
 ---
 <BaseLayout title={page.title} description={page.description}>
     <Fragment slot="head">
@@ -111,6 +114,11 @@ const otherServices = [
                 <div class="max-w-2xl mx-auto text-center mb-8">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Book your free assessment</h2>
                     <p class="text-lg text-slate-600 mt-4">Stop guessing and start knowing. Fill out the form below to discuss how a custom KPI dashboard can bring clarity to your business.</p>
+                    <div class="mt-8">
+                        <a href={telLink} class="inline-flex items-center justify-center bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
+                            Call {phoneNumber}
+                        </a>
+                    </div>
                 </div>
                 <BookingForm client:load />
             </div>

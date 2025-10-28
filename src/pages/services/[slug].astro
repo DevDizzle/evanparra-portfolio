@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
-import Footer from '../../components/Footer.astro';
 import type { Service } from '../../data/services';
 import { services } from '../../data/services';
 
@@ -22,6 +21,9 @@ const navItems = [
   { label: 'View All Services', href: '/#services' },
   { label: 'Free Assessment', href: '/#booking' }
 ];
+
+const phoneNumber = '(904) 615-6418';
+const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
 ---
 <BaseLayout title={pageTitle} description={description}>
   <div class="min-h-screen flex flex-col bg-gray-50">
@@ -32,6 +34,12 @@ const navItems = [
           <p class="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-4">Service Detail</p>
           <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">{service.title}</h1>
           <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-3xl">{service.detail.lead}</p>
+          <div class="mt-8">
+            <a href={telLink} class="font-bold text-2xl md:text-3xl text-slate-900 hover:text-blue-600 transition-colors">
+                Call {phoneNumber}
+            </a>
+            <p class="text-slate-600 mt-1">to discuss your project</p>
+          </div>
         </div>
       </section>
       <section class="bg-gray-50">
@@ -88,16 +96,22 @@ const navItems = [
           </div>
           <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-lg text-center">
             <p class="text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">{service.detail.closing}</p>
-            <a
-              href="/#booking"
-              class="mt-6 inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-            >
-              Book a Free Assessment
-            </a>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a
+                href="/#booking"
+                class="inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                Book a Free Assessment
+                </a>
+                <div>
+                    <a href={telLink} class="font-bold text-xl text-slate-900 hover:text-blue-600 transition-colors">
+                        Or call {phoneNumber}
+                    </a>
+                </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <Footer />
   </div>
 </BaseLayout>
