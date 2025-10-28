@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const caseStudy = {
+  location: "St. Augustine Med Spa",
+  headline: "Automated Booking & Reminders Cut No-Shows by 28%",
+  problem: "The front desk was manually calling to confirm every appointment, taking hours each day. Slow responses to web inquiries meant losing potential high-value clients.",
+  fix: "We implemented an AI-powered assistant that automatically confirms bookings and answers common questions online. It also instantly follows up with new leads via SMS and email.",
+  outcome: "In the first month, patient no-shows dropped by 28%, and the spa booked 15 extra high-value consultations directly from the automated follow-ups.",
+  testimonial: "It’s like having an extra team member who works 24/7. Our staff is less stressed, and we’re booking more clients than ever from our website.",
+  author: "Jessica, Spa Manager",
+};
+
+const page = {
+    title: `${caseStudy.headline} | Case Study`,
+    description: `See how we helped a ${caseStudy.location} reduce no-shows and increase bookings with AI automation.`
+}
+---
+<BaseLayout title={page.title} description={page.description}>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-3xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <p class="mt-4 font-semibold text-blue-600">{caseStudy.location}</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">{caseStudy.headline}</h1>
+
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">The Problem</h2>
+                    <p>{caseStudy.problem}</p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">The Fix</h2>
+                    <p>{caseStudy.fix}</p
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-green-700">The Outcome</h2>
+                    <p>{caseStudy.outcome}</p>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">What The Client Said</h2>
+                <blockquote class="text-xl italic text-slate-600 bg-slate-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                    <p>"{caseStudy.testimonial}"</p>
+                </blockquote>
+                <cite class="block text-right font-semibold text-slate-800 mt-4 not-italic">- {caseStudy.author}</cite>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a href="/services/process-automation-st-johns-county" class="font-semibold text-blue-600 hover:underline">
+                Want results like this in St. Johns County? Start here &rarr;
+              </a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

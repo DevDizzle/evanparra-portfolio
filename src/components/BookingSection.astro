@@ -8,26 +8,20 @@ const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
 
 <section id="booking" class="bg-white">
   <div class="container py-20 md:py-24">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
       <SectionHeading
         eyebrow="Get Started"
         title="Get Your Free Business Assessment & Quote"
         body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
       />
-      <a href={telLink} class="bg-blue-600 text-white rounded-lg px-6 py-4 hover:bg-blue-700 transition-colors text-center whitespace-nowrap flex-shrink-0">
-        <div class="font-bold text-lg leading-tight">{phoneNumber}</div>
-        <div class="text-sm font-semibold leading-tight">Call or Text Now</div>
-      </a>
+      <div class="text-center md:text-right flex-shrink-0">
+        <a href={telLink} class="font-bold text-2xl md:text-3xl text-slate-900 hover:text-blue-600 transition-colors">
+            {phoneNumber}
+        </a>
+        <p class="text-slate-600 mt-1">Evan Parra, St. Augustine FL</p>
+      </div>
     </div>
     <div class="max-w-4xl mx-auto">
-      <div class="flex justify-center mb-10">
-        <img
-          src="/assets/evan-parra-headshot.png"
-          alt="Evan Parra, a business technology consultant in St. Augustine, FL"
-          class="w-36 h-36 md:w-44 md:h-44 rounded-full shadow-lg object-cover"
-          loading="lazy"
-        />
-      </div>
       <div class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
         <div class="max-w-2xl mx-auto text-center mb-8">
           <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">

@@ -1,0 +1,104 @@
+---
+const caseStudies = [
+  {
+    slug: "st-augustine-med-spa-automation",
+    location: "St. Augustine Med Spa",
+    headline: "Automated Booking & Reminders Cut No-Shows by 28%",
+    problem: "The front desk was manually calling to confirm every appointment, taking hours each day. Slow responses to web inquiries meant losing potential high-value clients.",
+    fix: "We implemented an AI-powered assistant that automatically confirms bookings and answers common questions online. It also instantly follows up with new leads via SMS and email.",
+    outcome: "In the first month, patient no-shows dropped by 28%, and the spa booked 15 extra high-value consultations directly from the automated follow-ups.",
+    testimonial: "It’s like having an extra team member who works 24/7. Our staff is less stressed, and we’re booking more clients than ever from our website.",
+    author: "Jessica, Spa Manager",
+    reviewSchema: {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Jessica, Spa Manager"
+      },
+      "reviewBody": "It’s like having an extra team member who works 24/7. Our staff is less stressed, and we’re booking more clients than ever from our website.",
+      "itemReviewed": {
+        "@type": "ProfessionalService",
+        "name": "AI Assistant & Automation Setup",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Evan Parra – Business Technology Consultant"
+        }
+      }
+    }
+  },
+  {
+    slug: "ponte-vedra-home-services-website",
+    location: "Ponte Vedra Home Services",
+    headline: "New Website Drives 40% Increase in Online Bookings",
+    problem: "An outdated, slow website wasn\'t mobile-friendly and had no online booking. They were losing customers to competitors with better online experiences.",
+    fix: "We built a fast, modern website focused on mobile users, with an integrated booking system that syncs directly with their scheduling software.",
+    outcome: "They saw a 40% increase in online bookings within two months and began ranking higher in local search for their key services in the Ponte Vedra area.",
+    testimonial: "Our new website is a game-changer. Evan made it so easy for customers to book with us, and we\'re finally competing with the bigger companies in the area.",
+    author: "David, Owner",
+    reviewSchema: {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "David, Owner"
+      },
+      "reviewBody": "Our new website is a game-changer. Evan made it so easy for customers to book with us, and we\'re finally competing with the bigger companies in the area.",
+      "itemReviewed": {
+        "@type": "ProfessionalService",
+        "name": "Small Business Web Design",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Evan Parra – Business Technology Consultant"
+        }
+      }
+    }
+  }
+];
+---
+
+<div id="local-wins" class="py-12 md:py-20 bg-slate-100">
+  <div class="container">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900">Local Wins</h2>
+      <p class="text-lg text-slate-600 mt-4">
+        I partner with local businesses to solve real problems. Here’s how I’ve helped others in our community.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      {caseStudies.map(study => (
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-md">
+          <p class="font-semibold text-blue-600">{study.location}</p>
+          <h3 class="text-2xl font-bold text-slate-900 mt-2">
+            <a href={`/case-studies/${study.slug}`} class="hover:text-blue-700 transition-colors">{study.headline}</a>
+          </h3>
+          
+          <div class="mt-4 space-y-4 text-slate-700">
+              <p><strong class="font-semibold text-slate-800">Problem:</strong> {study.problem}</p>
+              <p><strong class="font-semibold text-slate-800">Fix:</strong> {study.fix}</p>
+              <p><strong class="font-semibold text-green-700">Outcome:</strong> {study.outcome}</p>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-slate-200">
+            <blockquote class="text-slate-600 italic">
+              <p>"{study.testimonial}"</p>
+            </blockquote>
+            <cite class="block text-right font-semibold text-slate-800 mt-2 not-italic">- {study.author}</cite>
+          </div>
+          
+          <script type="application/ld+json" set:html={JSON.stringify(study.reviewSchema)} />
+        </div>
+      ))}
+    </div>
+    
+  </div>
+</div>

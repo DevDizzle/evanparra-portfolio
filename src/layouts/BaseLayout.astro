@@ -1,49 +1,30 @@
----
-import '../styles/global.css';
-
-export interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
+--- 
+ interface Props {
+  title: string;
+  description: string;
 }
 
-const defaultTitle = 'Business Technology Consultant | St. Augustine, FL | Evan Parra';
-const defaultDescription =
-  'Evan Parra partners with St. Johns County businesses to launch modern websites, automate workflows, and turn data into decisions—tech that fuels local growth.';
-const defaultOgImage = '/assets/evan-parra-og-image.png';
-
-const {
-  title = defaultTitle,
-  description = defaultDescription,
-  ogImage = defaultOgImage
-} = Astro.props as Props;
-
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
-const ogImageUrl = Astro.site ? new URL(ogImage, Astro.site).toString() : ogImage;
+const { title, description } = Astro.props;
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Evan Parra - Business Technology Consulting',
+  '@type': 'ProfessionalService',
+  name: 'Evan Parra – Business Technology Consultant',
   description:
-    'A Business Technologist providing practical tech solutions, including web development, process automation, and data insights for local businesses in St. Johns County.',
-  url: 'https://www.evanparra.ai/',
+    'I help St. Johns County businesses automate workflows, integrate payments/booking, build high-converting websites, and see their numbers clearly.',
+  url: 'https://evanparra.ai',
   telephone: '+19046156418',
   email: 'admin@evanparra.ai',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'St. Augustine',
-    addressRegion: 'FL',
-    addressCountry: 'US'
-  },
   areaServed: [
-    { '@type': 'City', name: 'St. Augustine' },
-    { '@type': 'City', name: 'Nocatee' },
-    { '@type': 'City', name: 'Ponte Vedra' },
-    { '@type': 'AdministrativeArea', name: 'St. Johns County' }
-  ]
+    'St. Augustine FL',
+    'St. Johns County FL',
+    'Ponte Vedra FL',
+    'Nocatee FL'
+  ],
+  sameAs: ['https://www.linkedin.com/in/evanparra']
 };
 ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,60 +32,32 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="canonical" href={Astro.url.href} />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical ?? 'https://www.evanparra.ai/'} />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- OpenGraph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image" content="/assets/evan-parra-og-image.png" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonical ?? 'https://www.evanparra.ai/'} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/58a6f7883b.js"
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    ></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4DDT4JFSM"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-E4DDT4JFSM');
-      gtag('config', 'AW-17649812451');
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-      window.gtag_report_conversion = function (url) {
-        const callback = function () {
-          if (typeof url !== 'undefined') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion', {
-          send_to: 'AW-17649812451/6QsECOjn0awbEOOHi-BB',
-          value: 1.0,
-          currency: 'USD',
-          event_callback: callback
-        });
-      };
-    </script>
-
-    <script type="application/ld+json" is:inline>{JSON.stringify(structuredData)}</script>
+    <slot name="head" />
   </head>
-  <body class="bg-gray-50 text-slate-800 font-sans antialiased">
+  <body class="bg-slate-50 text-slate-900 font-sans leading-normal">
     <slot />
+
+    <style is:global>
+      /* Your global styles here */
+    </style>
   </body>
 </html>

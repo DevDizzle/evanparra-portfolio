@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const caseStudy = {
+  location: "Ponte Vedra Home Services",
+  headline: "New Website Drives 40% Increase in Online Bookings",
+  problem: "An outdated, slow website wasn't mobile-friendly and had no online booking. They were losing customers to competitors with better online experiences.",
+  fix: "We built a fast, modern website focused on mobile users, with an integrated booking system that syncs directly with their scheduling software.",
+  outcome: "They saw a 40% increase in online bookings within two months and began ranking higher in local search for their key services in the Ponte Vedra area.",
+  testimonial: "Our new website is a game-changer. Evan made it so easy for customers to book with us, and we're finally competing with the bigger companies in the area.",
+  author: "David, Owner",
+};
+
+const page = {
+    title: `${caseStudy.headline} | Case Study`,
+    description: `See how we helped a ${caseStudy.location} increase online bookings by 40% with a new website.`
+}
+---
+<BaseLayout title={page.title} description={page.description}>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-3xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <p class="mt-4 font-semibold text-blue-600">{caseStudy.location}</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">{caseStudy.headline}</h1>
+
+            <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">The Problem</h2>
+                    <p>{caseStudy.problem}</p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">The Fix</h2>
+                    <p>{caseStudy.fix}</p>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-green-700">The Outcome</h2>
+                    <p>{caseStudy.outcome}</p>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-200">
+                <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">What The Client Said</h2>
+                <blockquote class="text-xl italic text-slate-600 bg-slate-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                    <p>"{caseStudy.testimonial}"</p>
+                </blockquote>
+                <cite class="block text-right font-semibold text-slate-800 mt-4 not-italic">- {caseStudy.author}</cite>
+            </div>
+
+            <div class="mt-12 text-center">
+              <a href="/services/web-design-st-augustine" class="font-semibold text-blue-600 hover:underline">
+                Want results like this in St. Augustine? Start here &rarr;
+              </a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

@@ -1,34 +1,36 @@
 ---
-import SectionHeading from './SectionHeading.astro';
 import type { Service } from '../data/services';
+import SectionHeading from './SectionHeading.astro';
 
-const { services } = Astro.props as { services: Service[] };
+interface Props {
+  services: Service[];
+}
+
+const { services } = Astro.props;
 ---
-<section id="services" class="bg-gray-50">
-  <div class="container py-20 md:py-24">
+
+<section id="services" class="py-12 md:py-20">
+  <div class="container">
     <SectionHeading
-      eyebrow="Services"
-      title="Practical Solutions for Local Businesses"
-      body="Strategy, implementation, and automation tailored to St. Augustine and St. Johns County organizations that need a trusted partner to modernize operations."
+      title="What I Solve For St. Johns County Businesses"
+      subtitle="From chasing invoices to guessing your marketing ROI, I build systems that fix the most common (and costly) operational headaches."
     />
-    <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
       {services.map((service) => (
-        <article class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 flex flex-col" key={service.slug}>
+        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all">
           <div class="flex items-center gap-4">
-            <div class="h-12 w-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl">
-              <i class={service.icon} aria-hidden="true"></i>
+            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center">
+              <i class={`${service.icon} text-xl`}></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900">{service.title}</h3>
+            <h3 class="text-xl font-bold text-slate-800">{service.title}</h3>
           </div>
-          {service.summary && <p class="mt-4 text-slate-700 leading-relaxed flex-1">{service.summary}</p>}
-          <a
-            href={`/services/${service.slug}/`}
-            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800"
-          >
-            Learn More
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
+          <p class="text-slate-600 mt-4">{service.summary}</p>
+          <div class="mt-6">
+            <a href={`/services/${service.slug}`} class="font-semibold text-blue-600 hover:underline">
+              See how it works &rarr;
+            </a>
+          </div>
+        </div>
       ))}
     </div>
   </div>

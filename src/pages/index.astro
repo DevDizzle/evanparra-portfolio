@@ -3,27 +3,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Hero from '../components/Hero.astro';
 import ServicesSection from '../components/ServicesSection.astro';
+import LocalWins from '../components/LocalWins.astro';
 import BookingSection from '../components/BookingSection.astro';
-import CaseStudiesSection from '../components/CaseStudiesSection.astro';
-import PostCaseStudiesCta from '../components/PostCaseStudiesCta.astro';
 import Footer from '../components/Footer.astro';
-import { caseStudies } from '../data/caseStudies';
 import { services } from '../data/services';
+
+const page = {
+    title: "Business Technology Consultant | St. Augustine, FL",
+    description: "I help St. Johns County businesses automate workflows, integrate payments/booking, build high-converting websites, and see their numbers clearly."
+}
 
 const navItems = [
   { label: 'Services', href: '#services' },
-  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Local Wins', href: '#local-wins' },
   { label: 'Free Assessment', href: '#booking' }
 ];
 ---
-<BaseLayout>
+<BaseLayout title={page.title} description={page.description}>
   <SiteHeader navItems={navItems} />
   <Hero />
   <main>
     <ServicesSection services={services} />
+    <LocalWins />
     <BookingSection />
-    <CaseStudiesSection items={caseStudies} />
-    <PostCaseStudiesCta />
   </main>
   <Footer />
 </BaseLayout>

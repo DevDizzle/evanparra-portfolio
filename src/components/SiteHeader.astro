@@ -1,50 +1,15 @@
 ---
-export interface NavItem {
-  label: string;
-  href: string;
-  external?: boolean;
-}
-
-const { navItems = [] } = Astro.props as { navItems?: NavItem[] };
-const phoneNumber = '(904) 615-6418';
-const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
+const navLinks = [
+  { href: '/', text: 'Home' },
+  {
+    text: 'Services',
+    links: [
+      { href: '/services/web-design-st-augustine', text: 'Web Design in St. Augustine' },
+      { href: '/services/process-automation-st-johns-county', text: 'Process Automation in St. Johns County' },
+      { href: '/services/dashboards-reporting-st-augustine', text: 'Custom KPI Dashboards in St. Augustine' },
+      { href: '/services/ai-assistant-automation-st-augustine', text: 'AI Assistant Automation in St. Augustine' },
+    ],
+  },
+  { href: '/contact', text: 'Contact' },
+];
 ---
-<header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
-  <div class="container py-3 flex items-center justify-between">
-    <a href="/" class="text-lg font-extrabold text-slate-900 tracking-tight">
-      Evan Parra
-    </a>
-    <div class="flex items-center gap-4">
-      {navItems.length ? (
-        <nav class="hidden md:flex items-center gap-5">
-          {navItems.map((item) => (
-            <a
-              href={item.href}
-              class="text-base font-semibold text-slate-700 transition hover:text-slate-900 md:text-sm"
-              target={item.external ? '_blank' : undefined}
-              rel={item.external ? 'noopener noreferrer' : undefined}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      ) : null}
-
-      <!-- Desktop Button -->
-      <div class="hidden md:flex">
-        <a href={telLink} class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition-colors text-center">
-          <div class="font-bold text-base leading-tight">{phoneNumber}</div>
-          <div class="text-xs font-semibold leading-tight">Book Free Call</div>
-        </a>
-      </div>
-
-      <!-- Mobile Button -->
-      <div class="md:hidden flex items-center">
-        <a href={telLink} class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition-colors text-center">
-            <div class="font-semibold text-sm leading-tight">{phoneNumber}</div>
-            <div class="text-xs leading-tight">Call or Text</div>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>

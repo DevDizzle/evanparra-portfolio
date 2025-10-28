@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BookingForm from '../../components/BookingForm';
+
+const page = {
+  title: 'Workflow & Process Automation in St. Johns County | Evan Parra',
+  description: 'I help St. Johns County businesses stop wasting time on manual tasks like invoicing and data entry so they can get paid faster and reduce admin headaches. Let\'s automate your workflow.',
+};
+
+const serviceData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Workflow Automation for Small Businesses',
+    areaServed: 'St. Johns County, FL',
+    provider: {
+        '@type': 'ProfessionalService',
+        name: 'Evan Parra – Business Technology Consultant',
+        url: 'https://evanparra.ai'
+    }
+};
+
+const otherServices = [
+    { url: '/services/web-design-st-augustine', title: 'Web Design in St. Augustine' },
+    { url: '/services/dashboards-reporting-st-augustine', title: 'Custom KPI Dashboards in St. Augustine' },
+    { url: '/services/ai-assistant-automation-st-augustine', title: 'AI Assistant Automation in St. Augustine' },
+];
+---
+<BaseLayout title={page.title} description={page.description}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify(serviceData)} />
+    </Fragment>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-6">Workflow & Process Automation for St. Johns County Businesses</h1>
+            <p class="text-lg text-slate-600 mb-8">
+                Are you drowning in administrative tasks? Manual invoicing, duplicate data entry across different systems, and missed client follow-ups are silent profit killers. For many St. Johns County businesses, these small tasks add up to hours of wasted time and costly mistakes. I build automated workflows that get you paid faster, eliminate tedious admin work, and ensure you never let a lead slip through the cracks.
+            </p>
+
+            <!-- Problems vs Outcomes Block -->
+            <div class="grid md:grid-cols-2 gap-8 bg-slate-50 p-8 rounded-2xl border border-slate-200 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Common Problems</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Manually creating and sending invoices</li>
+                        <li>Copying and pasting customer data</li>
+                        <li>Forgetting to follow up with leads</li>
+                        <li>Important tasks get missed</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-green-700 mb-3">The Outcome</h3>
+                    <ul class="list-disc list-inside text-green-600 space-y-1">
+                        <li>Invoices are sent automatically, you get paid faster</li>
+                        <li>Data is entered once and syncs everywhere</li>
+                        <li>Automated follow-ups convert more leads</li>
+                        <li class="font-semibold">Fewer mistakes, less admin, more profit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="/case-studies/st-augustine-med-spa-automation" class="font-semibold text-blue-600 hover:underline">
+              See real local example &rarr;
+            </a>
+
+            <!-- Who I Help -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Who I Help</h2>
+                <p class="text-slate-600 mb-6">I work with service-based businesses in St. Johns County that are ready to grow smarter, including:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Home Service Providers</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Construction & Trades</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Legal & Professional Services</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Healthcare & Clinics</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Consulting Agencies</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Field Service Businesses</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Is this only for large companies?</h3>
+                        <p class="text-slate-600">Not at all. The biggest wins often come for small to medium-sized businesses where the owner is still heavily involved. My solutions are tailored to your specific size and needs in St. Johns County.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">What software do you use?</h3>
+                        <p class="text-slate-600">I use a variety of modern, reliable tools like Zapier, Make.com, and custom scripts to connect the software you already use. The goal is a seamless system, not another login to manage.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Will this replace my existing tools?</h3>
+                        <p class="text-slate-600">Usually not. The goal of process automation is to make your existing tools (like your CRM, accounting software, and email) work together more efficiently. It bridges the gaps between them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+             <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Other Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {otherServices.map(service => (
+                        <a href={service.url} class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="font-semibold text-blue-600">{service.title}</h3>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Book your free assessment</h2>
+                    <p class="text-lg text-slate-600 mt-4">Let's find the bottlenecks in your business. Fill out the form below, and I’ll create a custom automation plan to save you time and money.</p>
+                </div>
+                <BookingForm client:load />
+            </div>
+        </div>
+    </div>
+</BaseLayout>

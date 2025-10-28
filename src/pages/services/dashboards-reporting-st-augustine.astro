@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BookingForm from '../../components/BookingForm';
+
+const page = {
+  title: 'Custom KPI Dashboards in St. Augustine, FL | Evan Parra',
+  description: 'Tired of guessing? I build custom KPI dashboards for St. Augustine owners to see jobs booked, unpaid invoices, and real-time profit in plain English. Make data-driven decisions.',
+};
+
+const serviceData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Custom KPI Dashboards',
+    areaServed: 'St. Augustine, FL',
+    provider: {
+        '@type': 'ProfessionalService',
+        name: 'Evan Parra – Business Technology Consultant',
+        url: 'https://evanparra.ai'
+    }
+};
+
+const otherServices = [
+    { url: '/services/web-design-st-augustine', title: 'Web Design in St. Augustine' },
+    { url: '/services/process-automation-st-johns-county', title: 'Process Automation in St. Johns County' },
+    { url: '/services/ai-assistant-automation-st-augustine', title: 'AI Assistant Automation in St. Augustine' },
+];
+---
+<BaseLayout title={page.title} description={page.description}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify(serviceData)} />
+    </Fragment>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-6">Custom KPI Dashboards for St. Augustine Owners</h1>
+            <p class="text-lg text-slate-600 mb-8">
+                Do you know your business numbers, right now? As a St. Augustine business owner, you need to see what's working and what isn't, without digging through spreadsheets. I build custom KPI (Key Performance Indicator) dashboards that give you a real-time, plain-English view of your most important metrics. See jobs booked, unpaid invoices, profit margins, and marketing ROI at a glance, so you can make smart, data-driven decisions.
+            </p>
+
+            <!-- Plain English Metrics Block -->
+            <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Your Business, In Plain English</h2>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm">
+                        <p class="text-4xl font-extrabold text-blue-600">17</p>
+                        <p class="font-semibold text-slate-700">New Jobs Booked This Month</p>
+                    </div>
+                    <div class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm">
+                        <p class="text-4xl font-extrabold text-red-600">$12,450</p>
+                        <p class="font-semibold text-slate-700">In Unpaid Invoices</p>
+                    </div>
+                    <div class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm">
+                        <p class="text-4xl font-extrabold text-green-700">$28,900</p>
+                        <p class="font-semibold text-slate-700">Profit Last 30 Days</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/case-studies/st-augustine-med-spa-automation" class="font-semibold text-blue-600 hover:underline">
+              See real local example &rarr;
+            </a>
+
+            <!-- Who I Help -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Who I Help</h2>
+                <p class="text-slate-600 mb-6">I create these custom dashboards for busy owners in St. Augustine who want clarity on their numbers:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Home Service Companies</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Marketing Agencies</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Retail Shops</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Health & Wellness Clinics</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Professional Services</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Anyone data-curious!</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Where does the data come from?</h3>
+                        <p class="text-slate-600">Your dashboard connects securely to the tools you already use, like QuickBooks, your CRM, Google Analytics, and more. It pulls all the data together into one simple view.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Is this hard to use?</h3>
+                        <p class="text-slate-600">No. The entire point is to make your data easy to understand. It’s a single, secure webpage you can check from your phone or computer. If you can check the weather, you can use this.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Can you track custom metrics for my St. Augustine business?</h3>
+                        <p class="text-slate-600">Yes, absolutely. We'll work together to identify the key numbers that matter most to your business, and I'll build a dashboard that tracks them perfectly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+             <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Other Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {otherServices.map(service => (
+                        <a href={service.url} class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="font-semibold text-blue-600">{service.title}</h3>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Book your free assessment</h2>
+                    <p class="text-lg text-slate-600 mt-4">Stop guessing and start knowing. Fill out the form below to discuss how a custom KPI dashboard can bring clarity to your business.</p>
+                </div>
+                <BookingForm client:load />
+            </div>
+        </div>
+    </div>
+</BaseLayout>

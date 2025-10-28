@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BookingForm from '../../components/BookingForm';
+
+const page = {
+  title: 'Small Business Web Design in St. Augustine, FL | Evan Parra',
+  description: 'I build fast, mobile-friendly websites for St. Augustine businesses that capture leads, book appointments, and process payments. Get a site that works as hard as you do.',
+};
+
+const serviceData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Web Design for Small Businesses',
+    areaServed: 'St. Augustine, FL',
+    provider: {
+        '@type': 'ProfessionalService',
+        name: 'Evan Parra – Business Technology Consultant',
+        url: 'https://evanparra.ai'
+    }
+};
+
+const otherServices = [
+    { url: '/services/process-automation-st-johns-county', title: 'Process Automation in St. Johns County' },
+    { url: '/services/dashboards-reporting-st-augustine', title: 'Custom KPI Dashboards in St. Augustine' },
+    { url: '/services/ai-assistant-automation-st-augustine', title: 'AI Assistant Automation in St. Augustine' },
+];
+---
+<BaseLayout title={page.title} description={page.description}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify(serviceData)} />
+    </Fragment>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-6">Small Business Web Design in St. Augustine, FL</h1>
+            <p class="text-lg text-slate-600 mb-8">
+                Is your website working for you? In a town that thrives on tourism and local traffic, your site needs to be more than just a digital brochure. It needs to be a 24/7 lead-generating machine. I build fast, mobile-first websites for St. Augustine businesses that capture leads, integrate with your booking and payment systems, and make it effortless for customers to choose you.
+            </p>
+
+            <!-- Before vs After Block -->
+            <div class="grid md:grid-cols-2 gap-8 bg-slate-50 p-8 rounded-2xl border border-slate-200 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Before</h3>
+                    <ul class="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Website was slow and outdated</li>
+                        <li>Poor experience on mobile devices</li>
+                        <li>No online booking or payment options</li>
+                        <li>Very few leads from the website</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-green-700 mb-3">After</h3>
+                    <ul class="list-disc list-inside text-green-600 space-y-1">
+                        <li>Loads instantly on any device</li>
+                        <li>Seamless mobile experience</li>
+                        <li>Customers book and pay online</li>
+                        <li class="font-semibold">50% increase in qualified leads</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="/case-studies/ponte-vedra-home-services-website" class="font-semibold text-blue-600 hover:underline">
+              See real local example &rarr;
+            </a>
+
+            <!-- Who I Help -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Who I Help</h2>
+                <p class="text-slate-600 mb-6">I specialize in helping local service-based businesses in the St. Augustine area, including:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Med Spas</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Home Services</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Medical Clinics</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Restaurants</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Boutique Hotels</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Tour Operators</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-slate-800">How much does a new website cost?</h3>
+                        <p class="text-slate-600">It depends on your specific needs. I focus on providing value and a positive return on your investment. After a brief chat, I can give you a fixed, transparent quote.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">How long does the process take?</h3>
+                        <p class="text-slate-600">Typically, a new website is ready in 4-6 weeks, from our initial strategy session to launch day. More complex projects might take longer.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Do you only work with St. Augustine businesses?</h3>
+                        <p class="text-slate-600">While I'm passionate about helping my local St. Augustine community, I can partner with businesses anywhere. The web has no boundaries!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+             <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Other Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {otherServices.map(service => (
+                        <a href={service.url} class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="font-semibold text-blue-600">{service.title}</h3>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+                 <div class="max-w-2xl mx-auto text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Book Your Free Assessment</h2>
+                    <p class="text-lg text-slate-600 mt-4">Ready to get a website that grows your business? Fill out the form below, and I'll follow up to schedule your free, no-obligation assessment.</p>
+                </div>
+                <BookingForm client:load />
+            </div>
+        </div>
+    </div>
+</BaseLayout>

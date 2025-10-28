@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import BookingForm from '../../components/BookingForm';
+
+const page = {
+  title: 'AI Assistant & Automation Setup in St. Augustine, FL | Evan Parra',
+  description: 'I set up AI assistants for St. Augustine businesses that act like an extra employee—following up on leads, answering questions, and scheduling appointments, so you never miss an opportunity.',
+};
+
+const serviceData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'AI Assistant & Automation Setup',
+    areaServed: 'St. Augustine, FL',
+    provider: {
+        '@type': 'ProfessionalService',
+        name: 'Evan Parra – Business Technology Consultant',
+        url: 'https://evanparra.ai'
+    }
+};
+
+const otherServices = [
+    { url: '/services/web-design-st-augustine', title: 'Web Design in St. Augustine' },
+    { url: '/services/process-automation-st-johns-county', title: 'Process Automation in St. Johns County' },
+    { url: '/services/dashboards-reporting-st-augustine', title: 'Custom KPI Dashboards in St. Augustine' },
+];
+---
+<BaseLayout title={page.title} description={page.description}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify(serviceData)} />
+    </Fragment>
+    <div class="container py-12 md:py-20">
+        <div class="max-w-4xl mx-auto">
+            <a href="/" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">&larr; Back to Home</a>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-6">AI Assistant & Automation Setup in St. Augustine, FL</h1>
+            <p class="text-lg text-slate-600 mb-8">
+                Imagine having an extra employee, one who never forgets to follow up, works 24/7, and instantly responds to every new lead. That's what a custom AI assistant can do for your St. Augustine business. I'll set up an AI-powered system that seamlessly integrates with your website and CRM to nurture leads, answer common questions, and schedule appointments, ensuring you capture every opportunity, even when you're busy.
+            </p>
+
+            <!-- Your Extra Employee Block -->
+            <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 text-center mb-6">Your Extra Employee That Never Sleeps</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-slate-700">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Responds to website inquiries instantly</li>
+                        <li>Follows up with every lead via email or SMS</li>
+                        <li>Answers frequently asked questions automatically</li>
+                        <li>Books qualified leads directly on your calendar</li>
+                    </ul>
+                     <ul class="list-disc list-inside space-y-2">
+                        <li>Works 24/7, even on weekends and holidays</li>
+                        <li>Never forgets a task or a follow-up</li>
+                        <li>Frees you up to focus on high-value work</li>
+                        <li class="font-semibold">Captures leads you would have missed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="/case-studies/st-augustine-med-spa-automation" class="font-semibold text-blue-600 hover:underline">
+              See real local example &rarr;
+            </a>
+
+            <!-- Who I Help -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Who I Help</h2>
+                <p class="text-slate-600 mb-6">This is a game-changer for St. Augustine businesses that rely on a steady flow of new leads:</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Med Spas & Salons</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Home Service Contractors</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Real Estate Agents</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Insurance Agencies</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Gyms & Fitness Studios</div>
+                    <div class="bg-white p-4 border border-slate-200 rounded-lg shadow-sm">Professional Services</div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Will this sound like a robot?</h3>
+                        <p class="text-slate-600">No. I'll tailor the AI's communication style to match your brand's voice, so it sounds natural and helpful. The goal is to be efficient, not robotic.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Is it complicated to manage?</h3>
+                        <p class="text-slate-600">Not at all. I handle the entire setup and integration. You just see the results: more qualified appointments on your calendar and a clear log of all communications.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800">Can the AI handle my specific business questions?</h3>
+                        <p class="text-slate-600">Yes. We will train the AI on a knowledge base specific to your business in St. Augustine, so it can answer questions about your services, pricing, and availability accurately.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+             <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Other Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {otherServices.map(service => (
+                        <a href={service.url} class="bg-white p-6 border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <h3 class="font-semibold text-blue-600">{service.title}</h3>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Book your free assessment</h2>
+                    <p class="text-lg text-slate-600 mt-4">Ready to put your lead generation on autopilot? Fill out the form below to see how an AI assistant can work for your business.</p>
+                </div>
+                <BookingForm client:load />
+            </div>
+        </div>
+    </div>
+</BaseLayout>
