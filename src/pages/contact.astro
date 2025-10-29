@@ -1,40 +1,54 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookingForm from '../components/BookingForm';
+import SiteHeader from '../components/SiteHeader.astro';
+import Footer from '../components/Footer.astro';
 
 const page = {
   title: 'Contact | Evan Parra – Business Technology Consultant',
   description: 'Contact Evan Parra to discuss your business needs in St. Augustine and St. Johns County. Let\'s build a plan for your website, automation, dashboards, or AI.'
 };
+
+const navItems = [
+  { label: '← Back to Homepage', href: '/' },
+  { label: 'View All Services', href: '/#services' },
+  { label: 'Free Assessment', href: '/#booking' }
+];
 ---
 <BaseLayout title={page.title} description={page.description}>
-  <div class="container py-12 md:py-20">
-    <div class="max-w-4xl mx-auto">
+  <div class="min-h-screen flex flex-col bg-gray-50">
+    <SiteHeader navItems={navItems} />
+    <main class="flex-1">
+      <div class="container py-12 md:py-20">
+        <div class="max-w-4xl mx-auto">
 
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900">Contact Me</h1>
-        <div class="mt-4 pt-4 border-t border-slate-200 max-w-lg mx-auto">
-          <p class="text-lg font-semibold text-slate-800">Evan Parra – Business Technology Consultant</p>
-          <p class="text-slate-600">Serving St. Augustine & St. Johns County, Florida</p>
-          <p class="text-slate-600">Call: (904) 615-6418</p>
-          <p class="text-slate-600">Email: admin@evanparra.ai</p>
+          <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900">Contact Me</h1>
+            <div class="mt-4 pt-4 border-t border-slate-200 max-w-lg mx-auto">
+              <p class="text-lg font-semibold text-slate-800">Evan Parra – Business Technology Consultant</p>
+              <p class="text-slate-600">Serving St. Augustine & St. Johns County, Florida</p>
+              <p class="text-slate-600">Call: (904) 615-6418</p>
+              <p class="text-slate-600">Email: admin@evanparra.ai</p>
+            </div>
+          </div>
+
+          <div class="max-w-2xl mx-auto text-center mb-12">
+            <p class="text-lg text-slate-700">
+              I work directly with business owners in St. Augustine, St. Johns County, Ponte Vedra, and Nocatee. Send a note and I’ll build a simple plan for you — web, automation, dashboards, or AI.
+            </p>
+          </div>
+
+          <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+            <div class="max-w-2xl mx-auto text-center mb-8">
+              <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Send a Message</h2>
+              <p class="text-lg text-slate-600 mt-4">Fill out the form below, and I\'ll get back to you to schedule a free assessment.</p>
+            </div>
+            <BookingForm client:load />
+          </div>
+
         </div>
       </div>
-
-      <div class="max-w-2xl mx-auto text-center mb-12">
-        <p class="text-lg text-slate-700">
-          I work directly with business owners in St. Augustine, St. Johns County, Ponte Vedra, and Nocatee. Send a note and I’ll build a simple plan for you — web, automation, dashboards, or AI.
-        </p>
-      </div>
-
-      <div id="booking" class="bg-gray-50 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
-        <div class="max-w-2xl mx-auto text-center mb-8">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Send a Message</h2>
-          <p class="text-lg text-slate-600 mt-4">Fill out the form below, and I'll get back to you to schedule a free assessment.</p>
-        </div>
-        <BookingForm client:load />
-      </div>
-
-    </div>
+    </main>
+    <Footer />
   </div>
 </BaseLayout>
