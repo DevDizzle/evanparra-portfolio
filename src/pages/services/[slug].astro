@@ -1,6 +1,7 @@
----
+--- 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
+import Footer from '../../components/Footer.astro';
 import type { Service } from '../../data/services';
 import { services } from '../../data/services';
 
@@ -113,5 +114,6 @@ const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
         </div>
       </section>
     </main>
+    <Footer />
   </div>
 </BaseLayout>

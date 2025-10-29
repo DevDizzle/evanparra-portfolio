@@ -1,50 +1,62 @@
-# Local Business Technologist Landing Page
+# Evan Parra - Portfolio Website
 
-## Overview
-This repository powers the marketing site for **Evan Parra’s consulting** practice, focused on helping small and mid-sized businesses in **St. Johns County, FL** modernize their technology. The site now runs on [Astro](https://astro.build/) with pre-rendered HTML for strong SEO and fast loads, while interactive pieces (like the case study carousel and intake form) are delivered as lightweight React islands.
+This is the source code for the personal portfolio and business website for Evan Parra, built with Astro, React, and Tailwind CSS, and deployed on Firebase Hosting.
 
 ## Tech Stack
-- **Astro** for static site generation and routing
-- **Tailwind CSS** for styling (compiled at build time)
-- **React** islands for the booking form and case study carousel
-- **Firebase Hosting** for deployment
+
+- **Framework**: [Astro](https://astro.build/)
+- **UI Components**: [React](https://reactjs.org/) (for interactive islands) & Astro Components
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment**: [Firebase Hosting](https://firebase.google.com/docs/hosting)
 
 ## Project Structure
+
 ```
 src/
-├── components/        # Reusable UI building blocks and React islands
-├── data/              # Structured content (services, case studies)
+├── components/        # Reusable UI building blocks (Astro & React)
 ├── layouts/           # Base HTML layout with SEO and analytics tags
-├── pages/             # Astro pages (homepage, 404, service detail routes)
+├── pages/             # Astro pages and API routes
 └── styles/            # Global Tailwind entrypoint
-public/assets/         # Static images referenced in the site
+public/                # Static assets (images, fonts, etc.)
 ```
 
-### Editing Content
-- **Hero messaging**: `src/components/Hero.astro`
-- **Case studies**: `src/data/caseStudies.ts`
-- **Services (cards + detail pages)**: `src/data/services.ts`
-- **Booking form copy**: `src/components/BookingSection.astro` and `src/components/BookingForm.tsx`
-- **Structured data & meta tags**: `src/layouts/BaseLayout.astro`
+## Editing Content
 
-### Local Development
-```bash
-npm install
-npm run dev
-```
-Visit http://localhost:4321 to preview changes.
+Most of the website's content can be edited in the following files:
 
-### Production Build
-```bash
-npm run build
-```
-This outputs static assets to `dist/`. Deploy that folder to Firebase Hosting:
+- **Services Pages**: Content for each service is located in its respective file under `src/pages/services/`.
+- **Case Studies**: Case study details are in `src/pages/case-studies/`.
+- **Homepage**: The homepage content can be edited in `src/pages/index.astro`.
+- **Reusable Components**: Text and content within shared components (like the header, footer, and forms) are in `src/components/`.
 
-```bash
-firebase deploy --only hosting
-```
+## Local Development
 
-## Deployment Notes
-- `firebase.json` points Firebase to the Astro `dist/` build output.
-- A sitemap is generated automatically at build time via `@astrojs/sitemap`.
-- Google Analytics and Ads conversion tracking remain configured inside `BaseLayout.astro`.
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+2.  **Start the development server**:
+    ```bash
+    npm run dev
+    ```
+
+    The website will be available at `http://localhost:4321`.
+
+## Building and Deploying
+
+The site is deployed to Firebase Hosting.
+
+1.  **Build the site for production**:
+    ```bash
+    npm run build
+    ```
+
+    This will create a `dist/` directory with the optimized, static site.
+
+2.  **Deploy to Firebase**:
+    ```bash
+    firebase deploy --only hosting
+    ```
+
+This will deploy the contents of the `dist/` directory to your live website.

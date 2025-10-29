@@ -10,10 +10,21 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
-        "source": "/sitemap.xml",
-        "destination": "/sitemap-index.xml"
+        "source": "/prompt-engineering",
+        "destination": "/services/ai-assistant-automation-st-augustine",
+        "type": 301
+      },
+      {
+        "source": "/resume",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/consultant",
+        "destination": "/",
+        "type": 301
       }
     ]
   }
