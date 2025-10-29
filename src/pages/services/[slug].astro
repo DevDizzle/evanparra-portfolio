@@ -27,7 +27,6 @@ const phoneNumber = '(904) 615-6418';
 const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
 ---
 <BaseLayout title={pageTitle} description={description}>
-  <div class="min-h-screen flex flex-col bg-gray-50">
     <SiteHeader navItems={navItems} />
     <main class="flex-1">
       <section class="bg-white border-b border-slate-200">
@@ -115,5 +114,4 @@ const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
       </section>
     </main>
     <Footer />
-  </div>
 </BaseLayout>
