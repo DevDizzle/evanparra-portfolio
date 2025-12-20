@@ -1,6 +1,6 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import BookingForm from './BookingForm';
+import AgentBookingChat from './AgentBookingChat';
 
 const phoneNumber = '(904) 615-6418';
 const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
@@ -13,16 +13,16 @@ const telLink = `tel:${phoneNumber.replace(/[^0-9]/g, '')}`;
         <div class="max-w-2xl mx-auto text-center mb-8">
             <SectionHeading
                 eyebrow="Get Started"
-                title="Get Your Free Business Assessment & Quote"
-                body="Share a few details about your business so I can deliver a tailored automation roadmap with transparent pricing to help you grow smarter."
+                title="Free AI Automation Audit (15 min)"
+                body="Chat with my AI assistant below to learn more about my services or book your free roadmap session directly."
             />
-            <div class="mt-8">
-                <a href={telLink} class="inline-flex items-center justify-center bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white">
-                    Call {phoneNumber}
+            <div class="mt-8 mb-8">
+                <a href={telLink} class="inline-flex items-center justify-center bg-white text-blue-700 border border-blue-200 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 focus:outline-none transition-colors text-sm">
+                   Or call me directly: {phoneNumber}
                 </a>
             </div>
         </div>
-        <BookingForm client:load />
+        <AgentBookingChat client:load />
       </div>
     </div>
   </div>

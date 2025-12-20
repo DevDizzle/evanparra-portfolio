@@ -34,8 +34,8 @@ const caseStudies = [
   {
     slug: "ponte-vedra-home-services-website",
     location: "Ponte Vedra Home Services",
-    headline: "New Website Drives 40% Increase in Online Bookings",
-    problem: "An outdated, slow website wasn\'t mobile-friendly and had no online booking. They were losing customers to competitors with better online experiences.",
+    headline: "Automated Booking System Drives 40% Increase",
+    problem: "An outdated, slow website wasn't mobile-friendly and had no online booking. They were losing customers to competitors with better online experiences.",
     fix: "We built a fast, modern website focused on mobile users, with an integrated booking system that syncs directly with their scheduling software.",
     outcome: "They saw a 40% increase in online bookings within two months and began ranking higher in local search for their key services in the Ponte Vedra area.",
     testimonial: "Our new website is a game-changer. Evan made it so easy for customers to book with us, and we\'re finally competing with the bigger companies in the area.",
@@ -79,7 +79,7 @@ const caseStudies = [
         <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-md">
           <p class="font-semibold text-blue-600">{study.location}</p>
           <h3 class="text-2xl font-bold text-slate-900 mt-2">
-            <a href={`/case-studies/${study.slug}`} class="hover:text-blue-700 transition-colors">{study.headline}</a>
+            {study.headline}
           </h3>
           
           <div class="mt-4 space-y-4 text-slate-700">

@@ -3,7 +3,7 @@
     "source": "functions"
   },
   "hosting": {
-    "site": "evanparra-portfolio-site",
+    "site": "evanparra-portfolio-8576-3a8bf",
     "public": "dist",
     "ignore": [
       "firebase.json",
@@ -12,8 +12,23 @@
     ],
     "redirects": [
       {
+        "source": "/services/**",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/case-studies/**",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/contact",
+        "destination": "/",
+        "type": 301
+      },
+      {
         "source": "/prompt-engineering",
-        "destination": "/services/ai-assistant-automation-st-augustine",
+        "destination": "/",
         "type": 301
       },
       {
@@ -27,5 +42,17 @@
         "type": 301
       }
     ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "ui": {
+      "enabled": true,
+      "port": 4000
+    }
   }
 }

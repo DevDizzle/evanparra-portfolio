@@ -316,7 +316,7 @@ export default function BookingForm() {
         disabled={isSubmitting}
         className="inline-flex items-center justify-center bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? 'Sending…' : 'Send My Free Assessment'}
+        {isSubmitting ? 'Sending…' : 'Book Free AI Audit'}
       </button>
 
       {status && (

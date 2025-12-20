@@ -12,24 +12,28 @@ const { services } = Astro.props;
 <section id="services" class="py-12 md:py-20">
   <div class="container">
     <SectionHeading
-      title="What I Solve For St. Johns County Businesses"
-      subtitle="From chasing invoices to guessing your marketing ROI, I build systems that fix the most common (and costly) operational headaches."
+      title="AI Solutions for Local Business"
+      subtitle="I build intelligent systems that work 24/7 to drive revenue, cut costs, and automate the busywork."
     />
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {services.map((service) => (
-        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all">
-          <div class="flex items-center gap-4">
-            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center">
+        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all flex flex-col h-full">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center">
               <i class={`${service.icon} text-xl`}></i>
             </div>
             <h3 class="text-xl font-bold text-slate-800">{service.title}</h3>
           </div>
-          <p class="text-slate-600 mt-4">{service.summary}</p>
-          <div class="mt-6">
-            <a href={`/services/${service.slug}`} class="font-semibold text-blue-600 hover:underline">
-              See how it works &rarr;
-            </a>
-          </div>
+          <p class="text-slate-600 mb-6 flex-grow">{service.summary}</p>
+          
+          <ul class="space-y-2 text-sm text-slate-700">
+            {service.detail.benefits.slice(0, 3).map((benefit) => (
+               <li class="flex items-start gap-2">
+                 <span class="text-green-500 mt-0.5">✔</span>
+                 <span>{benefit}</span>
+               </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
