@@ -16,13 +16,21 @@ const AgentBookingChat: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Track if the component has mounted to prevent initial scroll
+  const isMounted = useRef(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // Only scroll if it's NOT the initial render
+    if (isMounted.current) {
+      scrollToBottom();
+    } else {
+      isMounted.current = true;
+    }
   }, [messages]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,20 +43,13 @@ const AgentBookingChat: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Prepare history for the agent (excluding the initial greeting if it wasn't part of a real flow, 
-      // but usually we want to keep context. For simplicity, we send all history).
-      // The backend expects the exact schema defined in agent.ts
       const history = [...messages, userMessage].map(m => ({
         role: m.role,
         content: m.content
       }));
 
-      // Call the Genkit flow
       const result = await bookingAgent({ messages: history });
-      
-      // Genkit flow returns a string directly in this case (based on agent.ts outputSchema: z.string())
       const responseText = result.data as string;
-
       const botMessage: Message = { role: 'model', content: [{ text: responseText }] };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
@@ -69,7 +70,7 @@ const AgentBookingChat: React.FC = () => {
         </div>
         <div>
           <h3 className="font-semibold text-sm md:text-base">Evan's AI Receptionist</h3>
-          <p className="text-xs text-slate-400">Powered by Gemini 1.5 Flash</p>
+          <p className="text-xs text-slate-400">Powered by Gemini 2.0 Flash</p>
         </div>
       </div>
 
