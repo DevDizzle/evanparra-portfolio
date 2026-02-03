@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const page = {
+  title: "AI Automation Blog | Jacksonville & St. Augustine FL",
+  description: "Insights on AI automation, document processing, and business efficiency for Northeast Florida businesses. Tips from a local AI consultant."
+};
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Free Audit', href: '/#booking' }
+];
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <SiteHeader navItems={navItems} />
+  
+  <main class="py-16 md:py-24">
+    <div class="container max-w-5xl mx-auto px-4">
+      <!-- Header -->
+      <header class="text-center mb-16">
+        <p class="text-blue-600 font-semibold mb-3">AI Insights</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+          The AI Automation Blog
+        </h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Practical insights on AI automation, document processing, and business efficiency for Jacksonville and St. Augustine businesses.
+        </p>
+      </header>
+
+      <!-- Posts Grid -->
+      {posts.length > 0 ? (
+        <div class="grid md:grid-cols-2 gap-8">
+          {posts.map((post) => (
+            <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
+              {post.data.image && (
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.imageAlt || post.data.title}
+                  class="w-full h-48 object-cover"
+                />
+              )}
+              <div class="p-6">
+                <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {new Date(post.data.publishDate).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  {post.data.tags && post.data.tags[0] && (
+                    <>
+                      <span>•</span>
+                      <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">
+                        {post.data.tags[0]}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 mb-3 leading-tight">
+                  <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
+                    {post.data.title}
+                  </a>
+                </h2>
+                <p class="text-slate-600 mb-4 line-clamp-3">
+                  {post.data.description}
+                </p>
+                <a 
+                  href={`/blog/${post.slug}`}
+                  class="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center gap-1"
+                >
+                  Read more <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-slate-500 text-lg">New articles coming soon!</p>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
