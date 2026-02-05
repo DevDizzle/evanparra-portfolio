@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SiteHeader from '../../components/SiteHeader.astro';
-import Footer from '../../components/Footer.astro';
 import BlogList from '../../components/BlogList';
 import { getCollection } from 'astro:content';
 
@@ -9,13 +7,6 @@ const page = {
   title: "Engineering Logs | Evan Parra",
   description: "Technical deep dives on ML pipelines, agent architecture, and production AI systems."
 };
-
-const navItems = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-];
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
