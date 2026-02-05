@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+
+export async function getStaticPaths() {
+  // In a real build, we would fetch all project slugs here to generate static pages.
+  // For now, since Firestore might be empty or restricted during build,
+  // we can either switch to SSR (output: 'server') or return an empty array/fallback.
+  
+  // Using empty array for now to avoid build errors if DB is empty.
+  return []; 
+}
+
+const { slug } = Astro.params;
+const title = "Project Details"; 
+// In SSR mode, we would fetch the project here.
+---
+
+<BaseLayout title={title}>
+  <div class="container py-20">
+    <h1 class="text-4xl font-bold">Project: {slug}</h1>
+    <p class="mt-4 text-slate-600">Project details coming soon...</p>
+  </div>
+</BaseLayout>

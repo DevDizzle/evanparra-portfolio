@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const title = "Services | Evan Parra";
+const description = "Production ML Engineering, Autonomous Agents, and AI Automation services.";
+
+const enterpriseServices = [
+  {
+    title: "ML Pipeline Architecture",
+    description: "End-to-end design and implementation of production-grade machine learning pipelines. From data ingestion to model serving and monitoring.",
+    deliverables: [
+      "Architecture documentation & diagrams",
+      "BigQuery / Cloud SQL data warehouse setup",
+      "Model training & inference pipelines (Vertex AI/Sagemaker)",
+      "CI/CD integration for ML assets"
+    ],
+    pricing: "Project based ($5k - $15k typical)",
+    icon: "network"
+  },
+  {
+    title: "Autonomous Agent Systems",
+    description: "Custom AI agents powered by LLMs (Gemini/GPT-4) that can reason, plan, and execute tasks via tool calling and MCP.",
+    deliverables: [
+      "Custom tool definitions & API integrations",
+      "Agent orchestration logic (Genkit/LangChain)",
+      "Evaluation framework setup",
+      "Chat interface implementation"
+    ],
+    pricing: "Retainer or Project",
+    icon: "bot"
+  },
+  {
+    title: "RAG & LLM Integration",
+    description: "Augment your existing applications with intelligence. Connect LLMs to your private data securely and efficiently.",
+    deliverables: [
+      "Vector database implementation",
+      "Embedding pipeline optimization",
+      "Context retrieval systems",
+      "Prompt engineering & testing"
+    ],
+    pricing: "Hourly ($150/hr) or Project",
+    icon: "brain"
+  }
+];
+
+const localServices = [
+  {
+    title: "AI Automation Audit",
+    description: "A comprehensive review of your business processes to identify high-value automation opportunities.",
+    price: "$500 (Waived with project)",
+    link: "/contact?type=local-audit"
+  },
+  {
+    title: "Document Processing (IDP)",
+    description: "Automate data entry from invoices, receipts, and forms using computer vision.",
+    price: "Custom",
+    link: "/contact?type=idp"
+  },
+  {
+    title: "Custom Dashboards",
+    description: "Visualize your business data with real-time dashboards and automated reporting.",
+    price: "Custom",
+    link: "/contact?type=dashboard"
+  }
+];
+---
+
+<BaseLayout title={title} description={description}>
+  
+  <!-- Hero Section -->
+  <section class="bg-slate-900 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10"></div>
+    <div class="container relative z-10">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Technical Services</h1>
+        <p class="text-xl text-slate-300">
+          Specialized engineering for companies that need to ship AI, not just explore it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise / Engineering Track -->
+  <section class="py-24 bg-white">
+    <div class="container">
+      <SectionHeading 
+        eyebrow="For Startups & Enterprise" 
+        title="ML Engineering & Architecture"
+        body="Production-ready systems built on Google Cloud / AWS. No prototypes, no toys."
+      />
+
+      <div class="grid md:grid-cols-3 gap-8 mt-16">
+        {enterpriseServices.map(service => (
+          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-primary-200 hover:shadow-lg transition-all">
+            <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-6">
+              {service.icon === 'network' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>}
+              {service.icon === 'bot' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>}
+              {service.icon === 'brain' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>}
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
+            <p class="text-slate-600 mb-6 text-sm leading-relaxed">{service.description}</p>
+            
+            <ul class="space-y-3 mb-8">
+              {service.deliverables.map(item => (
+                <li class="flex items-start text-sm text-slate-700">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-auto pt-6 border-t border-slate-200">
+              <p class="text-sm font-semibold text-slate-500 mb-4">{service.pricing}</p>
+              <a href="https://www.upwork.com/freelancers/~0142e0578643501625" target="_blank" class="block w-full text-center py-2 px-4 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium hover:bg-slate-50 transition-colors">
+                View on Upwork
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Services Track -->
+  <section class="py-20 bg-slate-900 text-white border-t border-slate-800">
+    <div class="container">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+        <div class="max-w-xl">
+          <h2 class="text-3xl font-bold mb-4">Local Automation Services</h2>
+          <p class="text-slate-400">
+            For businesses in Jacksonville & St. Augustine looking to modernize their operations.
+          </p>
+        </div>
+        <div class="mt-6 md:mt-0">
+          <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-500 transition-colors">
+            Book Free Audit
+          </a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {localServices.map(service => (
+          <a href={service.link} class="group block p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-primary-500 transition-all">
+            <h3 class="text-lg font-bold text-white group-hover:text-primary-400 mb-2">{service.title}</h3>
+            <p class="text-slate-400 text-sm mb-4">{service.description}</p>
+            <p class="text-primary-400 text-sm font-mono">{service.price}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

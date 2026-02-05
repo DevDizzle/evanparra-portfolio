@@ -1,39 +1,48 @@
 ---
-import type { Service } from '../data/services';
 import SectionHeading from './SectionHeading.astro';
 
-interface Props {
-  services: Service[];
-}
-
-const { services } = Astro.props;
+const services = [
+  {
+    title: "ML Pipeline Architecture",
+    description: "End-to-end design of production-grade machine learning pipelines. From data ingestion to model serving and monitoring on Google Cloud or AWS.",
+    icon: "network"
+  },
+  {
+    title: "Autonomous Agent Systems",
+    description: "Custom AI agents powered by LLMs that can reason, plan, and execute tasks via tool calling. Built with Genkit or LangChain.",
+    icon: "bot"
+  },
+  {
+    title: "Local Automation Audits",
+    description: "For St. Augustine businesses: A comprehensive review of your operations to identify high-value automation opportunities.",
+    icon: "search"
+  }
+];
 ---
 
-<section id="services" class="py-12 md:py-20">
+<section id="services" class="py-20 bg-white">
   <div class="container">
     <SectionHeading
-      title="AI Solutions for Local Business"
-      subtitle="I build intelligent systems that work 24/7 to drive revenue, cut costs, and automate the busywork."
+      eyebrow="What I Do"
+      title="Technical Services"
+      body="Specialized engineering for companies that need to ship AI, not just explore it."
     />
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <div class="mt-12 grid md:grid-cols-3 gap-8">
       {services.map((service) => (
-        <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all flex flex-col h-full">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex-shrink-0 flex items-center justify-center">
-              <i class={`${service.icon} text-xl`}></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-800">{service.title}</h3>
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-primary-200 hover:shadow-lg transition-all group">
+          <div class="w-12 h-12 bg-white text-primary-600 rounded-xl border border-slate-200 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+            {service.icon === 'network' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>}
+            {service.icon === 'bot' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>}
+            {service.icon === 'search' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>}
           </div>
-          <p class="text-slate-600 mb-6 flex-grow">{service.summary}</p>
           
-          <ul class="space-y-2 text-sm text-slate-700">
-            {service.detail.benefits.slice(0, 3).map((benefit) => (
-               <li class="flex items-start gap-2">
-                 <span class="text-green-500 mt-0.5">✔</span>
-                 <span>{benefit}</span>
-               </li>
-            ))}
-          </ul>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">{service.description}</p>
+          
+          <a href="/services" class="inline-flex items-center text-primary-600 font-semibold text-sm hover:text-primary-700">
+            Learn more <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </a>
         </div>
       ))}
     </div>

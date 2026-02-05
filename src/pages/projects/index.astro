@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import GitHubProjects from '../../components/GitHubProjects';
+
+const title = "Projects | Evan Parra";
+const description = "A collection of AI/ML projects, open source contributions, and client success stories.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-slate-900 text-white py-20">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Engineering Portfolio</h1>
+        <p class="text-xl text-slate-300">
+          From experimental agents to production ML pipelines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container">
+      <SectionHeading 
+        eyebrow="Open Source" 
+        title="GitHub Repositories" 
+        body="Live code and contributions available for public review."
+      />
+      <div class="mt-12">
+        <GitHubProjects client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO: Add Client Projects Section fetching from Firestore 'projects' collection -->
+</BaseLayout>

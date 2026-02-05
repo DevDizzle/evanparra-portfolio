@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPostViewer from '../../components/BlogPostViewer';
+
+const title = "Engineering Log | Evan Parra";
+const description = "Technical analysis and engineering logs.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="min-h-screen bg-white">
+    <BlogPostViewer client:only="react" />
+  </div>
+</BaseLayout>

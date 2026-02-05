@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Blog posts - public read, admin write
+    match /blogPosts/{postId} {
+      allow read: if resource.data.status == 'published';
+      allow write: if false; // Only via admin SDK
+    }
+    
+    // Projects - public read
+    match /projects/{projectId} {
+      allow read: if resource.data.status == 'active';
+      allow write: if false;
+    }
+    
+    // Services - public read
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Contact submissions - create only
+    match /contactSubmissions/{subId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message']);
+      allow read, update, delete: if false;
+    }
+    
+    // Booking requests (from AI agent)
+    match /bookingRequests/{reqId} {
+      allow create: if true; // Allow agent/tools to write
+      allow read, update, delete: if false;
+    }
+  }
+}

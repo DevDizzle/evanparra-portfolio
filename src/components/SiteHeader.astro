@@ -4,29 +4,34 @@ interface NavItem {
   href: string;
 }
 
-interface Props {
-  navItems?: NavItem[];
-}
-
-const { navItems = [] } = Astro.props;
+const navItems: NavItem[] = [
+  { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+];
 ---
 
 <header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
   <div class="container flex h-16 items-center justify-between">
     <a href="/" class="flex items-center space-x-2">
         <span class="font-bold text-xl text-slate-900">Evan Parra</span>
+        <span class="hidden sm:inline-block text-slate-400 text-sm">| ML Engineer</span>
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-6">
+    <nav class="hidden md:flex gap-6 items-center">
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
+          class="text-sm font-medium text-slate-600 transition-colors hover:text-primary-600"
         >
           {item.label}
         </a>
       ))}
+      <a href="/contact" class="px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+        Work With Me
+      </a>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -45,11 +50,14 @@ const { navItems = [] } = Astro.props;
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="text-sm font-medium text-slate-600 hover:text-blue-600 px-2"
+          class="text-sm font-medium text-slate-600 hover:text-primary-600 px-2"
         >
           {item.label}
         </a>
       ))}
+      <a href="/contact" class="mx-2 text-center px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+        Work With Me
+      </a>
     </nav>
   </div>
 </header>

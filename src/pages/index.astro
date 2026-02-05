@@ -1,48 +1,65 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
 import Hero from '../components/Hero.astro';
-import ServicesSection from '../components/ServicesSection.astro';
-import VisionPlayground from '../components/VisionPlayground';
-import BookingSection from '../components/BookingSection.astro';
-import Footer from '../components/Footer.astro';
-import { services } from '../data/services';
 import SectionHeading from '../components/SectionHeading.astro';
+import CaseStudiesSection from '../components/CaseStudiesSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import BookingSection from '../components/BookingSection.astro';
+import VisionPlayground from '../components/VisionPlayground';
+import GitHubProjects from '../components/GitHubProjects';
 
-const page = {
-    title: "AI Automation Engineer | St. Augustine & Jacksonville, FL",
-    description: "I help St. Augustine & Jacksonville businesses automate operations with AI Agents, Intelligent Document Processing, and Computer Vision. Book a free audit."
-}
-
-const navItems = [
-  { label: 'AI Solutions', href: '#services' },
-  { label: 'Vision Demo', href: '#vision-demo' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Free Audit', href: '#booking' }
-];
+const title = "Evan Parra | ML Engineer & AI Systems Architect";
+const description = "Production ML pipelines, autonomous agents, and serverless architecture. I help companies build AI systems that actually ship.";
 ---
-<BaseLayout title={page.title} description={page.description}>
-  <SiteHeader navItems={navItems} />
-  <Hero />
-  <main>
-    <ServicesSection services={services} />
-    
-    <section id="vision-demo" class="py-24 bg-slate-50">
-      <div class="container">
-        <div class="max-w-4xl mx-auto mb-12 text-center">
-             <SectionHeading
-                eyebrow="Interactive Demo"
-                title="See AI Vision in Action"
-                body="Try it yourself: Upload a sample invoice or site photo to see how AI extracts data and identifies safety hazards in real-time."
-            />
-        </div>
-        <div class="max-w-5xl mx-auto">
-            <VisionPlayground client:load />
-        </div>
-      </div>
-    </section>
 
-    <BookingSection />
-  </main>
-  <Footer />
+<BaseLayout title={title} description={description}>
+	<Hero />
+	
+	<!-- Featured Projects (GitHub) -->
+	<section class="py-20 bg-white">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Open Source & Portfolio"
+				title="Engineering Showcase"
+				body="A collection of my recent work in AI agents, computer vision, and distributed systems."
+			/>
+			<div class="mt-12">
+				<GitHubProjects client:load />
+				<div class="mt-10 text-center">
+					<a href="/projects" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">
+						View All Projects 
+						<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- AI Playground (Interactive Demo) -->
+	<section class="py-20 bg-slate-50 border-y border-slate-200">
+		<div class="container">
+			<SectionHeading
+				eyebrow="Interactive Demo"
+				title="Experience the Tech"
+				body="Don't just take my word for it. Test drive my computer vision models and agent workflows right here in the browser."
+			/>
+			<div class="mt-12">
+				<VisionPlayground client:visible />
+			</div>
+		</div>
+	</section>
+
+	<!-- Services Overview -->
+	<section class="py-20 bg-white">
+		<div class="container">
+			<ServicesSection />
+		</div>
+	</section>
+
+	<!-- Booking/Contact -->
+	<section id="contact" class="py-20 bg-slate-900 text-white">
+		<div class="container">
+			<BookingSection />
+		</div>
+	</section>
 </BaseLayout>
