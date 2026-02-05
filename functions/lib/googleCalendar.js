@@ -41,12 +41,8 @@ const googleapis_1 = require("googleapis");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 // Configuration
-// Ideally, the Calendar ID is configured via environment variables.
-// Defaulting to the user's email as discussed.
 exports.CALENDAR_ID = process.env.CALENDAR_ID || 'eraphaelparra@gmail.com';
 // Path to the service account key file.
-// We expect 'service-account.json' to be in the root of the 'functions' directory.
-// When running in production (compiled to 'lib/'), __dirname is 'functions/lib'.
 const KEY_PATH = path.join(__dirname, '../service-account.json');
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 // Initialize Auth
@@ -58,18 +54,16 @@ if (fs.existsSync(KEY_PATH)) {
     });
 }
 else {
-    console.warn(`
-    [GoogleCalendar] Service Account Key not found at ${KEY_PATH}.
-    Calendar operations will likely fail unless using default credentials.
-  `);
-    // Fallback to default credentials (useful for some local dev setups or if using Identity)
+    // Fallback to default credentials
     auth = new googleapis_1.google.auth.GoogleAuth({
         scopes: SCOPES,
     });
 }
 const calendar = googleapis_1.google.calendar({ version: 'v3', auth });
+const TIMEZONE = 'America/New_York';
 /**
  * Checks if a specific time range is clear of conflicts.
+ * Returns NULL if available, or the conflicting event object if busy.
  */
 async function isSlotAvailable(startTime, endTime) {
     try {
@@ -79,13 +73,20 @@ async function isSlotAvailable(startTime, endTime) {
             timeMax: endTime.toISOString(),
             singleEvents: true,
             orderBy: 'startTime',
+            timeZone: TIMEZONE,
         });
-        const events = response.data.items;
-        // If there are events, the slot is not available
-        if (events && events.length > 0) {
-            return false;
-        }
-        return true;
+        const events = response.data.items || [];
+        // Find the first ACTUAL conflict
+        const conflict = events.find(event => {
+            // Ignore events that are marked as "Free" (transparent)
+            if (event.transparency === 'transparent')
+                return false;
+            // Optional: Explicitly ignore events with "birthday" in the title if they are accidentally set to Busy
+            if (event.summary?.toLowerCase().includes('birthday'))
+                return false;
+            return true;
+        });
+        return conflict || null;
     }
     catch (error) {
         console.error('[GoogleCalendar] Error checking availability:', error);
@@ -101,13 +102,12 @@ async function createCalendarEvent(eventDetails) {
         description: eventDetails.description,
         start: {
             dateTime: eventDetails.startTime.toISOString(),
-            timeZone: 'UTC', // Using UTC for simplicity, Google Cal converts to display time
+            timeZone: TIMEZONE,
         },
         end: {
             dateTime: eventDetails.endTime.toISOString(),
-            timeZone: 'UTC',
+            timeZone: TIMEZONE,
         },
-        // Add the user as an attendee so they get an invite/notification
         attendees: eventDetails.attendeeEmail ? [{ email: eventDetails.attendeeEmail }] : [],
     };
     try {
@@ -123,14 +123,11 @@ async function createCalendarEvent(eventDetails) {
     }
 }
 /**
- * Returns a list of available 1-hour slots for a given date between 9 AM and 5 PM.
+ * Returns a list of available 1-hour slots for a given date between 9 AM and 5 PM EST.
  */
 async function getAvailableSlots(dateStr) {
-    const startOfDay = new Date(dateStr);
-    startOfDay.setHours(9, 0, 0, 0); // Start at 9 AM
-    const endOfDay = new Date(dateStr);
-    endOfDay.setHours(17, 0, 0, 0); // End at 5 PM
-    // Get all events for the day
+    const startOfDay = new Date(`${dateStr}T09:00:00-05:00`);
+    const endOfDay = new Date(`${dateStr}T17:00:00-05:00`);
     let events = [];
     try {
         const response = await calendar.events.list({
@@ -139,29 +136,36 @@ async function getAvailableSlots(dateStr) {
             timeMax: endOfDay.toISOString(),
             singleEvents: true,
             orderBy: 'startTime',
+            timeZone: TIMEZONE,
         });
         events = response.data.items || [];
     }
     catch (error) {
         console.error('[GoogleCalendar] Error listing events for slots:', error);
-        return []; // Return empty on error
+        return [];
     }
     const availableSlots = [];
-    const slotDuration = 60 * 60 * 1000; // 1 hour in ms
-    // Iterate from 9 AM to 4 PM (last slot starts at 4)
+    const slotDuration = 60 * 60 * 1000;
     for (let currentTime = startOfDay.getTime(); currentTime < endOfDay.getTime(); currentTime += slotDuration) {
         const slotStart = new Date(currentTime);
         const slotEnd = new Date(currentTime + slotDuration);
-        // Check if this slot overlaps with any existing event
         const isConflict = events.some((event) => {
+            // Ignore Free/Transparent events
+            if (event.transparency === 'transparent')
+                return false;
+            if (event.summary?.toLowerCase().includes('birthday'))
+                return false;
             const eventStart = new Date(event.start.dateTime || event.start.date);
             const eventEnd = new Date(event.end.dateTime || event.end.date);
-            // Simple overlap check
             return (slotStart < eventEnd && slotEnd > eventStart);
         });
         if (!isConflict) {
-            // Format time as HH:mm AM/PM
-            const timeString = slotStart.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            const timeString = slotStart.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true,
+                timeZone: TIMEZONE
+            });
             availableSlots.push(timeString);
         }
     }

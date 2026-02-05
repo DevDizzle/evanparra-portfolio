@@ -1,15 +1,66 @@
 ---
-const navLinks = [
-  { href: '/', text: 'Home' },
-  {
-    text: 'Services',
-    links: [
-      { href: '/services/web-design-st-augustine', text: 'Web Design in St. Augustine' },
-      { href: '/services/process-automation-st-johns-county', text: 'Process Automation in St. Johns County' },
-      { href: '/services/dashboards-reporting-st-augustine', text: 'Custom KPI Dashboards in St. Augustine' },
-      { href: '/services/ai-assistant-automation-st-augustine', text: 'AI Assistant Automation in St. Augustine' },
-    ],
-  },
-  { href: '/contact', text: 'Contact' },
-];
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  navItems?: NavItem[];
+}
+
+const { navItems = [] } = Astro.props;
 ---
+
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+  <div class="container flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center space-x-2">
+        <span class="font-bold text-xl text-slate-900">Evan Parra</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-6">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
+      aria-label="Toggle menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white absolute w-full left-0 shadow-lg">
+    <nav class="container flex flex-col py-4 gap-4">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-medium text-slate-600 hover:text-blue-600 px-2"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

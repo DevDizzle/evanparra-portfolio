@@ -36,13 +36,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.submitForm = exports.visionAnalysisFlow = exports.bookingAgentFlow = void 0;
+exports.sendBookingNotification = exports.submitForm = exports.visionAnalysisFlow = exports.bookingAgentFlow = void 0;
 const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 const cors_1 = __importDefault(require("cors"));
 const https_1 = require("firebase-functions/v2/https");
 const agent_1 = require("./agent");
 const vision_1 = require("./vision");
+const sendBookingNotification_1 = require("./triggers/sendBookingNotification");
+Object.defineProperty(exports, "sendBookingNotification", { enumerable: true, get: function () { return sendBookingNotification_1.sendBookingNotification; } });
 const corsHandler = (0, cors_1.default)({ origin: true });
 admin.initializeApp();
 // Export the Genkit flow as a Callable Function

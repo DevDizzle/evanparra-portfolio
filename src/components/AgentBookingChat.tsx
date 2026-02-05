@@ -10,7 +10,7 @@ const AgentBookingChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'model',
-      content: [{ text: "Hi! I'm Evan's AI assistant. I can answer questions about his services or help you book a free audit. How can I help you today?" }]
+      content: [{ text: "Hi! I'm Evan's AI Receptionist. I can help you book your free 15-minute audit instantly.\n\nTo get started, simply say 'I want to book' and I'll collect your Name, Email, and Preferred Time. How can I help you?" }]
     }
   ]);
   const [input, setInput] = useState('');

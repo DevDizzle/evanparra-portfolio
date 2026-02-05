@@ -4,6 +4,7 @@ import cors from "cors";
 import { onCall } from "firebase-functions/v2/https";
 import { bookingAgentFlow as agentFlow } from "./agent";
 import { visionAnalysisFlow as visionFlow } from "./vision";
+import { sendBookingNotification } from "./triggers/sendBookingNotification";
 
 const corsHandler = cors({ origin: true });
 
@@ -54,3 +55,5 @@ export const submitForm = functions.https.onRequest((req, res) => {
       });
   });
 });
+
+export { sendBookingNotification };
