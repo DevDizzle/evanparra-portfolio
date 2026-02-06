@@ -4,6 +4,10 @@ import * as admin from "firebase-admin";
 import axios from "axios";
 import * as logger from "firebase-functions/logger";
 
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
+
 const db = admin.firestore();
 
 const TARGET_REPOS = [
