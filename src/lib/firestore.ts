@@ -55,8 +55,8 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     projectsRef, 
     where("featured", "==", true),
     where("status", "==", "active"),
-    orderBy("displayOrder", "asc"),
-    limit(4)
+    orderBy("updatedAt", "desc"),
+    limit(6)
   );
   
   const snapshot = await getDocs(q);

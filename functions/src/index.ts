@@ -6,6 +6,7 @@ import { bookingAgentFlow as agentFlow } from "./agent";
 import { visionAnalysisFlow as visionFlow } from "./vision";
 import { sendBookingNotification } from "./triggers/sendBookingNotification";
 import { getBlogPosts, getBlogPostBySlug, upsertBlogPost } from "./blog";
+import { syncGitHubPortfolio, manualSyncPortfolio } from "./projects";
 
 const corsHandler = cors({ origin: true });
 
@@ -57,4 +58,4 @@ export const submitForm = functions.https.onRequest((req, res) => {
   });
 });
 
-export { sendBookingNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost };
+export { sendBookingNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost, syncGitHubPortfolio, manualSyncPortfolio };
