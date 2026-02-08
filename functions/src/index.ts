@@ -5,7 +5,7 @@ import { onCall } from "firebase-functions/v2/https";
 import { bookingAgentFlow as agentFlow } from "./agent";
 import { visionAnalysisFlow as visionFlow } from "./vision";
 import { sendBookingNotification } from "./triggers/sendBookingNotification";
-import { getBlogPosts, getBlogPostBySlug, upsertBlogPost } from "./blog";
+import { getBlogPosts, getBlogPostBySlug, upsertBlogPost, addBlogPost } from "./blog";
 import { syncGitHubPortfolio, manualSyncPortfolio } from "./projects";
 
 const corsHandler = cors({ origin: true });
@@ -58,4 +58,40 @@ export const submitForm = functions.https.onRequest((req, res) => {
   });
 });
 
-export { sendBookingNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost, syncGitHubPortfolio, manualSyncPortfolio };
+export const contactForm = functions.https.onRequest((req, res) => {
+  corsHandler(req, res, () => {
+    if (req.method !== "POST") {
+      res.status(405).send("Method Not Allowed");
+      return;
+    }
+
+    const { name, email, service, budget, message } = req.body;
+
+    if (!name || !email) {
+      res.status(400).send("Missing required fields");
+      return;
+    }
+
+    const db = admin.firestore();
+    const submission = {
+      name,
+      email,
+      service: service || '',
+      budget: budget || '',
+      message: message || '',
+      createdAt: new Date(),
+      source: 'contact-form'
+    };
+
+    db.collection("contact_submissions").add(submission)
+      .then(() => {
+        res.status(200).send({ success: true, message: "Form submitted successfully" });
+      })
+      .catch((error) => {
+        console.error("Error writing to Firestore: ", error);
+        res.status(500).send("Error submitting form");
+      });
+  });
+});
+
+export { sendBookingNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost, addBlogPost, syncGitHubPortfolio, manualSyncPortfolio };
