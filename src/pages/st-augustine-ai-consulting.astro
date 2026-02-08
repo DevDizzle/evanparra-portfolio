@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const title = "St. Augustine AI & Automation Consulting | Evan Parra";
+const description = "Expert AI automation, machine learning, and business process optimization in St. Augustine, FL. Serving Northeast Florida businesses.";
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Evan Parra AI Consulting',
+  image: 'https://evanparra.ai/assets/evan-parra-og-image.png',
+  '@id': 'https://evanparra.ai/st-augustine-ai-consulting',
+  url: 'https://evanparra.ai/st-augustine-ai-consulting',
+  telephone: '+19046156418',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '',
+    addressLocality: 'St. Augustine',
+    addressRegion: 'FL',
+    postalCode: '32080',
+    addressCountry: 'US'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.8947,
+    longitude: -81.3145
+  },
+  areaServed: [
+    { '@type': 'City', name: 'St. Augustine' },
+    { '@type': 'City', name: 'Jacksonville' },
+    { '@type': 'City', name: 'Palm Coast' },
+    { '@type': 'City', name: 'Ponte Vedra' }
+  ],
+  priceRange: '$$$'
+};
+---
+
+<BaseLayout title={title} description={description}>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        <div class="container relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">AI & Automation Consulting in St. Augustine</h1>
+                <p class="text-xl md:text-2xl text-slate-300">St. Augustine's go-to expert for AI automation, machine learning, and business process optimization.</p>
+                <div class="mt-8 flex justify-center">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-blue-900/50 border border-blue-500 text-blue-200 text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+                        Based in St. Augustine. Serving Northeast Florida.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Local -->
+    <section class="py-20 bg-white">
+        <div class="container">
+            <SectionHeading title="Why Local Businesses Choose Me" align="center" />
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">I Understand Local Operations</h3>
+                    <p class="text-slate-600">I've worked with contractors, medical practices, and service businesses in St. Augustine and Jacksonville. I know the tools you use (ServiceTitan, Housecall Pro, QuickBooks) and the problems you face.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">On-Site Available</h3>
+                    <p class="text-slate-600">Sometimes you need someone to sit down with your team, watch how things work, and find the gaps. I'm local and available for on-site audits.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Enterprise Skills, Local Rates</h3>
+                    <p class="text-slate-600">I've built ML systems for Fortune 500 companies. Now I help local businesses get the same technology at rates that make sense for a 10-person company.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-20 bg-slate-50">
+        <div class="container">
+            <SectionHeading title="Services for Local Businesses" align="center" />
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                {[
+                    { title: "AI Phone & Text Agents", desc: "Never miss a call again. AI agents that answer 24/7, book appointments, and handle FAQs." },
+                    { title: "Document Processing", desc: "Invoices, work orders, contracts — automatically extracted and entered into your systems." },
+                    { title: "System Integration", desc: "Connect QuickBooks to your CRM. Sync your calendar with your job management software. Stop copying data manually." },
+                    { title: "Custom Automation", desc: "If it's repetitive, it can probably be automated. Let's find out." }
+                ].map(service => (
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
+                        <p class="text-slate-600 text-sm">{service.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="py-20 bg-white border-t border-slate-200">
+        <div class="container">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-8">Serving Northeast Florida</h2>
+                <div class="flex flex-wrap justify-center gap-3">
+                    {["St. Augustine", "Jacksonville", "Palm Coast", "Ponte Vedra", "St. Johns County", "Duval County", "Flagler County"].map(area => (
+                        <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">
+                            {area}
+                        </span>
+                    ))}
+                </div>
+                <p class="mt-6 text-slate-500">Remote consulting available nationwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 bg-blue-900 text-white text-center">
+        <div class="container">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Started</h2>
+            <div class="space-y-6">
+                <a href="https://cal.com/evanparra" class="inline-block bg-white text-blue-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+                    Book a Free 30-Minute Discovery Call
+                </a>
+                <div class="block text-slate-300">
+                    <p class="font-bold">Evan Parra</p>
+                    <p>St. Augustine, FL</p>
+                    <a href="mailto:evan@evanparra.ai" class="hover:text-white underline">evan@evanparra.ai</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
