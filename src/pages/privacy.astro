@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Privacy Policy | Evan Parra";
+const description = "Privacy Policy for Evan Parra's website and services.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-20 bg-white">
+    <div class="container max-w-4xl mx-auto prose prose-slate">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: February 2026</p>
+
+      <h2>Information We Collect</h2>
+      <ul>
+        <li><strong>Contact Information:</strong> Name, email, phone when you submit forms or book calls</li>
+        <li><strong>Usage Data:</strong> Anonymous analytics via Google Analytics</li>
+        <li><strong>Chat Data:</strong> Conversations with the AI assistant (stored for quality improvement)</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <ul>
+        <li>To respond to inquiries and provide services</li>
+        <li>To improve the website and AI assistant</li>
+        <li>To send project updates (only if you're a client)</li>
+      </ul>
+
+      <h2>Data Storage</h2>
+      <ul>
+        <li>Form submissions stored in Firebase (Google Cloud)</li>
+        <li>Chat logs stored temporarily for conversation context</li>
+        <li>No data sold to third parties</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <ul>
+        <li>Google Analytics (anonymous usage tracking)</li>
+        <li>Session cookies for chat functionality</li>
+      </ul>
+
+      <h2>Your Rights</h2>
+      <ul>
+        <li>Request access to your data</li>
+        <li>Request deletion of your data</li>
+        <li>Opt out of analytics (browser settings)</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>For privacy concerns: <a href="mailto:evan@evanparra.ai">evan@evanparra.ai</a></p>
+
+      <h2>Changes</h2>
+      <p>We may update this policy. Check this page for the latest version.</p>
+    </div>
+  </section>
+</BaseLayout>

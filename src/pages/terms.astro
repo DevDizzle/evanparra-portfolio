@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Terms of Service | Evan Parra";
+const description = "Terms of Service for Evan Parra's website and consulting services.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-20 bg-white">
+    <div class="container max-w-4xl mx-auto prose prose-slate">
+      <h1>Terms of Service</h1>
+      <p>Last updated: February 2026</p>
+
+      <h2>Services</h2>
+      <p>Evan Parra provides consulting services for machine learning, AI agents, and business automation. Specific deliverables are defined in individual project agreements.</p>
+
+      <h2>No Guarantees</h2>
+      <ul>
+        <li>AI and ML systems involve uncertainty. Results depend on data quality and business factors.</li>
+        <li>No guarantee of specific outcomes, revenue increases, or cost savings.</li>
+        <li>Estimates are good-faith projections, not promises.</li>
+      </ul>
+
+      <h2>Intellectual Property</h2>
+      <ul>
+        <li>Client owns deliverables created specifically for their project</li>
+        <li>Evan retains rights to general methodologies, tools, and frameworks</li>
+        <li>Open source components remain under their original licenses</li>
+      </ul>
+
+      <h2>Payment Terms</h2>
+      <ul>
+        <li>Defined in individual project agreements</li>
+        <li>Typical: 50% upfront, 50% on completion (projects under $15K)</li>
+        <li>Larger projects: Milestone-based payments</li>
+      </ul>
+
+      <h2>Limitation of Liability</h2>
+      <ul>
+        <li>Maximum liability limited to fees paid for the specific project</li>
+        <li>Not liable for indirect, incidental, or consequential damages</li>
+        <li>Not liable for third-party service outages (GCP, APIs, etc.)</li>
+      </ul>
+
+      <h2>Termination</h2>
+      <ul>
+        <li>Either party may terminate with 14 days written notice</li>
+        <li>Client pays for work completed through termination date</li>
+      </ul>
+
+      <h2>Governing Law</h2>
+      <ul>
+        <li>State of Florida, USA</li>
+        <li>Disputes resolved through arbitration in St. Johns County, FL</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>Questions about these terms: <a href="mailto:evan@evanparra.ai">evan@evanparra.ai</a></p>
+    </div>
+  </section>
+</BaseLayout>
