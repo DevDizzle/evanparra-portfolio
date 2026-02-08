@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const title = "Autonomous Agent Systems | Evan Parra";
+const description = "AI agents that do real work, not just chat. I build agents that integrate with your business systems.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    <div class="container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Autonomous Agent Systems</h1>
+        <p class="text-xl md:text-2xl text-slate-300">AI agents that do real work, not just chat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20 bg-white">
+    <div class="container">
+      <SectionHeading title="The Problem" align="center" />
+      <div class="max-w-3xl mx-auto text-lg text-slate-600 space-y-4 text-center">
+        <p>Most "AI agents" are glorified chatbots. They can answer questions but can't take action. You need systems that actually execute — booking appointments, processing documents, updating databases, sending notifications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="py-20 bg-slate-50">
+    <div class="container">
+      <SectionHeading title="The Solution" align="center" />
+      <div class="max-w-3xl mx-auto mt-8">
+        <p class="text-lg text-slate-600 mb-8 text-center">I build agents that integrate with your business systems:</p>
+        <ul class="grid gap-4 md:grid-cols-2">
+          {[
+            "Tool-equipped agents (MCP, function calling)",
+            "Multi-step workflows with human-in-the-loop checkpoints",
+            "Integration with CRMs, calendars, databases, APIs",
+            "Monitoring and fallback handling"
+          ].map(item => (
+            <li class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+              <span class="text-indigo-600 mr-3">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-20 bg-white">
+      <div class="container">
+        <SectionHeading title="Use Cases" align="center" />
+        <div class="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto mt-8">
+            {[
+                "Appointment scheduling agents for service businesses",
+                "Document processing and data extraction",
+                "Customer support with escalation routing",
+                "Internal operations automation"
+            ].map(item => (
+                <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-100">
+                    <p class="font-semibold text-indigo-900">{item}</p>
+                </div>
+            ))}
+        </div>
+      </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 bg-slate-50">
+    <div class="container">
+      <SectionHeading title="How It Works" align="center" />
+      <div class="max-w-4xl mx-auto mt-12 grid gap-8 md:grid-cols-4">
+        {[
+          { title: "Process Mapping", desc: "Identify the workflow to automate" },
+          { title: "Tool Design", desc: "Define what actions the agent can take" },
+          { title: "Build & Test", desc: "Develop with safety guardrails and edge case handling" },
+          { title: "Deploy & Monitor", desc: "Launch with logging and performance tracking" }
+        ].map((step, i) => (
+          <div class="relative">
+            <div class="text-6xl font-bold text-slate-200 absolute -top-4 -left-4 -z-10">{i + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Tech Stack</h2>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+        {[
+          "Claude / GPT-4 / Gemini", "Model Context Protocol (MCP)", "Python / Node.js", 
+          "Firebase / Supabase", "Twilio / SendGrid"
+        ].map(tech => (
+          <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-700 text-slate-300">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-indigo-600 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Want an agent that actually does the work?</h2>
+      <a href="https://cal.com/evanparra" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+        Schedule a Discovery Call
+      </a>
+    </div>
+  </section>
+</BaseLayout>
