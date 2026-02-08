@@ -4,12 +4,16 @@ import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CaseStudiesSection from '../components/CaseStudiesSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
-import BookingSection from '../components/BookingSection.astro';
+import ContactForm from '../components/ContactForm.astro';
 import VisionPlayground from '../components/VisionPlayground';
-import GitHubProjects from '../components/GitHubProjects';
+import ProjectGrid from '../components/ProjectGrid';
+import { getFeaturedProjects } from '../lib/firestore';
 
 const title = "Evan Parra | ML Engineer & AI Systems Architect";
 const description = "Production ML pipelines, autonomous agents, and serverless architecture. I help companies build AI systems that actually ship.";
+
+const allFeatured = await getFeaturedProjects();
+const featuredProjects = allFeatured.filter(p => ['gammarips-mcp', 'gammarips-engine'].includes(p.id));
 ---
 
 <BaseLayout title={title} description={description}>
@@ -21,14 +25,13 @@ const description = "Production ML pipelines, autonomous agents, and serverless 
 			<SectionHeading
 				eyebrow="Open Source & Portfolio"
 				title="Engineering Showcase"
-				body="A collection of my recent work in AI agents, computer vision, and distributed systems."
+				body="The infrastructure powering GammaRips — production ML pipelines and MCP tooling, open for exploration."
 			/>
-			<div class="mt-12">
-				<GitHubProjects client:load />
+			<div class="mt-8">
+				<ProjectGrid projects={featuredProjects} client:load />
 				<div class="mt-10 text-center">
-					<a href="/projects" class="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700">
-						View All Projects 
-						<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+					<a href="/projects" class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-300">
+						Explore All Projects <span class="ml-2">→</span>
 					</a>
 				</div>
 			</div>
@@ -56,10 +59,16 @@ const description = "Production ML pipelines, autonomous agents, and serverless 
 		</div>
 	</section>
 
-	<!-- Booking/Contact -->
+	<!-- Contact -->
 	<section id="contact" class="py-20 bg-slate-900 text-white">
 		<div class="container">
-			<BookingSection />
+			<div class="max-w-4xl mx-auto">
+				<div class="text-center mb-12">
+					<h2 class="text-3xl md:text-4xl font-extrabold mb-4">Let's Build Something</h2>
+					<p class="text-xl text-slate-400">Ready to automate your operations? Tell me about your project.</p>
+				</div>
+				<ContactForm />
+			</div>
 		</div>
 	</section>
 </BaseLayout>
