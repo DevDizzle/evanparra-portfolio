@@ -1,31 +1,63 @@
 --- 
 import SiteHeader from '../components/SiteHeader.astro';
 import Footer from '../components/Footer.astro';
+import ChatWidget from '../components/ChatWidget';
 
 interface Props {
   title: string;
   description: string;
+  image?: string;
+  type?: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { 
+  title, 
+  description, 
+  image = "/assets/evan-parra-og-image.png",
+  type = "website",
+  showHeader = true,
+  showFooter = true
+} = Astro.props;
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Evan Parra – AI Engineering & Automation Strategy',
-  description:
-    'I help St. Augustine & Jacksonville businesses automate operations, cut costs, and drive revenue with Custom AI Agents, Computer Vision, and Intelligent Document Processing.',
-  url: 'https://evanparra.ai',
-  telephone: '+19046156418',
-  email: 'admin@evanparra.ai',
-  areaServed: [
-    'St. Augustine FL',
-    'St. Johns County FL',
-    'Ponte Vedra FL',
-    'Nocatee FL',
-    'Jacksonville FL'
-  ],
-  sameAs: ['https://www.linkedin.com/in/evanparra']
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://evanparra.ai/#org',
+      name: 'Evan Parra AI Consulting',
+      description: 'I help St. Augustine & Jacksonville businesses automate operations, cut costs, and drive revenue with Custom AI Agents, Computer Vision, and Intelligent Document Processing.',
+      url: 'https://evanparra.ai',
+      telephone: '+19046156418',
+      email: 'admin@evanparra.ai',
+      priceRange: '$$$',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'St. Augustine',
+        addressRegion: 'FL',
+        addressCountry: 'US'
+      },
+      areaServed: [
+        { '@type': 'City', name: 'St. Augustine' },
+        { '@type': 'AdministrativeArea', name: 'St. Johns County' },
+        { '@type': 'City', name: 'Ponte Vedra' },
+        { '@type': 'City', name: 'Nocatee' },
+        { '@type': 'City', name: 'Jacksonville' }
+      ],
+      sameAs: ['https://www.linkedin.com/in/evanparra']
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://evanparra.ai/#person',
+      name: 'Evan Parra',
+      jobTitle: 'AI Engineer & Automation Strategist',
+      url: 'https://evanparra.ai',
+      sameAs: ['https://www.linkedin.com/in/evanparra'],
+      worksFor: { '@id': 'https://evanparra.ai/#org' }
+    }
+  ]
 };
 --- 
 
@@ -44,7 +76,9 @@ const structuredData = {
     <!-- OpenGraph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/assets/evan-parra-og-image.png" />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={Astro.url.href} />
 
     <!-- Font Awesome -->
     <script
@@ -58,10 +92,11 @@ const structuredData = {
     <slot name="head" />
   </head>
   <body class="flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans leading-normal">
-    <SiteHeader />
+    {showHeader && <SiteHeader />}
     <div class="flex-grow">
       <slot />
     </div>
-    <Footer />
+    {showFooter && <Footer />}
+    <ChatWidget client:load />
   </body>
 </html>
