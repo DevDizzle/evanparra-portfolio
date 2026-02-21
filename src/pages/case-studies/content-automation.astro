@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Case Study: Automated Content Pipeline | Product Photo to Social Post";
+const description = "AI content automation that turns a product photo into a published social media post in under 2 minutes. On-brand copy, lifestyle imagery, multi-channel delivery.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container max-w-4xl mx-auto">
+      <a href="/case-studies" class="text-primary-400 text-sm hover:underline mb-4 inline-block">← All Case Studies</a>
+      <p class="text-sm font-mono text-primary-400 mb-2 uppercase tracking-wider">E-Commerce / Content Automation</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Product Photo to Social Post in 2 Minutes</h1>
+      <p class="text-xl text-slate-400">Snap a product photo. Get a published social media post with on-brand copy and lifestyle imagery. Fully automated.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container max-w-4xl mx-auto prose prose-slate prose-lg">
+
+      <h2>The Problem</h2>
+      <p>E-commerce brands live and die by content. Every product needs photos, copy, and social posts across Instagram, X, Facebook, and TikTok. A single post takes 30-60 minutes to create manually: write the copy, match the brand voice, find or create imagery, format for each platform, schedule, publish.</p>
+      <p>At 2-3 posts per day, that's a full-time job. Hiring a social media manager costs $2-5K/month. For small and mid-size brands, that's a huge chunk of revenue going to content instead of product.</p>
+
+      <h2>What I Built</h2>
+      <p>An automated content pipeline that turns a product photo into a fully published social media campaign:</p>
+      <ol>
+        <li><strong>Upload a product photo.</strong> iPhone snap on a table is fine.</li>
+        <li><strong>AI analyzes the product</strong> and matches it against the brand's voice, aesthetic, and target audience (configured once during onboarding).</li>
+        <li><strong>Generates lifestyle imagery.</strong> That hat on a table becomes a model wearing it on a beachside boardwalk. The product goes from flat-lay to aspirational.</li>
+        <li><strong>Writes on-brand copy.</strong> Tailored to each channel. Instagram caption is different from an X post is different from a TikTok description. All in the brand's voice.</li>
+        <li><strong>Posts automatically.</strong> Scheduled across every connected channel. Instagram, X, Facebook, TikTok.</li>
+      </ol>
+
+      <h2>The Transformation</h2>
+      <div class="not-prose bg-slate-50 rounded-xl p-8 border border-slate-200 my-8">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-sm font-mono text-red-500 uppercase tracking-wider mb-2">Input</p>
+            <p class="text-slate-700">iPhone photo of a product on a table. No styling. No editing. Just the product.</p>
+          </div>
+          <div>
+            <p class="text-sm font-mono text-green-500 uppercase tracking-wider mb-2">Output</p>
+            <p class="text-slate-700">Professional lifestyle image, on-brand copy for 4 channels, scheduled and published. Under 2 minutes.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Results</h2>
+      <div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">2 min</p>
+          <p class="text-sm text-slate-500">Photo to published post</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">4+</p>
+          <p class="text-sm text-slate-500">Channels simultaneously</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">100%</p>
+          <p class="text-sm text-slate-500">On-brand every time</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">~$0.25</p>
+          <p class="text-sm text-slate-500">Per post (AI + infra cost)</p>
+        </div>
+      </div>
+
+      <h2>How It Scales</h2>
+      <p>The system is multi-tenant. Each brand gets its own AI configuration: voice, aesthetic, audience, channel credentials. The infrastructure is shared. Adding a new brand takes an onboarding form, not an engineering sprint.</p>
+      <p>At 50 posts per month, a brand gets consistent, professional content across every channel for a fraction of what a social media manager costs. The AI never has an off day, never forgets the brand guidelines, and never misses a posting schedule.</p>
+
+      <h2>Why This Matters for E-Commerce</h2>
+      <p>Content is the bottleneck for every e-commerce brand. You have great products but can't keep up with the posting cadence that algorithms demand. This system eliminates the bottleneck. Your job goes from "create every post from scratch" to "snap a photo and approve."</p>
+
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-900 text-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Running an e-commerce brand?</h2>
+      <p class="text-xl text-slate-400 mb-8">Let's automate your content pipeline.</p>
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary-600 text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-500 transition-all shadow-lg text-lg">
+        Book Your Intro Call
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

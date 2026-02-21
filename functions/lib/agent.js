@@ -43,7 +43,7 @@ The engagement starts with a 2-week trial sprint on the highest-impact problem. 
 - GammaRips: AI-native financial intelligence platform. Autonomous pipeline scanning 5,000+ stocks nightly. Zero manual intervention. $50/mo infra cost.
 - Wealth Management: Designed AI automation for K-1 processing, fund portal scraping, Salesforce integration, AI assistants for every advisor.
 - Multi-Location Healthcare: Designed AI automation for patient communication, scheduling, and operational intelligence.
-- Chisme Lifestyle: AI content automation. Product photo to social media post in under 2 minutes.
+- Automated Content Pipeline: AI content automation. Product photo to social media post in under 2 minutes.
 - Healthcare data warehouses, predictive customer models, computer vision systems (Macula Cutis).
 
 ## Objection Handling

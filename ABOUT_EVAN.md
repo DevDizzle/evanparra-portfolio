@@ -27,7 +27,7 @@ Evan Parra is a Fractional AI Engineer based in South Florida. For $4,500/month,
 - **GammaRips:** Autonomous AI-native financial intelligence platform. Scans 5,000+ stocks nightly, generates trade analysis, delivers reports. Zero manual intervention. $50/mo infrastructure cost.
 - **Wealth Management:** Designed an AI automation system for a wealth advisory firm. K-1 document processing, fund portal scraping, Salesforce integration, and AI assistants for advisors.
 - **Multi-Location Healthcare:** Designed AI automation for a 40+ location healthcare company. Patient communication, scheduling optimization, and operational intelligence.
-- **Chisme Lifestyle:** AI content automation. Product photo to published social media post in under 2 minutes. On-brand copy + lifestyle imagery.
+- **Automated Content Pipeline:** AI content automation. Product photo to published social media post in under 2 minutes. On-brand copy + lifestyle imagery. Works for any e-commerce brand.
 - **Macula Cutis (Dermatology AI):** Computer vision system for skin lesion detection. Trained on HAM10000 dataset (10,000+ dermoscopic images, 7 categories including melanoma and basal cell carcinoma). 94.28% precision and recall, PR AUC 0.978. Deployed on Google Vertex AI with heatmap overlays. Live at maculacutis.com.
 - **Rapid CPAP (Healthcare E-commerce):** Built BigQuery data warehouse unifying Shopify + fulfillment + marketing data. Automated reporting and business intelligence for $1M+ annual revenue company.
 
