@@ -24,11 +24,6 @@
     ],
     "redirects": [
       {
-        "source": "/case-studies/**",
-        "destination": "/",
-        "type": 301
-      },
-      {
         "source": "/prompt-engineering",
         "destination": "/",
         "type": 301
