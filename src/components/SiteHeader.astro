@@ -5,10 +5,9 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Services', href: '/services' },
+  { label: 'Case Studies', href: '/case-studies' },
   { label: 'About', href: '/about' },
+  { label: 'For Partners', href: '/partners' },
 ];
 ---
 
@@ -16,7 +15,7 @@ const navItems: NavItem[] = [
   <div class="container flex h-16 items-center justify-between">
     <a href="/" class="flex items-center space-x-2">
         <span class="font-bold text-xl text-slate-900">Evan Parra</span>
-        <span class="hidden sm:inline-block text-slate-400 text-sm">| ML Engineer</span>
+        <span class="hidden sm:inline-block text-slate-400 text-sm">| Fractional AI Engineer</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -33,8 +32,8 @@ const navItems: NavItem[] = [
         <a href="tel:9046156418" class="text-sm font-bold text-slate-700 hover:text-primary-600">
           (904) 615-6418
         </a>
-        <a href="/contact" class="px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
-          Work With Me
+        <a href="/book" class="px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+          Book a Call
         </a>
       </div>
     </nav>
@@ -64,8 +63,8 @@ const navItems: NavItem[] = [
         <a href="tel:9046156418" class="text-center text-sm font-bold text-slate-700 hover:text-primary-600">
           (904) 615-6418
         </a>
-        <a href="/contact" class="mx-2 text-center px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
-          Work With Me
+        <a href="/book" class="mx-2 text-center px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors">
+          Book a Call
         </a>
       </div>
     </nav>

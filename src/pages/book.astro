@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Book a Call | Evan Parra | Fractional AI Engineer";
+const description = "Book a free 15-minute intro call. Tell me what's broken, I'll tell you how I'd fix it.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Book a Call</h1>
+      <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+        15 minutes. No pitch deck. No pressure. Tell me what's eating your team's time and I'll tell you what I'd build first.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container max-w-4xl mx-auto">
+
+      <!-- What to expect -->
+      <div class="mb-12 max-w-2xl mx-auto">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">What to Expect</h2>
+        <div class="space-y-4 text-slate-600">
+          <div class="flex gap-4 items-start">
+            <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+            <p>You tell me about your business and what's taking too much time or costing too much money.</p>
+          </div>
+          <div class="flex gap-4 items-start">
+            <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+            <p>I tell you what I'd automate first and how quickly I can get it done.</p>
+          </div>
+          <div class="flex gap-4 items-start">
+            <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+            <p>If it's a fit, we start with a 2-week trial sprint. If not, no hard feelings.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar Embed -->
+      <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200">
+        <div class="text-center py-12">
+          <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center bg-primary-600 text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-500 transition-all shadow-lg text-lg">
+            Choose a Time on Google Calendar
+          </a>
+        </div>
+      </div>
+
+      <!-- Fallback -->
+      <div class="mt-8 text-center">
+        <p class="text-slate-500 mb-2">Booking link not working?</p>
+        <p class="mt-4 text-slate-400 text-sm">
+          Call: <a href="tel:9046156418" class="text-primary-600 hover:underline">(904) 615-6418</a>
+          · Email: <a href="mailto:admin@evanparra.ai" class="text-primary-600 hover:underline">admin@evanparra.ai</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

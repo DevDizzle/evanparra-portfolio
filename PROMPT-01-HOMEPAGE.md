@@ -1,3 +1,55 @@
+# PROMPT-01: Rebuild Homepage as Fractional AI Engineer Funnel
+
+## Context
+We're pivoting evanparra.ai from an ML portfolio site to a single-offer fractional AI engineer site. One offer: $4,500/month, no contract, cancel anytime. Every page drives to one action: book a 15-minute intro call.
+
+## Copy Rules (apply to ALL text)
+- Write for the buyer. They don't care about your tech stack. They care about problems going away.
+- No em dashes. Use periods or commas.
+- Contractions always. Short sentences. Punchy.
+- Never say: "leverage," "robust," "game-changer," "cutting-edge," "innovative solutions," "AI Native Operating System"
+- Lead with outcomes, not architecture
+- Specificity sells: real numbers, real examples
+
+## Google Calendar Link (used for ALL booking CTAs)
+```
+https://calendar.app.google/CjhZR1dr31gkfhCQ8
+```
+
+---
+
+## Task 1: Update SiteHeader Navigation
+
+**File:** `src/components/SiteHeader.astro`
+
+Replace the navItems array with:
+```typescript
+const navItems: NavItem[] = [
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'About', href: '/about' },
+  { label: 'For Partners', href: '/partners' },
+];
+```
+
+Change the header brand text:
+- From: `Evan Parra` | `ML Engineer`
+- To: `Evan Parra` | `Fractional AI Engineer`
+
+Change the CTA button:
+- From: `Work With Me` linking to `/contact`
+- To: `Book a Call` linking to `/book`
+
+Keep the phone number link. Keep mobile menu functionality.
+
+---
+
+## Task 2: Rebuild Homepage
+
+**File:** `src/pages/index.astro`
+
+Replace the entire file with:
+
+```astro
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ChatWidget from '../components/ChatWidget';
@@ -228,3 +280,61 @@ const structuredData = {
   </section>
 
 </BaseLayout>
+```
+
+---
+
+## Task 3: Update BaseLayout Structured Data
+
+**File:** `src/layouts/BaseLayout.astro`
+
+In the structuredData object, update:
+- `name`: `'Evan Parra — Fractional AI Engineer'`
+- `description`: `'Your fractional AI engineer. $4,500/month. No contract. I embed in your business and build the automations you need.'`
+- `jobTitle`: `'Fractional AI Engineer'`
+- Remove the old `areaServed` array limited to St. Augustine area. Replace with:
+```javascript
+areaServed: [
+  { '@type': 'Country', name: 'United States' },
+  { '@type': 'State', name: 'Florida' }
+]
+```
+
+---
+
+## Task 4: Update Footer
+
+**File:** `src/components/Footer.astro`
+
+Update any tagline from "AI Consulting" or "ML Engineer" to:
+```
+Fractional AI Engineer | $4,500/mo | No Contract
+```
+
+Update footer nav links to match the new site structure:
+- Case Studies (`/case-studies`)
+- About (`/about`)
+- For Partners (`/partners`)
+- Book a Call (`/book`)
+- Privacy (`/privacy`)
+- Terms (`/terms`)
+
+---
+
+## Task 5: Archive Old Pages
+
+Move these files to `src/pages/_archive/`:
+- `src/pages/services/ai-advisory.astro`
+- `src/pages/services/autonomous-agent-systems.astro`
+- `src/pages/services/data-engineering.astro`
+- `src/pages/services/index.astro`
+- `src/pages/services/local-automation-audits.astro`
+- `src/pages/services/ml-pipeline-architecture.astro`
+- `src/pages/projects/index.astro`
+- `src/pages/st-augustine-ai-consulting.astro`
+- `src/pages/blog/index.astro`
+- `src/pages/blog/[...slug].astro`
+- `src/pages/blog/view.astro`
+- `src/pages/contact.astro`
+
+Do NOT delete them. Move to `_archive/` folder so Astro ignores them.

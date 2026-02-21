@@ -1,4 +1,4 @@
-import { type Config } from 'tailwindcss';
+/** @type {import('tailwindcss').Config} */
 import typography from '@tailwindcss/typography';
 
 const config = {
@@ -33,6 +33,6 @@ const config = {
   plugins: [
     typography,
   ]
-} satisfies Config;
+};
 
 export default config;

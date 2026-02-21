@@ -1,179 +1,134 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "About Evan Parra | ML Engineer & AI Systems Architect";
-const description = "Evan Parra is an ML Engineer based in St. Augustine, FL, specializing in production AI systems, GCP architecture, and autonomous agents.";
+const title = "About Evan Parra | Fractional AI Engineer";
+const description = "ML engineer, PhD researcher, Google certified. I stopped building AI for slide decks and started installing it in real businesses.";
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Evan Parra',
-  jobTitle: 'ML Engineer & AI Consultant',
+  jobTitle: 'Fractional AI Engineer',
   url: 'https://evanparra.ai/about',
   image: 'https://evanparra.ai/assets/evan-parra-headshot.png',
   sameAs: [
     'https://www.linkedin.com/in/evanparra',
-    'https://github.com/eraphaelparra',
+    'https://github.com/DevDizzle',
     'https://x.com/ParraEvan'
   ],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Evan Parra AI Consulting'
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Florida Atlantic University', description: 'MS in Artificial Intelligence' },
+    { '@type': 'CollegeOrUniversity', name: 'Florida International University', description: 'BA Economics' }
+  ],
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    name: 'Google Certified Professional Machine Learning Engineer'
   },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'St. Augustine',
-    addressRegion: 'FL',
-    addressCountry: 'US'
-  },
-  alumniOf: 'Point Blank Body Armor' 
+  knowsAbout: ['Machine Learning', 'AI Agents', 'Data Engineering', 'Computer Vision', 'GCP', 'Python']
 };
 ---
 
 <BaseLayout title={title} description={description}>
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
-  <!-- Hero Section -->
-  <section class="py-20 bg-slate-900 text-white border-b border-slate-800">
+
+  <!-- Hero -->
+  <section class="py-20 bg-slate-900 text-white">
     <div class="container max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Evan Parra</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Evan</h1>
       <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-        ML Engineer and AI Consultant based in St. Augustine, Florida.
-        Helping businesses automate operations with production-grade AI systems.
+        I got tired of building AI that lived in slide decks. So I started installing it in real businesses.
       </p>
     </div>
   </section>
 
   <!-- Main Content -->
   <section class="py-16 bg-white">
-    <div class="container max-w-4xl mx-auto grid md:grid-cols-3 gap-12">
-      
-      <!-- Bio & Background -->
-      <div class="md:col-span-2 prose prose-slate">
-        <h2>Bio</h2>
-        <p>
-          Evan Parra is an ML Engineer and AI Consultant based in St. Augustine, Florida. He builds production AI systems that ship — ML pipelines, autonomous agents, and intelligent automation. 5+ years of experience turning prototypes into deployed, revenue-generating systems.
-        </p>
+    <div class="container max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12">
 
-        <h2>Background</h2>
-        <ul>
-          <li><strong>ML Engineer:</strong> MS in Artificial Intelligence (FAU, 2025, 3.73 GPA).</li>
-          <li><strong>Certification:</strong> Google Certified Professional Machine Learning Engineer.</li>
-          <li><strong>Production Experience:</strong> LLM-augmented ETL pipelines, MCP servers, autonomous content systems, RAG architectures.</li>
-          <li><strong>GCP Specialist:</strong> BigQuery, Vertex AI, Cloud Run, Cloud Functions, Cloud Workflows, Pub/Sub.</li>
-          <li><strong>Data Engineering:</strong> Healthcare (Rapid CPAP), waste management (Coastal Waste), and fintech (GammaRips).</li>
-          <li><strong>Full-stack:</strong> Python, TypeScript, Next.js, FastAPI, Docker, CI/CD.</li>
-          <li><strong>Predictive Modeling:</strong> CLV/churn models driving 60% campaign ROI improvement.</li>
-          <li><strong>Education:</strong> BA Economics (FIU), background bridging business and engineering.</li>
-        </ul>
+        <!-- Bio -->
+        <div class="md:col-span-2 prose prose-slate">
+          <h2>The Short Version</h2>
+          <p>
+            I'm Evan Parra. I'm a fractional AI engineer based in South Florida. For $4,500 a month, I embed in your business and build the AI systems you need. Automations, integrations, data pipelines, AI tools for your team. Whatever moves the needle. No contract. Cancel anytime.
+          </p>
 
-        <h2>Notable Work</h2>
-        <ul>
-          <li><strong>GammaRips:</strong> Autonomous ML pipeline scanning 1,500+ stocks daily, 60% win rate, fully automated content across 4 channels — zero manual intervention.</li>
-          <li><strong>Coastal Waste & Recycling:</strong> Predictive CLV/churn models → 60% campaign ROI improvement across 20+ operational locations.</li>
-          <li><strong>Rapid CPAP:</strong> Built BigQuery data warehouse unifying Shopify + fulfillment + marketing, supported $1M+ annual revenue.</li>
-          <li><strong>Computer Vision:</strong> ResNet50, MobileNet, Vertex AI AutoML deployments (maculacutis.com).</li>
-          <li><strong>MCP Server:</strong> Open-source Model Context Protocol server for real-time options flow analysis via AI tool-calling.</li>
-        </ul>
+          <h2>The Longer Version</h2>
+          <p>
+            I spent years building ML systems for large companies. Predictive models, data warehouses, computer vision systems, ETL pipelines. The kind of work that sounds impressive on a resume but lives in corporate infrastructure nobody sees.
+          </p>
+          <p>
+            Then I built GammaRips. An entire AI-native financial intelligence business from scratch. Automated pipeline that scans 5,000+ stocks every night, generates analysis, and delivers reports. Zero manual intervention. $50/month infrastructure cost. That project taught me something: AI isn't just a tool. It's an operating model.
+          </p>
+          <p>
+            Now I take that same approach and install it in other businesses. Not as a consultant who delivers a PDF. Not as a freelancer who disappears after the project. As a fractional engineer who embeds with your team, learns your operations, and builds systems that get smarter every month.
+          </p>
 
-        <h2>Tech Stack Preferences</h2>
-        <ul>
-          <li><strong>Cloud:</strong> GCP (preferred), AWS (capable)</li>
-          <li><strong>Languages:</strong> Python, TypeScript</li>
-          <li><strong>ML Frameworks:</strong> scikit-learn, XGBoost, TensorFlow, PyTorch, Vertex AI</li>
-          <li><strong>Data:</strong> BigQuery, PostgreSQL, Firestore</li>
-          <li><strong>Agents:</strong> Claude, GPT-4, Gemini, MCP</li>
-          <li><strong>Infrastructure:</strong> Terraform, Cloud Run, Cloud Functions, Docker</li>
-        </ul>
-        
-        <h2>Availability & Work Style</h2>
-        <p>
-          I am currently accepting new projects. My typical lead time is 1-2 weeks to start.
-          I prefer asynchronous communication (Email, Slack) to maintain deep work focus, but I'm always available for scheduled syncs.
-        </p>
-      </div>
+          <h2>Credentials</h2>
+          <ul>
+            <li><strong>MS in Artificial Intelligence</strong>, Florida Atlantic University (3.73 GPA, 2025)</li>
+            <li><strong>PhD Researcher</strong>, FAU Generative Intelligence Lab. Researching multi-agent systems under Dr. Fernando Koch. Focus: how AI agents behave when they work together at scale.</li>
+            <li><strong>Google Certified Professional Machine Learning Engineer</strong></li>
+            <li><strong>BA Economics</strong>, Florida International University</li>
+          </ul>
 
-      <!-- Sidebar -->
-      <div class="md:col-span-1 space-y-8">
-        
-        <!-- Services Summary -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-          <h3 class="text-lg font-bold text-slate-900 mb-4">Core Services</h3>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li class="flex items-start gap-2">
-              <span class="text-primary-600 mt-0.5">•</span>
-              <span><strong>ML Pipeline Architecture</strong><br/><span class="text-slate-500">End-to-end systems on GCP</span></span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary-600 mt-0.5">•</span>
-              <span><strong>Autonomous Agents</strong><br/><span class="text-slate-500">Booking, Support, & Ops</span></span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary-600 mt-0.5">•</span>
-              <span><strong>AI Strategy & Advisory</strong><br/><span class="text-slate-500">Roadmaps & Assessments</span></span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary-600 mt-0.5">•</span>
-              <span><strong>Local Audits</strong><br/><span class="text-slate-500">St. Augustine & Jacksonville</span></span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-primary-600 mt-0.5">•</span>
-              <span><strong>Computer Vision</strong><br/><span class="text-slate-500">Inspections & Doc Processing</span></span>
-            </li>
+          <h2>What I've Built</h2>
+          <ul>
+            <li><strong>GammaRips:</strong> AI-native financial intelligence platform. Autonomous pipeline, multi-agent analysis, automated content delivery.</li>
+            <li><strong>Healthcare Data Warehouse:</strong> BigQuery infrastructure unifying Shopify, fulfillment, and marketing data for a $1M+ revenue e-commerce health company.</li>
+            <li><strong>Predictive Customer Models:</strong> CLV and churn models for a waste management company with 20+ locations. 60% campaign ROI improvement.</li>
+            <li><strong>Computer Vision Systems:</strong> Custom ResNet50, MobileNet, and Vertex AI AutoML deployments for medical image classification.</li>
+            <li><strong>Wealth Management Automation:</strong> K-1 processing, portal scraping, Salesforce integration for a $4B AUM advisory firm.</li>
+          </ul>
+
+          <h2>Industries</h2>
+          <p>
+            Healthcare, financial services, e-commerce, waste management, dental (multi-location), wealth management. The common thread: businesses with too much manual work and not enough engineering talent to fix it.
+          </p>
+
+          <h2>How I Work</h2>
+          <ul>
+            <li>$4,500/month. Your fee. Infrastructure costs are separate and transparent.</li>
+            <li>On-site once a month. Travel expenses covered by you.</li>
+            <li>Available async on Slack or WhatsApp between visits.</li>
+            <li>No contract. Month to month. Cancel anytime.</li>
+            <li>You own everything I build. Code, docs, infrastructure. Clean handoff if you ever leave.</li>
           </ul>
         </div>
 
-        <!-- Rates -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-          <h3 class="text-lg font-bold text-slate-900 mb-4">Rates</h3>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li>
-              <strong>Engineering:</strong> $100/hr<br/>
-            </li>
-            <li>
-              <strong>Advisory/Coaching:</strong> $250/hr<br/>
-            </li>
-            <li>
-              <strong>Project-based:</strong> Custom quotes<br/>
-              <span class="text-slate-500">Based on scope & milestones</span>
-            </li>
-            <li>
-              <strong>Retainer:</strong> $3K-5K/mo<br/>
-              <span class="text-slate-500">Fractional AI advisor</span>
-            </li>
-          </ul>
-        </div>
+        <!-- Sidebar -->
+        <div class="space-y-8">
+          <!-- Photo placeholder -->
+          <div class="bg-slate-100 rounded-2xl p-1 border border-slate-200">
+            <img src="/assets/evan-parra-headshot.png" alt="Evan Parra" class="rounded-xl w-full" />
+          </div>
 
-        <!-- What I Don't Do -->
-        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-          <h3 class="text-lg font-bold text-slate-900 mb-4">What I Don't Do</h3>
-          <ul class="space-y-2 text-sm text-slate-700 list-disc list-inside">
-            <li>Staff augmentation</li>
-            <li>On-site outside FL (without premium)</li>
-            <li>Maintenance-only (without build)</li>
-            <li>Vague scope projects</li>
-            <li>Generic AI 101 training</li>
-          </ul>
+          <!-- Quick Facts -->
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+            <h3 class="font-bold text-slate-900 mb-4">Quick Facts</h3>
+            <ul class="space-y-3 text-sm text-slate-600">
+              <li><strong>Based:</strong> South Florida</li>
+              <li><strong>Education:</strong> MS AI (FAU), BA Econ (FIU)</li>
+              <li><strong>Research:</strong> PhD, FAU Gen Intel Lab</li>
+              <li><strong>Cert:</strong> Google ML Engineer</li>
+              <li><strong>Experience:</strong> 5+ years production AI</li>
+              <li><strong>Rate:</strong> $4,500/month</li>
+              <li><strong>Contract:</strong> None. Cancel anytime.</li>
+            </ul>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-primary-600 rounded-2xl p-6 text-white text-center">
+            <h3 class="font-bold text-lg mb-3">Let's talk</h3>
+            <p class="text-primary-100 text-sm mb-4">15 minutes. No pitch. Just a conversation about what you need.</p>
+            <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-primary-50 transition-colors w-full">
+              Book a Call
+            </a>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-20 bg-primary-50">
-    <div class="container max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-slate-900 mb-6">Ready to work together?</h2>
-      <p class="text-xl text-slate-600 mb-8">
-        Book a discovery call to discuss your project.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" class="px-8 py-4 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20">
-          Book Discovery Call
-        </a>
-        <a href="/contact" class="px-8 py-4 bg-white text-slate-700 border border-slate-300 rounded-lg font-medium hover:bg-slate-50 transition-colors">
-          Send a Message
-        </a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

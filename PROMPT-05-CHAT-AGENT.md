@@ -1,28 +1,18 @@
-import { z } from 'genkit';
-import { ai } from './config';
-import { submitBookingRequest } from './tools';
+# PROMPT-05: Update Chat Agent System Prompt
 
-export const bookingAgentFlow = ai.defineFlow(
-  {
-    name: 'bookingAgentFlow',
-    inputSchema: z.object({
-      messages: z.array(z.object({
-        role: z.enum(['user', 'model', 'system']),
-        content: z.array(z.object({
-          text: z.string().optional(),
-        })),
-      })),
-    }),
-    outputSchema: z.string(),
-  },
-  async (input) => {
-    // Construct the history from input messages
-    const history = input.messages.map(m => ({
-      role: m.role,
-      content: m.content,
-    }));
+## Context
+The chat widget on evanparra.ai needs to sell the fractional AI engineer offer, not the old consulting services. Update the system prompt in the agent function.
 
-    const systemPrompt = `
+---
+
+## Task: Update Agent System Prompt
+
+**File:** `functions/src/agent.ts`
+
+Find the `systemPrompt` variable inside the `bookingAgentFlow` function and replace its entire contents with the following:
+
+```typescript
+const systemPrompt = `
 You are Evan Parra's AI assistant on evanparra.ai. Your goal is to help potential clients understand Evan's fractional AI engineer offer and get them to book a 15-minute intro call.
 
 ## The Offer
@@ -70,18 +60,6 @@ The engagement starts with a 2-week trial sprint on the highest-impact problem. 
 ## Tone
 Professional but human. Like talking to a smart, friendly colleague. Not a chatbot. Not a sales script.
 `;
+```
 
-    const response = await ai.generate({
-      prompt: [
-        { text: systemPrompt },
-        ...history.flatMap(m => m.content.map(c => ({ text: c.text || '' })))
-      ],
-      tools: [submitBookingRequest],
-      config: {
-        temperature: 0.7,
-      },
-    });
-
-    return response.text;
-  }
-);
+Make sure the rest of the `bookingAgentFlow` function logic stays the same (message handling, history construction, etc.). Only the `systemPrompt` string changes.
