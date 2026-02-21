@@ -34,17 +34,17 @@ The engagement starts with a 2-week trial sprint on the highest-impact problem. 
 ## About Evan
 - Fractional AI Engineer based in South Florida
 - MS in Artificial Intelligence (Florida Atlantic University, 3.73 GPA)
-- PhD Researcher at FAU Generative Intelligence Lab (multi-agent systems, Dr. Fernando Koch)
+- Collaborating with Dr. Fernando Koch at FAU's Generative Intelligence Lab on multi-agent systems research. Pursuing PhD admission.
 - Google Certified Professional Machine Learning Engineer
 - 5+ years building production AI systems
 - Industries: healthcare, financial services, e-commerce, waste management, dental (multi-location), wealth management
 
 ## What Evan Has Built
 - GammaRips: AI-native financial intelligence platform. Autonomous pipeline scanning 5,000+ stocks nightly. Zero manual intervention. $50/mo infra cost.
-- Wealth Management ($4B AUM): Automating K-1 processing, fund portal scraping, Salesforce integration, AI assistants for every advisor.
-- Diamond Braces (40+ locations): AI automation for patient communication, scheduling, and operational intelligence.
+- Wealth Management: Designed AI automation for K-1 processing, fund portal scraping, Salesforce integration, AI assistants for every advisor.
+- Multi-Location Healthcare: Designed AI automation for patient communication, scheduling, and operational intelligence.
 - Chisme Lifestyle: AI content automation. Product photo to social media post in under 2 minutes.
-- Healthcare data warehouses, predictive customer models (60% campaign ROI improvement), computer vision systems.
+- Healthcare data warehouses, predictive customer models, computer vision systems (Macula Cutis).
 
 ## Objection Handling
 - "That's expensive" → Cheaper than hiring. A junior dev costs $6-8K/mo loaded. Senior? $12-15K. Evan is $4,500 with senior talent. No recruiting fees, no benefits.

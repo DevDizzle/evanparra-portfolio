@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Case Study: GammaRips | AI-Native Financial Intelligence";
+const description = "Built an entire AI-native financial intelligence business from zero. 5,000+ stocks scanned nightly. Zero manual intervention.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container max-w-4xl mx-auto">
+      <a href="/case-studies" class="text-primary-400 text-sm hover:underline mb-4 inline-block">← All Case Studies</a>
+      <p class="text-sm font-mono text-primary-400 mb-2 uppercase tracking-wider">Financial Intelligence</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">GammaRips: Built an AI-Native Business From Zero</h1>
+      <p class="text-xl text-slate-400">I didn't just consult on AI. I built and ran an entire AI-native financial intelligence business.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container max-w-4xl mx-auto prose prose-slate prose-lg">
+
+      <h2>The Challenge</h2>
+      <p>Retail traders can't see what institutional money is doing. The data exists, buried in options flow across 5,000+ tickers, but nobody has time to scan it all manually. Existing tools cost $500+/month and require deep options expertise to interpret.</p>
+
+      <h2>What I Built</h2>
+      <p>GammaRips is a fully autonomous financial intelligence platform. Every night, the system:</p>
+      <ol>
+        <li>Scans 5,000+ stocks for unusual institutional options activity</li>
+        <li>Scores each signal 1-10 based on conviction (volume, open interest, dollar flow, clustering)</li>
+        <li>Enriches top signals with AI-generated trade analysis, technical indicators, and news context</li>
+        <li>Runs a multi-agent debate (3 AI models argue bull vs bear on each signal)</li>
+        <li>Generates and delivers a morning report before market open</li>
+      </ol>
+      <p>The entire pipeline runs without human intervention. Scanning, scoring, enriching, debating, writing, delivering. Every step is automated.</p>
+
+      <h2>The Tech</h2>
+      <ul>
+        <li>Python, GCP (BigQuery, Cloud Run, Firestore, Cloud Scheduler)</li>
+        <li>Polygon.io API for market data</li>
+        <li>Gemini (with Google Search grounding) for news analysis</li>
+        <li>Multi-agent debate system: Grok (momentum), Gemini (contrarian), Claude (risk manager)</li>
+        <li>Firebase for web app, Stripe for subscriptions</li>
+      </ul>
+
+      <h2>Results</h2>
+      <div class="not-prose grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">5,000+</p>
+          <p class="text-sm text-slate-500">Stocks scanned nightly</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">60%</p>
+          <p class="text-sm text-slate-500">Signal win rate</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">$50/mo</p>
+          <p class="text-sm text-slate-500">Total infrastructure</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">Zero</p>
+          <p class="text-sm text-slate-500">Manual intervention</p>
+        </div>
+      </div>
+
+      <h2>Why This Matters for Your Business</h2>
+      <p>GammaRips proves that AI can run real business operations autonomously. Not a demo. Not a proof of concept. A production system that scans, analyzes, writes, and delivers every single day without anyone touching it.</p>
+      <p>The same approach works for your business. Document processing, reporting, customer communication, data analysis. If it's repetitive and rule-based, it can be automated. If it requires judgment, AI can assist.</p>
+
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-900 text-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Want this kind of system in your business?</h2>
+      <p class="text-xl text-slate-400 mb-8">15 minutes. Tell me what's eating your team's time.</p>
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary-600 text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-500 transition-all shadow-lg text-lg">
+        Book Your Intro Call
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

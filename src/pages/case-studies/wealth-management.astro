@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Case Study: Wealth Management AI Automation";
+const description = "AI automation for wealth management: K-1 document processing, fund portal scraping, Salesforce integration, and AI assistants for advisors.";
+---
+
+<BaseLayout title={title} description={description}>
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container max-w-4xl mx-auto">
+      <a href="/case-studies" class="text-primary-400 text-sm hover:underline mb-4 inline-block">← All Case Studies</a>
+      <p class="text-sm font-mono text-primary-400 mb-2 uppercase tracking-wider">Wealth Management</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Wealth Management: AI for Every Advisor</h1>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container max-w-4xl mx-auto prose prose-slate prose-lg">
+
+      <h2>The Problem</h2>
+      <p>Wealth management firms bleed hours on manual operations. Advisors log into 10+ fund admin portals daily to check for updates. K-1 documents get processed by hand across dozens of portals. Salesforce data entry consumes hours that should be spent with clients.</p>
+      <p>Most firms have a small tech team but no AI expertise. They know automation could help but don't know where to start.</p>
+
+      <h2>What I Designed</h2>
+      <ul>
+        <li><strong>K-1 Document Automation:</strong> AI reads, extracts, and processes K-1 documents from multiple fund admin portals. What used to take hours per document now takes seconds.</li>
+        <li><strong>Portal Scraping:</strong> Automated scrapers log into fund admin portals, check for new documents and updates, and flag what needs attention. Advisors stop wasting time on manual portal checks.</li>
+        <li><strong>Salesforce Integration:</strong> Data flows automatically from documents and portals into Salesforce. No more manual data entry. No more stale records.</li>
+        <li><strong>AI Assistant for Advisors:</strong> Every advisor gets an AI assistant they can ask questions in plain English. "What's our policy on alternative investments for accounts over $5M?" The system knows the compliance handbook, investment policy statements, and custodian rules. Answers accurately with citations.</li>
+      </ul>
+
+      <h2>Projected Impact</h2>
+      <div class="not-prose grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">40+</p>
+          <p class="text-sm text-slate-500">Hours/month saved on K-1s</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">90%</p>
+          <p class="text-sm text-slate-500">Less manual portal checking</p>
+        </div>
+        <div class="bg-slate-50 rounded-lg p-4 text-center border border-slate-200">
+          <p class="text-2xl font-bold text-primary-600">Instant</p>
+          <p class="text-sm text-slate-500">Policy answers for advisors</p>
+        </div>
+      </div>
+
+      <h2>Why This Matters</h2>
+      <p>By month 3, every advisor has an AI assistant that knows the firm's compliance handbook, client policies, and fund structures. They ask a question, they get an accurate answer. No more hunting through SharePoint. No more calling compliance and waiting for a callback.</p>
+      <p>The system compounds. Every document processed adds to its knowledge. Every question answered improves future responses. Month 1 it knows the basics. Month 6 it knows more about the firm's operations than any single employee.</p>
+
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-900 text-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Running a financial services firm?</h2>
+      <p class="text-xl text-slate-400 mb-8">This is the kind of system I build. Let's talk about yours.</p>
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary-600 text-white px-10 py-4 rounded-xl font-semibold hover:bg-primary-500 transition-all shadow-lg text-lg">
+        Book Your Intro Call
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

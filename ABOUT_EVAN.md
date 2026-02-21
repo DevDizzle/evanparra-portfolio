@@ -5,7 +5,7 @@ Evan Parra is a Fractional AI Engineer based in South Florida. For $4,500/month,
 
 ## Background
 - MS in Artificial Intelligence (Florida Atlantic University, 2025, 3.73 GPA)
-- PhD Researcher at FAU's Generative Intelligence Lab (advisor: Dr. Fernando Koch). Researching multi-agent systems and how AI agents behave at scale.
+- Collaborating with Dr. Fernando Koch at FAU's Generative Intelligence Lab on multi-agent systems research. Pursuing PhD admission.
 - Google Certified Professional Machine Learning Engineer
 - BA Economics (Florida International University)
 - Production experience: ML pipelines, autonomous agents, data warehouses, computer vision, RAG systems
@@ -25,12 +25,11 @@ Evan Parra is a Fractional AI Engineer based in South Florida. For $4,500/month,
 
 ## Notable Work
 - **GammaRips:** Autonomous AI-native financial intelligence platform. Scans 5,000+ stocks nightly, generates trade analysis, delivers reports. Zero manual intervention. $50/mo infrastructure cost.
-- **Wealth Management ($4B AUM):** Automating K-1 document processing, fund portal scraping, Salesforce integration, and building AI assistants for every advisor.
-- **Diamond Braces (40+ locations):** AI automation for patient communication, scheduling optimization, and operational intelligence across all locations.
+- **Wealth Management:** Designed an AI automation system for a wealth advisory firm. K-1 document processing, fund portal scraping, Salesforce integration, and AI assistants for advisors.
+- **Multi-Location Healthcare:** Designed AI automation for a 40+ location healthcare company. Patient communication, scheduling optimization, and operational intelligence.
 - **Chisme Lifestyle:** AI content automation. Product photo to published social media post in under 2 minutes. On-brand copy + lifestyle imagery.
-- **Healthcare Data Warehouse:** BigQuery infrastructure unifying Shopify + fulfillment + marketing for $1M+ annual revenue company.
-- **Predictive Models:** CLV/churn models for waste management company (20+ locations). 60% campaign ROI improvement.
-- **Computer Vision:** ResNet50, MobileNet, Vertex AI AutoML for medical image classification (maculacutis.com).
+- **Macula Cutis (Dermatology AI):** Computer vision system for skin lesion detection. Trained on HAM10000 dataset (10,000+ dermoscopic images, 7 categories including melanoma and basal cell carcinoma). 94.28% precision and recall, PR AUC 0.978. Deployed on Google Vertex AI with heatmap overlays. Live at maculacutis.com.
+- **Rapid CPAP (Healthcare E-commerce):** Built BigQuery data warehouse unifying Shopify + fulfillment + marketing data. Automated reporting and business intelligence for $1M+ annual revenue company.
 
 ## Why Hire Evan Instead Of...
 - **A full-time hire:** $6-8K/mo for a junior. $12-15K for senior. Evan is $4,500 with senior skills and no HR overhead.
