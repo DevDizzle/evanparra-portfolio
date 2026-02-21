@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const title = "AI Strategy & Advisory | Evan Parra | St. Augustine FL";
+const description = "Cut through the hype. I help business leaders identify high-value AI use cases, assess technical feasibility, and build a roadmap that delivers ROI.";
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Strategy & Advisory',
+  description: description,
+  provider: {
+    '@type': 'Person',
+    name: 'Evan Parra',
+    url: 'https://evanparra.ai'
+  },
+  areaServed: 'US',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'AI Consulting Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI Feasibility Audit'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Technical Roadmap Planning'
+        }
+      }
+    ]
+  }
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 text-white py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    <div class="container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">AI Strategy & Advisory</h1>
+        <p class="text-xl md:text-2xl text-slate-300">Turn AI hype into business value.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20 bg-white">
+    <div class="container">
+      <SectionHeading title="The Problem" align="center" />
+      <div class="max-w-3xl mx-auto text-lg text-slate-600 space-y-4">
+        <p>Everyone is talking about AI, but few know how to use it effectively. Companies waste money on flashy demos that never make it to production, or worse, they ignore AI completely and fall behind. You need a navigator, not just a developer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="py-20 bg-slate-50">
+    <div class="container">
+      <SectionHeading title="The Solution" align="center" />
+      <div class="max-w-3xl mx-auto mt-8">
+        <p class="text-lg text-slate-600 mb-8 text-center">I partner with leadership teams to de-risk AI adoption:</p>
+        <ul class="grid gap-4 md:grid-cols-2">
+          {[
+            "Feasibility Audits: Can AI actually solve this?",
+            "Build vs. Buy Analysis",
+            "Technical Roadmap & Architecture",
+            "Vendor & Tool Selection",
+            "Team Upskilling & Workshops"
+          ].map(item => (
+            <li class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+              <span class="text-purple-600 mr-3">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 bg-white">
+    <div class="container">
+      <SectionHeading title="Engagement Model" align="center" />
+      <div class="max-w-md mx-auto mt-12 bg-slate-900 text-white rounded-2xl p-8 shadow-xl border border-slate-700 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+            <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Advisory Retainer</h3>
+        <p class="text-purple-400 text-3xl font-bold mb-6">Starting at $2,500<span class="text-lg text-slate-400 font-normal">/mo</span></p>
+        <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-slate-300">
+                <span class="text-purple-500 mr-3">✓</span> Weekly strategy calls
+            </li>
+            <li class="flex items-center text-slate-300">
+                <span class="text-purple-500 mr-3">✓</span> Vendor/Architecture reviews
+            </li>
+            <li class="flex items-center text-slate-300">
+                <span class="text-purple-500 mr-3">✓</span> Priority email/Slack access
+            </li>
+            <li class="flex items-center text-slate-300">
+                <span class="text-purple-500 mr-3">✓</span> Quarterly roadmap planning
+            </li>
+        </ul>
+        <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition-colors">
+            Book Intro Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-purple-900 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Don't guess. Execute.</h2>
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="inline-block bg-white text-purple-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+        Book a Strategy Session
+      </a>
+    </div>
+  </section>
+</BaseLayout>

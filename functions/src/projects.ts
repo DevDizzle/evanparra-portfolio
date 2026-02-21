@@ -18,7 +18,13 @@ const TARGET_REPOS = [
   "smart-city",
   "galaqtiq-invoice-agent",
   "serverless-pii-vault",
-  "evanparra-portfolio"
+  "evanparra-portfolio",
+  "operation-green-light",
+  "ttb-verifier",
+  "sci-paper-hub",
+  "sci-paper-chat",
+  "coastal-inventory-logger",
+  "wm-api-integration"
 ];
 
 const GITHUB_USERNAME = "devdizzle";
@@ -28,11 +34,17 @@ async function syncPortfolioLogic() {
   logger.info("Starting GitHub Portfolio Sync...");
   
   try {
+    const headers: any = {
+      'Accept': 'application/vnd.github.v3+json',
+      'User-Agent': 'Firebase-Cloud-Function'
+    };
+    
+    if (process.env.GITHUB_TOKEN) {
+      headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
+    }
+
     const response = await axios.get(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'Firebase-Cloud-Function'
-      }
+      headers
     });
 
     const repos = response.data;

@@ -5,6 +5,7 @@ import { onCall } from "firebase-functions/v2/https";
 import { bookingAgentFlow as agentFlow } from "./agent";
 import { visionAnalysisFlow as visionFlow } from "./vision";
 import { sendBookingNotification } from "./triggers/sendBookingNotification";
+import { sendContactNotification } from "./triggers/sendContactNotification";
 import { getBlogPosts, getBlogPostBySlug, upsertBlogPost, addBlogPost } from "./blog";
 import { syncGitHubPortfolio, manualSyncPortfolio } from "./projects";
 
@@ -94,4 +95,4 @@ export const contactForm = functions.https.onRequest((req, res) => {
   });
 });
 
-export { sendBookingNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost, addBlogPost, syncGitHubPortfolio, manualSyncPortfolio };
+export { sendBookingNotification, sendContactNotification, getBlogPosts, getBlogPostBySlug, upsertBlogPost, addBlogPost, syncGitHubPortfolio, manualSyncPortfolio };

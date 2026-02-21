@@ -27,10 +27,10 @@ export const sendBookingNotification = onDocumentCreated(
 
     const apiKey = process.env.MAILGUN_API_KEY;
     const domain = process.env.MAILGUN_DOMAIN;
-    const recipient = process.env.MAILGUN_RECIPIENT;
+    const recipient = process.env.MAILGUN_RECIPIENT || "admin@evanparra.ai";
 
-    if (!apiKey || !domain || !recipient) {
-      console.error("Missing Mailgun configuration (MAILGUN_API_KEY, MAILGUN_DOMAIN, or MAILGUN_RECIPIENT).");
+    if (!apiKey || !domain) {
+      console.error("Missing Mailgun configuration (MAILGUN_API_KEY or MAILGUN_DOMAIN).");
       return;
     }
 

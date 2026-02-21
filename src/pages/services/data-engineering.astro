@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const title = "Data Engineering & Integration | Evan Parra | St. Augustine FL";
+const description = "Build robust data pipelines that feed your AI. I unify your fragmented data into a single source of truth for analytics and machine learning.";
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Data Engineering & Integration',
+  description: description,
+  provider: {
+    '@type': 'Person',
+    name: 'Evan Parra',
+    url: 'https://evanparra.ai'
+  },
+  areaServed: 'US',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Data Engineering Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Modern Data Stack Implementation'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'ETL/ELT Pipeline Development'
+        }
+      }
+    ]
+  }
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    <div class="container relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Data Engineering & Integration</h1>
+        <p class="text-xl md:text-2xl text-slate-300">Unify your data. Power your AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="py-20 bg-white">
+    <div class="container">
+      <SectionHeading title="The Problem" align="center" />
+      <div class="max-w-3xl mx-auto text-lg text-slate-600 space-y-4">
+        <p>AI models are only as good as the data you feed them. Most businesses have data trapped in silos—spreadsheets, SaaS tools, and legacy databases that don't talk to each other. You can't build intelligence on a fractured foundation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="py-20 bg-slate-50">
+    <div class="container">
+      <SectionHeading title="The Solution" align="center" />
+      <div class="max-w-3xl mx-auto mt-8">
+        <p class="text-lg text-slate-600 mb-8 text-center">I build robust, automated data pipelines that create a single source of truth:</p>
+        <ul class="grid gap-4 md:grid-cols-2">
+          {[
+            "Connect APIs, databases, and flat files",
+            "Automated ELT/ETL pipelines (Airbyte/Fivetran)",
+            "Data modeling and transformation (dbt)",
+            "Data quality testing and alerting",
+            "Real-time data streaming"
+          ].map(item => (
+            <li class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+              <span class="text-blue-600 mr-3">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 bg-white">
+    <div class="container">
+      <SectionHeading title="How It Works" align="center" />
+      <div class="max-w-4xl mx-auto mt-12 grid gap-8 md:grid-cols-4">
+        {[
+          { title: "Audit & Map", desc: "Identify all data sources and destinations" },
+          { title: "Ingest", desc: "Set up automated connectors to centralize raw data" },
+          { title: "Transform", desc: "Clean, join, and model data for business use" },
+          { title: "Serve", desc: "Feed clean data to BI tools and AI models" }
+        ].map((step, i) => (
+          <div class="relative">
+            <div class="text-6xl font-bold text-slate-100 absolute -top-4 -left-4 -z-10">{i + 1}</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
+            <p class="text-slate-600">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Tech Stack</h2>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+        {[
+          "Python", "SQL", "dbt", "Airbyte", "Fivetran",
+          "BigQuery", "Snowflake", "PostgreSQL",
+          "Google Cloud Functions", "AWS Lambda", "Terraform"
+        ].map(tech => (
+          <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-700 text-slate-300">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-blue-600 text-white text-center">
+    <div class="container">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Stop wrangling spreadsheets.</h2>
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+        Book a Data Strategy Call
+      </a>
+    </div>
+  </section>
+</BaseLayout>

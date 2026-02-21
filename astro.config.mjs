@@ -34,11 +34,6 @@ export default defineConfig({
   output: "static",
 
   sitemap: {
-
     // Note: this is a top-level property
-
-    filename: 'sitemap.xml'
-
   }
-
 });

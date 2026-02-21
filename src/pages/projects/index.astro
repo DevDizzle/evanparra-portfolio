@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
-import GitHubProjects from '../../components/GitHubProjects';
+import { projectCategories } from '../../data/projects';
 
 const title = "Projects | Evan Parra";
-const description = "A collection of AI/ML projects, open source contributions, and client success stories.";
+const description = "Open source ML and AI projects by Evan Parra — generative AI evaluation, fine-tuning, computer vision, and production data engineering.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -19,18 +19,62 @@ const description = "A collection of AI/ML projects, open source contributions, 
     </div>
   </section>
 
-  <section class="py-20">
-    <div class="container">
-      <SectionHeading 
-        eyebrow="Open Source" 
-        title="GitHub Repositories" 
-        body="Live code and contributions available for public review."
-      />
-      <div class="mt-12">
-        <GitHubProjects client:load />
-      </div>
+  <div class="space-y-20 py-20">
+    {projectCategories.map((category) => (
+      <section>
+        <div class="container">
+          <div class="mb-12 border-b border-slate-200 pb-4">
+            <h2 class="text-2xl font-bold text-slate-900">{category.title}</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {category.projects.map((project) => (
+              <a 
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block bg-slate-50 rounded-xl border border-slate-200 p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-left flex flex-col h-full"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-600 transition-colors">
+                    {project.name}
+                  </h3>
+                  <i class="fa-brands fa-github text-xl text-slate-400 group-hover:text-slate-900 transition-colors"></i>
+                </div>
+                
+                <p class="text-slate-600 mb-6 text-sm leading-relaxed flex-grow">
+                  {project.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  {project.tech.map((tech) => (
+                    <span 
+                      class="px-2.5 py-0.5 bg-white text-slate-600 text-xs font-medium rounded-full border border-slate-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <section class="bg-primary-50 py-20">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Interested in collaborating?</h2>
+      <p class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+        I'm always open to discussing new opportunities, open source contributions, and technical challenges.
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-block bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+      >
+        Get in Touch
+      </a>
     </div>
   </section>
-
-  <!-- TODO: Add Client Projects Section fetching from Firestore 'projects' collection -->
 </BaseLayout>

@@ -9,14 +9,40 @@ import VisionPlayground from '../components/VisionPlayground';
 import ProjectGrid from '../components/ProjectGrid';
 import { getFeaturedProjects } from '../lib/firestore';
 
-const title = "Evan Parra | ML Engineer & AI Systems Architect";
-const description = "Production ML pipelines, autonomous agents, and serverless architecture. I help companies build AI systems that actually ship.";
+const title = "Data Engineering | Evan Parra | St. Augustine FL";
+const description = "ML pipelines, data integration, and AI systems for businesses that need things to actually work.";
 
 const allFeatured = await getFeaturedProjects();
 const featuredProjects = allFeatured.filter(p => ['gammarips-mcp', 'gammarips-engine'].includes(p.id));
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Evan Parra AI Consulting',
+  url: 'https://evanparra.ai',
+  logo: 'https://evanparra.ai/assets/evan-parra-headshot.png',
+  description: description,
+  founder: {
+    '@type': 'Person',
+    name: 'Evan Parra'
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-904-615-6418',
+    contactType: 'sales',
+    areaServed: 'US',
+    availableLanguage: 'en'
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/evanparra',
+    'https://github.com/eraphaelparra',
+    'https://x.com/ParraEvan'
+  ]
+};
 ---
 
 <BaseLayout title={title} description={description}>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
 	<Hero />
 	
 	<!-- Featured Projects (GitHub) -->

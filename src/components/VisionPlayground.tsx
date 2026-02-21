@@ -117,7 +117,7 @@ const VisionPlayground: React.FC = () => {
               </div>
             ) : (
               <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-                <img src={image} alt="Preview" className="w-full h-auto object-cover max-h-[400px]" />
+                <img src={image} alt="Computer Vision Analysis Preview" className="w-full h-auto object-cover max-h-[400px]" />
                 <button
                   onClick={handleReset}
                   className="absolute top-2 right-2 bg-white/90 p-1.5 rounded-full text-slate-600 hover:text-red-600 hover:bg-white shadow-sm transition-all"

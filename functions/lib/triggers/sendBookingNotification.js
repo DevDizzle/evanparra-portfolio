@@ -26,9 +26,9 @@ exports.sendBookingNotification = (0, firestore_1.onDocumentCreated)({
     const docId = event.params.docId;
     const apiKey = process.env.MAILGUN_API_KEY;
     const domain = process.env.MAILGUN_DOMAIN;
-    const recipient = process.env.MAILGUN_RECIPIENT;
-    if (!apiKey || !domain || !recipient) {
-        console.error("Missing Mailgun configuration (MAILGUN_API_KEY, MAILGUN_DOMAIN, or MAILGUN_RECIPIENT).");
+    const recipient = process.env.MAILGUN_RECIPIENT || "admin@evanparra.ai";
+    if (!apiKey || !domain) {
+        console.error("Missing Mailgun configuration (MAILGUN_API_KEY or MAILGUN_DOMAIN).");
         return;
     }
     const mg = mailgun.client({ username: "api", key: apiKey });

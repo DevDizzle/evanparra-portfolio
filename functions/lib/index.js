@@ -36,7 +36,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.manualSyncPortfolio = exports.syncGitHubPortfolio = exports.upsertBlogPost = exports.getBlogPostBySlug = exports.getBlogPosts = exports.sendBookingNotification = exports.submitForm = exports.visionAnalysisFlow = exports.bookingAgentFlow = void 0;
+exports.manualSyncPortfolio = exports.syncGitHubPortfolio = exports.addBlogPost = exports.upsertBlogPost = exports.getBlogPostBySlug = exports.getBlogPosts = exports.sendContactNotification = exports.sendBookingNotification = exports.contactForm = exports.submitForm = exports.visionAnalysisFlow = exports.bookingAgentFlow = void 0;
 const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 const cors_1 = __importDefault(require("cors"));
@@ -45,10 +45,13 @@ const agent_1 = require("./agent");
 const vision_1 = require("./vision");
 const sendBookingNotification_1 = require("./triggers/sendBookingNotification");
 Object.defineProperty(exports, "sendBookingNotification", { enumerable: true, get: function () { return sendBookingNotification_1.sendBookingNotification; } });
+const sendContactNotification_1 = require("./triggers/sendContactNotification");
+Object.defineProperty(exports, "sendContactNotification", { enumerable: true, get: function () { return sendContactNotification_1.sendContactNotification; } });
 const blog_1 = require("./blog");
 Object.defineProperty(exports, "getBlogPosts", { enumerable: true, get: function () { return blog_1.getBlogPosts; } });
 Object.defineProperty(exports, "getBlogPostBySlug", { enumerable: true, get: function () { return blog_1.getBlogPostBySlug; } });
 Object.defineProperty(exports, "upsertBlogPost", { enumerable: true, get: function () { return blog_1.upsertBlogPost; } });
+Object.defineProperty(exports, "addBlogPost", { enumerable: true, get: function () { return blog_1.addBlogPost; } });
 const projects_1 = require("./projects");
 Object.defineProperty(exports, "syncGitHubPortfolio", { enumerable: true, get: function () { return projects_1.syncGitHubPortfolio; } });
 Object.defineProperty(exports, "manualSyncPortfolio", { enumerable: true, get: function () { return projects_1.manualSyncPortfolio; } });
@@ -84,6 +87,37 @@ exports.submitForm = functions.https.onRequest((req, res) => {
             createdAt: new Date(),
         };
         db.collection("submissions").add(submission)
+            .then(() => {
+            res.status(200).send({ success: true, message: "Form submitted successfully" });
+        })
+            .catch((error) => {
+            console.error("Error writing to Firestore: ", error);
+            res.status(500).send("Error submitting form");
+        });
+    });
+});
+exports.contactForm = functions.https.onRequest((req, res) => {
+    corsHandler(req, res, () => {
+        if (req.method !== "POST") {
+            res.status(405).send("Method Not Allowed");
+            return;
+        }
+        const { name, email, service, budget, message } = req.body;
+        if (!name || !email) {
+            res.status(400).send("Missing required fields");
+            return;
+        }
+        const db = admin.firestore();
+        const submission = {
+            name,
+            email,
+            service: service || '',
+            budget: budget || '',
+            message: message || '',
+            createdAt: new Date(),
+            source: 'contact-form'
+        };
+        db.collection("contact_submissions").add(submission)
             .then(() => {
             res.status(200).send({ success: true, message: "Form submitted successfully" });
         })

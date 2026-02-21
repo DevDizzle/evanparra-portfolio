@@ -1,15 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogList from '../../components/BlogList';
-import { getCollection } from 'astro:content';
 
 const page = {
   title: "Engineering Logs | Evan Parra",
   description: "Technical deep dives on ML pipelines, agent architecture, and production AI systems."
 };
-
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
 <BaseLayout title={page.title} description={page.description}>
@@ -26,66 +22,10 @@ const posts = (await getCollection('blog'))
         </p>
       </header>
 
-      <!-- Live Signals (Firestore) -->
+      <!-- Unified Blog List (Firestore Client-Side) -->
       <div class="mb-12">
-        <div class="flex items-center gap-2 mb-6 border-b border-slate-200 pb-2">
-           <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-          </span>
-          <h2 class="text-lg font-bold text-slate-700 uppercase tracking-wide">Live Signals</h2>
-        </div>
         <BlogList client:load />
       </div>
-
-      <!-- Static Archive (Markdown) -->
-      {posts.length > 0 && (
-        <div class="mt-20">
-          <div class="flex items-center gap-2 mb-6 border-b border-slate-200 pb-2">
-            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
-            <h2 class="text-lg font-bold text-slate-700 uppercase tracking-wide">Archive</h2>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-8">
-            {posts.map((post) => (
-              <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow opacity-90 hover:opacity-100">
-                {post.data.image && (
-                  <img 
-                    src={post.data.image} 
-                    alt={post.data.imageAlt || post.data.title}
-                    class="w-full h-48 object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  />
-                )}
-                <div class="p-6">
-                  <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
-                    <time datetime={post.data.publishDate.toISOString()}>
-                      {new Date(post.data.publishDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  </div>
-                  <h2 class="text-xl font-bold text-slate-900 mb-3 leading-tight">
-                    <a href={`/blog/${post.slug}`} class="hover:text-primary-600 transition-colors">
-                      {post.data.title}
-                    </a>
-                  </h2>
-                  <p class="text-slate-600 mb-4 line-clamp-3">
-                    {post.data.description}
-                  </p>
-                  <a 
-                    href={`/blog/${post.slug}`}
-                    class="text-slate-500 font-medium hover:text-primary-600 inline-flex items-center gap-1"
-                  >
-                    Read archived post <span aria-hidden="true">→</span>
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   </main>
 </BaseLayout>

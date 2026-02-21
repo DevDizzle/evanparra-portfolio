@@ -8,7 +8,7 @@ const description = "Production ML Engineering, Autonomous Agents, and AI Automa
 const enterpriseServices = [
   {
     title: "ML Pipeline Architecture",
-    description: "End-to-end design and implementation of production-grade machine learning pipelines. From data ingestion to model serving and monitoring.",
+    description: "End-to-end design of production-grade machine learning pipelines. From data ingestion to model serving and monitoring on Google Cloud or AWS.",
     deliverables: [
       "Architecture documentation & diagrams",
       "BigQuery / Cloud SQL data warehouse setup",
@@ -16,7 +16,21 @@ const enterpriseServices = [
       "CI/CD integration for ML assets"
     ],
     pricing: "Project based ($5k - $15k typical)",
-    icon: "network"
+    icon: "network",
+    link: "/services/ml-pipeline-architecture"
+  },
+  {
+    title: "Data Engineering & Integration",
+    description: "Build robust data pipelines that feed your AI. I unify your fragmented data into a single source of truth for analytics and machine learning.",
+    deliverables: [
+      "Automated ELT/ETL pipelines (Airbyte/Fivetran)",
+      "Data modeling and transformation (dbt)",
+      "Data quality testing and alerting",
+      "Real-time data streaming setup"
+    ],
+    pricing: "Project based",
+    icon: "database",
+    link: "/services/data-engineering"
   },
   {
     title: "Autonomous Agent Systems",
@@ -28,28 +42,30 @@ const enterpriseServices = [
       "Chat interface implementation"
     ],
     pricing: "Retainer or Project",
-    icon: "bot"
+    icon: "bot",
+    link: "/services/autonomous-agent-systems"
   },
   {
-    title: "RAG & LLM Integration",
-    description: "Augment your existing applications with intelligence. Connect LLMs to your private data securely and efficiently.",
+    title: "AI Strategy & Advisory",
+    description: "Cut through the hype. I help business leaders identify high-value AI use cases, assess technical feasibility, and build a roadmap that delivers ROI.",
     deliverables: [
-      "Vector database implementation",
-      "Embedding pipeline optimization",
-      "Context retrieval systems",
-      "Prompt engineering & testing"
+      "AI Feasibility Audits",
+      "Build vs. Buy Analysis",
+      "Technical Roadmap & Architecture",
+      "Vendor & Tool Selection"
     ],
-    pricing: "Hourly ($150/hr) or Project",
-    icon: "brain"
+    pricing: "Retainer starting at $2,500/mo",
+    icon: "compass",
+    link: "/services/ai-advisory"
   }
 ];
 
 const localServices = [
   {
-    title: "AI Automation Audit",
+    title: "Local Automation Audits",
     description: "A comprehensive review of your business processes to identify high-value automation opportunities.",
     price: "$500 (Waived with project)",
-    link: "/contact?type=local-audit"
+    link: "/services/local-automation-audits"
   },
   {
     title: "Document Processing (IDP)",
@@ -90,17 +106,19 @@ const localServices = [
         body="Production-ready systems built on Google Cloud / AWS. No prototypes, no toys."
       />
 
-      <div class="grid md:grid-cols-3 gap-8 mt-16">
+      <div class="grid md:grid-cols-2 gap-8 mt-16">
         {enterpriseServices.map(service => (
-          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-primary-200 hover:shadow-lg transition-all">
+          <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-primary-200 hover:shadow-lg transition-all flex flex-col">
             <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-6">
               {service.icon === 'network' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>}
+              {service.icon === 'database' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>}
               {service.icon === 'bot' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>}
+              {service.icon === 'compass' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>}
               {service.icon === 'brain' && <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>}
             </div>
             
             <h3 class="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
-            <p class="text-slate-600 mb-6 text-sm leading-relaxed">{service.description}</p>
+            <p class="text-slate-600 mb-6 text-sm leading-relaxed flex-grow">{service.description}</p>
             
             <ul class="space-y-3 mb-8">
               {service.deliverables.map(item => (
@@ -113,8 +131,8 @@ const localServices = [
 
             <div class="mt-auto pt-6 border-t border-slate-200">
               <p class="text-sm font-semibold text-slate-500 mb-4">{service.pricing}</p>
-              <a href="https://www.upwork.com/freelancers/~0142e0578643501625" target="_blank" class="block w-full text-center py-2 px-4 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium hover:bg-slate-50 transition-colors">
-                View on Upwork
+              <a href={service.link} class="block w-full text-center py-2 px-4 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium hover:bg-slate-50 transition-colors">
+                Learn More
               </a>
             </div>
           </div>
@@ -133,10 +151,11 @@ const localServices = [
             For businesses in Jacksonville & St. Augustine looking to modernize their operations.
           </p>
         </div>
-        <div class="mt-6 md:mt-0">
-          <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-500 transition-colors">
-            Book Free Audit
-          </a>
+        <div class="mt-6 md:mt-0 flex flex-col md:items-end gap-2">
+            <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-500 transition-colors">
+                Book Free Audit
+            </a>
+            <a href="tel:9046156418" class="text-sm text-slate-400 hover:text-white transition-colors">Or call: (904) 615-6418</a>
         </div>
       </div>
 
@@ -149,6 +168,17 @@ const localServices = [
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- General CTA -->
+  <section class="py-24 bg-primary-600 text-white text-center">
+    <div class="container">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Need something else?</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">I take on a limited number of custom consulting projects each quarter. Let's discuss your specific needs.</p>
+        <a href="/contact" class="inline-block bg-white text-primary-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+            Get in Touch
+        </a>
     </div>
   </section>
 

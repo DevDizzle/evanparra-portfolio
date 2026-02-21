@@ -4,9 +4,35 @@ import SectionHeading from '../../components/SectionHeading.astro';
 
 const title = "Local Business Automation Audits | Evan Parra";
 const description = "Find the $50K hiding in your manual processes. Automation audits for local businesses in St. Augustine and Jacksonville.";
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Local Business Automation Audits',
+  description: description,
+  provider: {
+    '@type': 'Person',
+    name: 'Evan Parra',
+    url: 'https://evanparra.ai'
+  },
+  areaServed: [
+    { '@type': 'City', name: 'St. Augustine' },
+    { '@type': 'City', name: 'Jacksonville' },
+    { '@type': 'City', name: 'Palm Coast' },
+    { '@type': 'City', name: 'Ponte Vedra' }
+  ],
+  priceRange: '$500',
+  offers: {
+    '@type': 'Offer',
+    price: '500.00',
+    priceCurrency: 'USD',
+    description: 'On-site or remote process audit. Credited toward implementation.'
+  }
+};
 ---
 
 <BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white py-24 md:py-32 relative overflow-hidden">
     <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
@@ -124,7 +150,7 @@ const description = "Find the $50K hiding in your manual processes. Automation a
   <section class="py-24 bg-emerald-600 text-white text-center">
     <div class="container">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Stop doing robot work.</h2>
-      <a href="https://cal.com/evanparra" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="inline-block bg-white text-emerald-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
         Book Your Free Discovery Call
       </a>
     </div>

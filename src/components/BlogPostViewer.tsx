@@ -21,14 +21,25 @@ const BlogPostViewer: React.FC = () => {
         }
 
         const blogRef = collection(db, 'blogPosts');
-        const q = query(blogRef, where('slug', '==', slug), limit(1));
+        const q = query(
+          blogRef, 
+          where('slug', '==', slug), 
+          where('status', '==', 'published'),
+          limit(1)
+        );
         const snapshot = await getDocs(q);
 
         if (snapshot.empty) {
           setError('Post not found.');
         } else {
           const doc = snapshot.docs[0];
-          setPost({ id: doc.id, ...doc.data() } as BlogPost & { content?: string });
+          const data = doc.data();
+          setPost({ 
+            id: doc.id, 
+            ...data,
+            coverImage: data.image, // Map image -> coverImage
+            excerpt: data.description // Map description -> excerpt
+          } as BlogPost & { content?: string });
         }
       } catch (err) {
         console.error(err);

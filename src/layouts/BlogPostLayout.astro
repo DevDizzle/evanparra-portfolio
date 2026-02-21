@@ -48,7 +48,14 @@ const articleSchema = {
 };
 ---
 
-<BaseLayout title={`${frontmatter.title} | Evan Parra`} description={frontmatter.description}>
+<BaseLayout 
+  title={`${frontmatter.title} | Evan Parra`} 
+  description={frontmatter.description}
+  image={frontmatter.image}
+  type="article"
+  showHeader={false}
+  showFooter={false}
+>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   
   <SiteHeader navItems={navItems} />

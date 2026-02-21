@@ -4,9 +4,44 @@ import SectionHeading from '../../components/SectionHeading.astro';
 
 const title = "Autonomous Agent Systems | Evan Parra";
 const description = "AI agents that do real work, not just chat. I build agents that integrate with your business systems.";
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Autonomous Agent Systems',
+  description: description,
+  provider: {
+    '@type': 'Person',
+    name: 'Evan Parra',
+    url: 'https://evanparra.ai'
+  },
+  areaServed: 'US',
+  serviceType: 'AI Agent Development',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'AI Automation Services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Custom AI Agent Development'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'MCP Tool Integration'
+        }
+      }
+    ]
+  }
+};
 ---
 
 <BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} slot="head" />
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white py-24 md:py-32 relative overflow-hidden">
     <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
@@ -114,7 +149,7 @@ const description = "AI agents that do real work, not just chat. I build agents 
   <section class="py-24 bg-indigo-600 text-white text-center">
     <div class="container">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Want an agent that actually does the work?</h2>
-      <a href="https://cal.com/evanparra" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+      <a href="https://calendar.app.google/CjhZR1dr31gkfhCQ8" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
         Schedule a Discovery Call
       </a>
     </div>
